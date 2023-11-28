@@ -21,6 +21,7 @@ public class EJ19HOJA4 {
 				System.out.print(matriz[i][j]+" ");
 			}
 			System.out.println();
+			System.out.println();
 	}
 		System.out.println("matriz inversa");
 		for(int i=0;i<3;i++) {
