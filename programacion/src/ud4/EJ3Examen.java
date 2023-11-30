@@ -8,6 +8,7 @@ public class EJ3Examen {
 		// que pida los numeros
 		Scanner entrada=new Scanner(System.in);
 		System.out.println("introduce un valor");
+		System.out.println("introduce un valor");
 		int a =entrada.nextInt();
 		System.out.println("introduce un valor");
 		int b =entrada.nextInt();
