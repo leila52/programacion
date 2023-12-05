@@ -27,6 +27,7 @@ public class EJ19HOJA4 {
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {
 				System.out.print(matriz[j][i]+" ");
+				System.out.print(matriz[j][i]+" ");
 			}
 			System.out.println();
 	}	

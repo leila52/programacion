@@ -6,31 +6,37 @@ import java.util.Scanner;
 //columnas.
 public class ej17hoja4 {
 	public static void main(String[] args) {
-		int[][] matriz=new int [11][12];
+		int[][] nums=new int [10][11];
 		int num=1;
-		int cont=0;
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				matriz[i][j]=num;
+				nums[j][i]=num;
 				num++;
 			}
 		}
-		
-		for(int j=0;j<11;j++) {
-			for(int i=0;i<10;i++) {
-				cont+=matriz[i][j];
-				}
-			matriz[11-1][j]=cont;
-			}
-
-	//mostramos el array en formato matriz
-			for(int i=0;i<11;i++) {
-				for(int j=0;j<10;j++) {
-					System.out.print(matriz[i][j]+" ");;
-				}
-				System.out.println();
-
+		//suma array
+		for (int i=0;i<10;i++) {
+			sumaArray(nums[i]);
 		}
-
+		muestraArray(nums);
+		
 }
+	public static void sumaArray(int[] vector) {
+		int acum=0;
+		for (int i=0;i<10;i++) {
+			acum=acum+vector[i];
+		}
+		vector[10]=acum;
+	}
+	public static void muestraArray(int [][]nums) {
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				System.out.print(nums[j][i]+" ");;
+			}
+			System.out.println();
+		}
+		for(int i=0;i<10;i++) {
+			System.out.print(nums[i][10]+" ");
+		}
+	}
 }
