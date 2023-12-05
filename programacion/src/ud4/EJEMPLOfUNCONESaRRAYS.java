@@ -13,6 +13,7 @@ public class EJEMPLOfUNCONESaRRAYS {
 		muestraArray(nums);
 		int maximo=encuentraMax(nums);
 		System.out.println("el valor máximo del array es :"+maximo);
+		System.out.println("el valor máximo del array es :"+maximo);
 		
 	}
 	public static void rellenaArray(int[] nums2) {
