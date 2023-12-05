@@ -6,8 +6,8 @@ public class ej1numaleatorio {
 		Random ale = null;
 		ale=new Random();
 		for(int i=0;i<=20;i++) {
-			int numero=ale.nextInt(10);
-			System.out.println(numero);
+			int numero=ale.nextInt(11);
+			System.out.print(numero+" ");
 		}
 	}
 

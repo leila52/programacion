@@ -10,11 +10,9 @@ public class ej2numaleatorio {
 		int tirada=ale.nextInt(6)+1;
 		int tirada2=ale.nextInt(6)+1;
 		int tirada3=ale.nextInt(6)+1;
-		System.out.println(tirada);
-		System.out.println(tirada2);
-		System.out.println(tirada3);
+		System.out.println(tirada+","+tirada2+","+tirada3);
 		suma=tirada+tirada2+tirada3;
-		System.out.println("la suma de los tres dados es"+suma);
+		System.out.println("la suma de los tres dados es: "+suma);
 	}
 
 }
