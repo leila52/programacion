@@ -17,8 +17,8 @@ public class ej1cadenas {
 		//para leer cadenas
 		cad=in.nextLine();
 		for(int i=0;i<cad.length();i++) {
-		char letra=cad.charAt(i);
-		System.out.println(letra);
+			char letra=cad.charAt(i);
+			System.out.println(letra);
 		}
 
 	}

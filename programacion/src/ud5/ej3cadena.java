@@ -21,7 +21,7 @@ public class ej3cadena {
 			if(letra==cad.charAt(i))
 				cont++;
 		}
-		System.out.println("la letra"+ letra+"se encuentra"+ cont+"veces");
+		System.out.println("la letra "+ letra+" se encuentra "+ cont+" veces");
 
 	}
 

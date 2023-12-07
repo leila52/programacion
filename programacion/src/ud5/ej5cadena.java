@@ -8,7 +8,15 @@ public class ej5cadena {
 
 	public static void main(String[] args) {
 		Scanner entrada=new Scanner(System.in);
-		String nom=entrada.nextLine();
+		System.out.println("Introduce el nombre y apellido");
+		String nomCompleto=entrada.nextLine();
+		char letra=' ';
+		for(int i=1;i<nomCompleto.length();i++) {
+			if((nomCompleto.charAt(i-1)==letra)) {
+				
+			}
+		}
+		
 
 	}
 
