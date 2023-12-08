@@ -15,10 +15,12 @@ public class ej9aleatorio {
 		int cont=0;
 		int num;
 		do {
+			//genera numeros pares y al estar entre 0 y 100 solo hay 50
 			num=ale.nextInt(51)*2;
 			System.out.print("El numero aleatorio: "+num+",");
+			//incrememntamos cont para asi mostrar las veces q a regenerado numeros
 			cont++;
-			
+		//sale del while cuando el numero sea 24	
 		}while(num!=24);
 		System.out.println();
 		System.out.println("se han generado "+cont+" numeros");

@@ -7,12 +7,14 @@ import java.util.Random;
 public class ej5aleatorios {
 	public static void main(String[] args) {
 		//50 numeros aleatorios
-		double[] nums=new double [50];
+		int[] nums=new int [50];
+		//se rellena con numeros aleatorios
 		rellenaArray(nums);
-		double result;
+		//para encontrar el maximo y minimo dentro del array
+		int result;
 		result=encontrarMaximo(nums);
 		System.out.println("el numero máximo es :"+result);
-		double result2;
+		int result2;
 		result2=encontrarMinimo(nums);
 		System.out.println("el numero minimo es :"+result2);
 		double result3;
@@ -29,24 +31,24 @@ public class ej5aleatorios {
 		}
 		return;
 	}
-	public static double encontrarMaximo(double[] nums) {
-		double max=nums[0];
+	public static int encontrarMaximo(int[] nums) {
+		int max=nums[0];
 		for(int i=1;i<nums.length;i++) {
 			if (nums[i]>max)
 				max=nums[i];
 		}
 		return max;
 	}
-	public static double encontrarMinimo(double []nums) {
-		double min=nums[0];
+	public static int encontrarMinimo(int []nums) {
+		int min=nums[0];
 		for(int i=1;i<nums.length;i++) {
 			if (nums[i]<min)
 				min=nums[i];
 		}
 		return min;
 	}
-		public static double media(double [] nums) {
-			double acum=0;
+		public static double media(int [] nums) {
+			int acum=0;
 			for (int i=0;i<nums.length;i++) {
 				acum = acum + nums[i];
 			}

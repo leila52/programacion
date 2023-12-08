@@ -14,12 +14,15 @@ public class ej6aleatorio {
 		int numero=ale.nextInt(100)+1;
 		System.out.println(numero);
 		do {
+				//restamos los intentos
 				intentos--;
 				System.out.println("introduce el numero secreto");
 				num=entrada.nextInt();
+				//si el numero es igual que el secreto se muestra
 				if(num==numero) {
 					System.out.println("has acertado");
 				}
+				//si no mostramos los intentos que le quedan y si es mayor o menor
 				else {
 					System.out.println("te quedan "+intentos+"intentos");
 				}
@@ -28,8 +31,7 @@ public class ej6aleatorio {
 				}if(numero>num) {
 					System.out.println("numero secreto es mayor");
 				}
-				
-				
+		//el whille para q no salga del bucle y se asegure q los intentos sean mayores a cero y sea diferente al num secreto
 		}while((num!=numero)&&(intentos>0));
 		
 	}
