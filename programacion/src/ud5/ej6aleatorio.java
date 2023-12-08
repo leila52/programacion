@@ -13,27 +13,24 @@ public class ej6aleatorio {
 		ale=new Random();
 		int numero=ale.nextInt(100)+1;
 		System.out.println(numero);
-		System.out.println("introduce el numero secreto");
-		num=entrada.nextInt();
-		while(num!=numero ) {
-			if(intentos>0) {
+		do {
 				intentos--;
-				if(numero<num) {
-					System.out.println("el numero secreto es menor");
-				}else {
-					System.out.println("numero secreto es mayot");
-				}
-				System.out.println("vuelve a introducir el numero secreto y te quedan "+intentos+" intentos");
+				System.out.println("introduce el numero secreto");
 				num=entrada.nextInt();
-				if(intentos==0 &&num!=numero){
-					System.out.println("no has hacertado y te has quedado sin intentos");
+				if(num==numero) {
+					System.out.println("has acertado");
 				}
-			}
-			
-		}
-		if(num==numero) {
-			System.out.println("has acertado");
-		}
+				else {
+					System.out.println("te quedan "+intentos+"intentos");
+				}
+				if(numero<num) {
+					System.out.println("el numero secreto es menor ");
+				}if(numero>num) {
+					System.out.println("numero secreto es mayor");
+				}
+				
+				
+		}while((num!=numero)&&(intentos>0));
 		
 	}
 	
