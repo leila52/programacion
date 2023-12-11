@@ -21,7 +21,7 @@ public class ej5aleatorios {
 		result3=media(nums);
 		System.out.println("la media total es "+result3);	
 	}
-	public static void rellenaArray(double[] nums) {
+	public static void rellenaArray(int[] nums) {
 		for (int i=0;i<50;i++) {
 			Random ale=null;
 			ale=new Random();

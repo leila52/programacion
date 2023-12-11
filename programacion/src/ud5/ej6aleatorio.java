@@ -24,11 +24,14 @@ public class ej6aleatorio {
 				}
 				//si no mostramos los intentos que le quedan y si es mayor o menor
 				else {
-					System.out.println("te quedan "+intentos+"intentos");
+					System.out.println("te quedan "+intentos+" intentos");
 				}
-				if(numero<num) {
+				if(intentos==0) {
+					System.out.println("te has quedado sin intentos vuelve a intentarlo la proxima");
+				}
+				if((numero<num)&& (intentos>0)) {
 					System.out.println("el numero secreto es menor ");
-				}if(numero>num) {
+				}if((numero>num) && (intentos>0) ) {
 					System.out.println("numero secreto es mayor");
 				}
 		//el whille para q no salga del bucle y se asegure q los intentos sean mayores a cero y sea diferente al num secreto
