@@ -27,14 +27,30 @@ public class ej15aleatorio {
 			System.out.println("5=limon");
 			System.out.println("pulse 1 para tirar");
 			op2=entrada.nextInt();
+			
 			for(int i=0;i<3;i++) {
 				Random ale = null;
 				ale=new Random();
 				int tirada;
 				tirada=ale.nextInt(5)+1;
 				nums[i]=tirada;
-				System.out.print(tirada+" ");
+				if(tirada==1) {
+					System.out.print("corazon  ");
+				}
+				if(tirada==2) {
+					System.out.print("diamante  ");
+				}
+				if(tirada==3) {
+					System.out.print("herradura  ");
+				}
+				if(tirada==4) {
+					System.out.print("campana  ");
+				}
+				if(tirada==5) {
+					System.out.print("limon  ");
+				}
 			}
+			
 			if((nums[0]!=(nums[1]))&&(nums[1]!=nums[2])&& nums[0]!=nums[2]) {
 				System.out.println("Lo siento, ha perdido");
 			}
