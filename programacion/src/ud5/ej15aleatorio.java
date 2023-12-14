@@ -19,15 +19,8 @@ public class ej15aleatorio {
 		do {
 			System.out.println("pulse 1 para jugar");
 			op=entrada.nextInt();
-			System.out.println("Hay 5 figuras");
-			System.out.println("1=corazon");
-			System.out.println("2=diamante");
-			System.out.println("3=herradura");
-			System.out.println("4=campana");
-			System.out.println("5=limon");
-			System.out.println("pulse 1 para tirar");
+			mostrarmenu();
 			op2=entrada.nextInt();
-			
 			for(int i=0;i<3;i++) {
 				Random ale = null;
 				ale=new Random();
@@ -50,19 +43,24 @@ public class ej15aleatorio {
 					System.out.print("limon  ");
 				}
 			}
-			
 			if((nums[0]!=(nums[1]))&&(nums[1]!=nums[2])&& nums[0]!=nums[2]) {
 				System.out.println("Lo siento, ha perdido");
 			}
-			if((nums[0]==nums[1]) || (nums[1]==nums[2]) || nums[0]==nums[2]) {
+			if((nums[0]==nums[1]) || (nums[1]==nums[2]) || nums[0]==nums[2] ) {
 				System.out.println("Bien, ha recuperado su moneda");
 			}
 			if(nums[0]==nums[1] && nums[1]==nums[2]&& nums[0]==nums[2]) {
 				System.out.println("Enhorabuena, ha ganado 10 monedas");
 			}
-			
 		}while(op!=1);
-
 	}
-
+	public static void mostrarmenu() {
+		System.out.println("Hay 5 figuras");
+		System.out.println("1=corazon");
+		System.out.println("2=diamante");
+		System.out.println("3=herradura");
+		System.out.println("4=campana");
+		System.out.println("5=limon");
+		System.out.println("pulse 1 para tirar");
+	}
 }
