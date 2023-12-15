@@ -36,6 +36,18 @@ public class ej14aleatorio {
 			if(melo[i]==0) {
 				System.out.println("do");
 			}
+			if(melo[i]==1) {
+				System.out.println("re");
+			}
+			if(melo[i]==2) {
+				System.out.println("mi");
+			}
+			if(melo[i]==3) {
+				System.out.println("fa");
+			}
+			if(melo[i]==4) {
+				System.out.println("sol");
+			}
 		}
 		//la ultima no coincida con la primera
 		melo[larguraMelo-1]=melo[0];
