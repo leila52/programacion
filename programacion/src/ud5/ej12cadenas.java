@@ -103,11 +103,12 @@ La tienda dispone de 10 productos distintos. El programa debe ser capaz de:
 		if(indice3 !=-1) {
 			System.out.println("introduzca el nuevo precio del producto");
 			double nuvPrecio=entrada.nextDouble();
+			
 			precios[indice3]=nuvPrecio;
 			
 			System.out.println("introduzca la nueva cantidaddel producto");
 			int nuvCantidad=entrada.nextInt();
-			precios[indice3]=nuvCantidad;
+			cantidades[indice3]=nuvCantidad;
 			//informar al cliente de la modificacion
 			System.out.println("se a modificaco corrrectamente");
 		}else {

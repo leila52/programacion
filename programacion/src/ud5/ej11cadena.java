@@ -28,9 +28,11 @@ public class ej11cadena {
 			if(cad.charAt(i)=='@') {
 				cont++;
 			}
+		}//o puede contener dos puntos seguidos '.' después de la arroba.
+		if(cad.contains("..")==true) {
+			return false;
 		}
 		if((cont!=1)&&(cad.contains(".")==true)&&(cad.contains(" ")==false)) {
-			System.out.println("es correcto el mail");
 			return true;
 		}
 		return false;
