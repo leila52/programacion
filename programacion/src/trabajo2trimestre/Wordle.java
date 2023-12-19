@@ -5,7 +5,7 @@ public class Wordle {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
-				"pollo"};
+				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
 	}
 	public static boolean haGanadoJugador () {
 		//fddf
