@@ -1,100 +1,106 @@
-package trabajo2trimestre;
-
 import java.util.Random;
 import java.util.Scanner;
 
-public class prueba {
+public class WordleGame {
+    private static String palabraSecreta;
+    private static int numIntentosConsumidos;
+    private static int numLetrasAdivinadas;
+    private static final int MAX_INTENTOS = 6;
+    private static final String[] PALABRAS = {"palabra", "juego", "teclado", "java", "programa", "consola", "letras", "aleatorio", "jugador", "ganar"};
 
-		    // Variables globales
-		    private static String palabraSecreta;
-		    private static int numIntentosConsumidos;
-		    private static int numLetrasAdivinadas;
-		    public static Scanner scanner= new Scanner(System.in);;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char jugarOtraPartida;
 
-		    public static void main(String[] args) { 
+        do {
+            iniciarJuego();
+            jugarPartida(scanner);
 
-		        System.out.println("Bienvenid@ al juego de Wordle.");
-		        System.out.println("El objetivo es descubrir la palabra oculta de 5 letras.");
+            System.out.println("Total de partidas: 1");
+            System.out.print("¿Deseas jugar otra partida? (s/n): ");
+            jugarOtraPartida = scanner.next().charAt(0);
 
-		        do {
-		            jugarPartida();
-		            mostrarResultado();
-		            System.out.println("¿Deseas jugar otra partida? (s/n)");
-		        } while (scanner.next().equalsIgnoreCase("s"));
+        } while (jugarOtraPartida == 's' || jugarOtraPartida == 'S');
 
-		        System.out.println("Fin del juego.");
-		    }
+        System.out.println("Fin del juego");
+    }
 
-		    public static void jugarPartida() {
-		        palabraSecreta = generaPalabra();
-		        numIntentosConsumidos = 0;
-		        numLetrasAdivinadas = 0;
+    private static void iniciarJuego() {
+        palabraSecreta = generaPalabra();
+        numIntentosConsumidos = 0;
+        numLetrasAdivinadas = 0;
+    }
 
-		        while (!haTerminadoJuego() && !haGanadoJugador()) {
-		            System.out.println("Introduce una palabra de 5 letras:");
-		            String intento = scanner.next().toLowerCase();
+    private static void jugarPartida(Scanner scanner) {
+        System.out.println("Bienvenid@ al juego de Wordle.");
+        System.out.println("El objetivo es descubrir la palabra oculta de 5 letras.");
 
-		            if (validarEntrada(intento)) {
-		                String resultado = compruebaLetrasAcertadas(intento);
-		                System.out.println(resultado);
-		                numIntentosConsumidos++;
-		            } else {
-		                System.out.println("Entrada no válida. Inténtalo de nuevo.");
-		            }
-		        }
-		    }
+        while (!haTerminadoJuego()) {
+            System.out.printf("Introduce una palabra de 5 letras (%d intento(s) restante(s)):\n> ", MAX_INTENTOS - numIntentosConsumidos);
+            String palabraUsuario = scanner.next().toLowerCase();
 
-		    public static boolean validarEntrada(String palabra) {
-		        return palabra.matches("[a-z]{5}") &&
-		               palabra.matches(".*[aeiou].*[aeiou].*[aeiou].*") &&
-		               !palabra.matches(".*[aeiou]{2}.*") &&
-		               !palabra.matches(".*[^aeiou]{4}.*") &&
-		               !palabra.matches(".*[qwxQWX]$");
-		    }
+            if (validarPalabra(palabraUsuario)) {
+                String resultado = compruebaLetrasAcertadas(palabraUsuario);
+                System.out.println(resultado);
 
-		    public static String compruebaLetrasAcertadas(String intento) {
-		        StringBuilder resultado = new StringBuilder();
+                if (haGanadoJugador()) {
+                    System.out.println("¡Felicidades! Has ganado la partida.");
+                    break;
+                } else {
+                    numIntentosConsumidos++;
+                }
+            } else {
+                System.out.println("La palabra introducida no es válida. Por favor, sigue las reglas.");
+            }
+        }
 
-		        for (int i = 0; i < 5; i++) {
-		            char letraIntento = intento.charAt(i);
-		            char letraSecreta = palabraSecreta.charAt(i);
+        if (!haGanadoJugador()) {
+            System.out.println("Has perdido la partida");
+        }
 
-		            if (letraIntento == letraSecreta) {
-		                resultado.append(Character.toUpperCase(letraIntento));
-		                numLetrasAdivinadas++;
-		            } else if (palabraSecreta.contains(String.valueOf(letraIntento))) {
-		                resultado.append(Character.toLowerCase(letraIntento));
-		            } else {
-		                resultado.append("*");
-		            }
-		        }
+        System.out.printf("Tú: 0 puntos vs Máquina: 1 punto%n");
+    }
 
-		        return resultado.toString();
-		    }
+    private static boolean haTerminadoJuego() {
+        return numIntentosConsumidos >= MAX_INTENTOS || haGanadoJugador();
+    }
 
-		    public static boolean haGanadoJugador() {
-		        return numLetrasAdivinadas == 5;
-		    }
+    private static boolean haGanadoJugador() {
+        return numLetrasAdivinadas == palabraSecreta.length();
+    }
 
-		    public static boolean haTerminadoJuego() {
-		        return numIntentosConsumidos == 6;
-		    }
+    private static String compruebaLetrasAcertadas(String palabraUsuario) {
+        StringBuilder resultado = new StringBuilder();
 
-		    public static String generaPalabra() {
-		        String[] palabras = {"manzana", "perro", "gato", "fuego", "lugar", "leche", "cabra", "rojo", "azul", "verde",
-		                "tabla", "techo", "tigre", "zapato", "café", "naranja", "hoja", "libro", "flor", "agua"};
-		        Random random = new Random();
-		        return palabras[random.nextInt(palabras.length)];
-		    }
+        for (int i = 0; i < palabraSecreta.length(); i++) {
+            char letraUsuario = palabraUsuario.charAt(i);
+            char letraSecreta = palabraSecreta.charAt(i);
 
-		    public static void mostrarResultado() {
-		        if (haGanadoJugador()) {
-		            System.out.println("¡Has ganado la partida!");
-		        } else {
-		            System.out.println("Has perdido la partida");
-		        }
+            if (letraUsuario == letraSecreta) {
+                resultado.append(Character.toUpperCase(letraUsuario));
+                numLetrasAdivinadas++;
+            } else if (palabraSecreta.contains(String.valueOf(letraUsuario))) {
+                resultado.append(Character.toLowerCase(letraUsuario));
+            } else {
+                resultado.append('*');
+            }
+        }
 
-		        System.out.println("Tú: " + (haGanadoJugador() ? "1" : "0") + " puntos vs Máquina: " + (haGanadoJugador() ? "0" : "1") + " punto");
-		        System.out.println("Total de partidas: 1");
-		    }
-		}
+        return resultado.toString();
+    }
+
+    private static String generaPalabra() {
+        Random random = new Random();
+        return PALABRAS[random.nextInt(PALABRAS.length)];
+    }
+
+    private static boolean validarPalabra(String palabra) {
+        return palabra.length() == 5 &&
+                palabra.matches("[a-zA-Z]+") &&
+                palabra.replaceAll("[aeiouAEIOU]", "").length() >= 2 &&
+                palabra.replaceAll("[aeiouAEIOU]+", "").length() <= 3 &&
+                !palabra.matches(".*[qQwWxX]$") &&
+                !palabra.matches(".*[aeiouAEIOU]{2,}.*") &&
+                !palabra.matches(".*[^a-zA-Z].*");
+    }
+}
