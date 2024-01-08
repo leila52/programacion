@@ -13,16 +13,15 @@ public class Wordle {
 	static char[] vocal= {'a','e','i','o','u'};
 	public static void main(String[] args) {
 		
-		System.out.println(generaPalabra());
+		generaPalabra();
 		char jugarOtraPartida;
-		
 		do {
-			
 			iniciarPartida();
 			jugarPartida();
 			System.out.println("total de partidad 1");
 			System.out.println("deseas jugar otra partida s/n");
-			jugarOtraPartida=entrada.next().charAt(0);			/*if(Correct(palaIntroducida)==true) {
+			jugarOtraPartida=entrada.next().charAt(0);			
+			/*if(Correct(palaIntroducida)==true) {
 				System.out.println("la palabra es correcta");
 				System.out.println(palaIntroducida);
 				correct=true;
@@ -40,6 +39,7 @@ public class Wordle {
 		            }
 		        }
 			}*/
+
 			
 		}while(jugarOtraPartida=='s'|| jugarOtraPartida=='S');
 	
@@ -47,12 +47,12 @@ public class Wordle {
 	
 	
 	//general la palabra secreta
-	public static String generaPalabra() {
+	public static void generaPalabra() {
 		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
 				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
 		Random ale=new Random();
 		int palalea=ale.nextInt(21);
-		return palabras[palalea];
+		secreta=palabras[palalea];
 		
 		
 	}
@@ -80,14 +80,13 @@ public class Wordle {
 	public static boolean contsoloLetras(String cad) {
 		for(int i=0;i<cad.length();i++) {
 			char cara=cad.charAt(i);
-			//si no es una letra
+			//si no es una letra es un metodo
 			if(!Character.isLetter(cara)) {
 				return false;
 			}
 			}return true;
 	}
-	/*La palabra debe contener entre dos y tres
-vocales.*/
+	/*La palabra debe contener entre dos y tres vocales.*/
 	public static boolean contienevocal(String cad) {
 		for(int i=0;i<cad.length();i++) {
 			for(int j=0;j<vocal.length;j++) {
@@ -170,7 +169,8 @@ vocales.*/
 				}else if(secreta.contains(String.valueOf(letraU))){
 					
 				}else {
-					//resultado.append('*');
+					//resultado
+
 				}
 			}return resultado;
 		}
