@@ -64,7 +64,7 @@ public class Wordle {
 			return false;
 		if(contienEspacio(cad))
 			return false;
-		if(!contienevocal(cad)&&(contarVocal(cad)<2 || contarVocal(cad)>3) )
+		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3) )
 			return true;
 		/*en caso q no sea correcta*/
 		return false;
@@ -135,7 +135,7 @@ public class Wordle {
 			System.out.println("Bienvenido al juego de Wordle");
 			System.out.println("El objetivo es descubrir la palabra oculta de 5\n"
 					+ "letras.");
-			while(!haTerminadoJuego()) {
+			do {
 				System.out.println("introduzca la palabra de 5 letras: ");
 				String palaIntroducida=entrada.nextLine().toLowerCase(); 
 				if(Correct(palaIntroducida)) {
@@ -148,15 +148,15 @@ public class Wordle {
 						intentosconsumidos++;
 					}
 				}else {
-					System.out.println("La palabra introducida no es valida");
+					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
-			}if(!haGanadoJugador()) {
+			}while(!haTerminadoJuego());
+			if(!haGanadoJugador()) {
 				System.out.println("has perdido colega");
 			}
-			System.out.println();
 		}
 		public static String compruebaLetrasAcertadas(String palaIntroducida) {
-			String resultado="";
+			/*String resultado="";
 			for(int i=0;i<secreta.length();i++) {
 				//letra del usuario
 				char letraU=palaIntroducida.charAt(i);
@@ -172,7 +172,25 @@ public class Wordle {
 					//resultado
 
 				}
-			}return resultado;
+			}return resultado;*/
+			String[] palabra2=new String[palaIntroducida.length()];
+			String result="";
+			palaIntroducida=palaIntroducida.toLowerCase();
+			for(int i=0;i<palaIntroducida.length();i++) {
+				String letra="";
+				letra+=palaIntroducida.charAt(i);
+				//primer caso
+				if(palaIntroducida.charAt(i)==secreta.charAt(i)&& secreta.contains(letra)) {
+					palabra2[i]=letra.toUpperCase();
+				}//segundo caso
+				if(secreta.contains(letra)&&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
+					palabra2[i]=letra.toLowerCase();
+				}
+				if(!secreta.contains(letra) &&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
+					palabra2[i]="*";
+				}result+=palabra2[i];
+			}
+			return result;
 		}
 	
 	 public static boolean haGanadoJugador() {
