@@ -31,19 +31,19 @@ public class ejercicio339problemas {
 		//la nueva suma bn organizada
 		String newsuma="";
 		for(int i=0;i<cont1;i++) {
-			if(!newsuma.isEmpty()) {
+			if(newsuma.contains("+")) {
 				newsuma+="+";
 			}newsuma+="1";
 				
 		}
 		for(int i=0;i<cont2;i++) {
-			if(!newsuma.isEmpty()) {
+			if(newsuma.contains("+")) {
 				newsuma+="+";
 			}newsuma+="2";
 				
 		}
 		for(int i=0;i<cont3;i++) {
-			if(!newsuma.isEmpty()) {
+			if(newsuma.contains("+")) {
 				newsuma+="+";
 			}newsuma+="3";
 				
