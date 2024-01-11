@@ -21,24 +21,6 @@ public class Wordle {
 			System.out.println("total de partidad 1");
 			System.out.println("deseas jugar otra partida s/n");
 			jugarOtraPartida=entrada.next().charAt(0);			
-			/*if(Correct(palaIntroducida)==true) {
-				System.out.println("la palabra es correcta");
-				System.out.println(palaIntroducida);
-				correct=true;
-			}else {
-				System.out.println("la palabra es incorrecta");
-				palaIntroducida=entrada.nextLine().toLowerCase();
-				while (!haTerminadoJuego() && !haGanadoJugador()) {
-		            System.out.println("Introduce una palabra de 5 letras:");
-		            String intento = entrada.next().toLowerCase();
-
-		            if (Correct(intento)) {
-		                intentos++;
-		            } else {
-		                System.out.println("Entrada no válida. Inténtalo de nuevo.");
-		            }
-		        }
-			}*/
 
 			
 		}while(jugarOtraPartida=='s'|| jugarOtraPartida=='S');
@@ -65,22 +47,20 @@ public class Wordle {
 		if(contienEspacio(cad))
 			return false;
 		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3) )
-			return true;
+			return false;
 		/*en caso q no sea correcta*/
-		return false;
+		return true;
 		
 	}
 	/*Debe tener exactamente 5 letras.*/
 	public static boolean cont5Letra(String cad) {
-		if(cad.length()!=5) {
-			return false;
-		}return true;			
+		return cad.length()==5;			
 	}
 	/**/
 	public static boolean contsoloLetras(String cad) {
 		for(int i=0;i<cad.length();i++) {
 			char cara=cad.charAt(i);
-			//si no es una letra es un metodo
+			//si no es una letra devuelve false
 			if(!Character.isLetter(cara)) {
 				return false;
 			}
@@ -109,24 +89,15 @@ public class Wordle {
 		}return cont;
 	}
 	public static boolean contienEspacio(String cad) {
-		char espacio=' ';
-		if(cad.charAt(0)!=espacio) {
-			return true;
-		}
-		for(int i=1;i<cad.length();i++) {
-			//si empieza con un espacio se asegura q lo haya y asi se utiliza el metodo
-			if((cad.charAt(i-1)==' ')&&(cad.charAt(i)!=' ')) {
-				return true;
-			}
-			
-			}return false;	
+			//devuelve true si la cade contiene espacios
+		return cad.contains(" ");
 		}
 	
 	
 	//partida
 	//iniciar la partida
 		public static void iniciarPartida() {
-			intentosconsumidos=0;
+			intentosconsumidos=1;
 			letrasadivinadas=0;
 		}
 		
@@ -136,13 +107,14 @@ public class Wordle {
 			System.out.println("El objetivo es descubrir la palabra oculta de 5\n"
 					+ "letras.");
 			do {
+				while(!haGanadoJugador() && intentosconsumidos<=6) {
 				System.out.println("introduzca la palabra de 5 letras: ");
 				String palaIntroducida=entrada.nextLine().toLowerCase(); 
 				if(Correct(palaIntroducida)) {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador()) {
+					if(haGanadoJugador()&& intentosconsumidos<=6) {
 						System.out.println("Felicidadesssss ganaste");
 					}else {
 						intentosconsumidos++;
@@ -150,29 +122,13 @@ public class Wordle {
 				}else {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
+				}
 			}while(!haTerminadoJuego());
 			if(!haGanadoJugador()) {
 				System.out.println("has perdido colega");
 			}
 		}
 		public static String compruebaLetrasAcertadas(String palaIntroducida) {
-			/*String resultado="";
-			for(int i=0;i<secreta.length();i++) {
-				//letra del usuario
-				char letraU=palaIntroducida.charAt(i);
-				//letra de la palabra secreta
-				char letraS=secreta.charAt(i);
-				//
-				if(letraU==letraS) {
-					//resultado.
-					//letrasadivinadas++;
-				}else if(secreta.contains(String.valueOf(letraU))){
-					
-				}else {
-					//resultado
-
-				}
-			}return resultado;*/
 			String[] palabra2=new String[palaIntroducida.length()];
 			String result="";
 			palaIntroducida=palaIntroducida.toLowerCase();
