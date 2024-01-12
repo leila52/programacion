@@ -15,6 +15,7 @@ public class Wordle {
 		
 		generaPalabra();
 		char jugarOtraPartida;
+		
 		do {
 			iniciarPartida();
 			jugarPartida();
@@ -24,6 +25,7 @@ public class Wordle {
 
 			
 		}while(jugarOtraPartida=='s'|| jugarOtraPartida=='S');
+		System.out.println("Fin del juego");
 	
 	}
 	
@@ -114,7 +116,7 @@ public class Wordle {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador()&& intentosconsumidos<=6) {
+					if(haGanadoJugador()&& intentosconsumidos<6) {
 						System.out.println("Felicidadesssss ganaste");
 					}else {
 						intentosconsumidos++;
@@ -136,8 +138,9 @@ public class Wordle {
 				String letra="";
 				letra+=palaIntroducida.charAt(i);
 				//primer caso
-				if(palaIntroducida.charAt(i)==secreta.charAt(i)&& secreta.contains(letra)) {
+				if(palaIntroducida.charAt(i)==secreta.charAt(i)&& secreta.contains(letra) && intentosconsumidos<=6) {
 					palabra2[i]=letra.toUpperCase();
+					
 				}//segundo caso
 				if(secreta.contains(letra)&&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
 					palabra2[i]=letra.toLowerCase();
