@@ -48,7 +48,7 @@ public class Wordle {
 			return false;
 		if(contienEspacio(cad))
 			return false;
-		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3) )
+		if(!contienevocal(cad)&&(contarVocal(cad)<2 || contarVocal(cad)>3) )
 			return false;
 		/*en caso q no sea correcta*/
 		return true;
@@ -70,13 +70,14 @@ public class Wordle {
 	}
 	/*La palabra debe contener entre dos y tres vocales.*/
 	public static boolean contienevocal(String cad) {
+		int cont=0;
 		for(int i=0;i<cad.length();i++) {
 			for(int j=0;j<vocal.length;j++) {
 				if(cad.charAt(i)==vocal[j]) {
-					return true;
+					cont++;
 				}
 			}
-		}return false;
+		}return cont>=2 && cont <=3 ;
 	}
 	/**/
 	public static int contarVocal(String cad) {
@@ -99,8 +100,9 @@ public class Wordle {
 	//partida
 	//iniciar la partida
 		public static void iniciarPartida() {
-			intentosconsumidos=1;
+			intentosconsumidos=0;
 			letrasadivinadas=0;
+			numPalabraAcertadas=0;
 		}
 		
 		
@@ -116,8 +118,9 @@ public class Wordle {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador()&& intentosconsumidos<6) {
+					if(haGanadoJugador()&& intentosconsumidos<=6) {
 						System.out.println("Felicidadesssss ganaste");
+						return;// asi salimos ya q el jugador habra acertado
 					}else {
 						intentosconsumidos++;
 					}
@@ -140,6 +143,7 @@ public class Wordle {
 				//primer caso
 				if(palaIntroducida.charAt(i)==secreta.charAt(i)&& secreta.contains(letra) && intentosconsumidos<=6) {
 					palabra2[i]=letra.toUpperCase();
+					numPalabraAcertadas++;
 					
 				}//segundo caso
 				if(secreta.contains(letra)&&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
@@ -147,7 +151,8 @@ public class Wordle {
 				}
 				if(!secreta.contains(letra) &&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
 					palabra2[i]="*";
-				}result+=palabra2[i];
+				}
+				result+=palabra2[i];
 			}
 			return result;
 		}
