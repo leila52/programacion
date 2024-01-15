@@ -12,10 +12,11 @@ public class Wordle {
 	static int numPalabraAcertadas=0;
 	static char[] vocal= {'a','e','i','o','u'};
 	public String letra="";
+	static char jugarOtraPartida=' ';
 	public static void main(String[] args) {
 		
 		generaPalabra();
-		char jugarOtraPartida;
+		char jugarOtraPartida=' ';
 		
 		do {
 			iniciarPartida();
@@ -26,9 +27,8 @@ public class Wordle {
 			jugarOtraPartida=entrada.next().charAt(0);			
 			}
 			
-		}while(jugarOtraPartida=='s'|| jugarOtraPartida=='S' );
+		}while(jugarOtraPartida =='s');
 		System.out.println("Fin del juego");
-		&& !haGanadoJugador();
 	}
 	
 	
@@ -127,7 +127,7 @@ public class Wordle {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
 				}
-			}while(!haTerminadoJuego());
+			}while(!haTerminadoJuego() && !haGanadoJugador());
 			if(!haGanadoJugador()) {
 				System.out.println("has perdido colega");
 			}
@@ -158,7 +158,7 @@ public class Wordle {
 			int[] repeticiones =new int[palaIntroducida.length()];
 			for(int i=0;i<palaIntroducida.length();i++) {
 				for(int j=0;j<palaIntroducida.length();j++) {
-					if(palaIntroducida.charAt(i)==palaIntroducida.charAt(j){
+					if(palaIntroducida.charAt(i)==palaIntroducida.charAt(j)){
 						repeticiones[i]++;
 					}	
 				}
