@@ -127,7 +127,7 @@ public class Wordle {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
 				}
-			}while(!haTerminadoJuego() && !haGanadoJugador());
+			}while(!haTerminadoJuego() || !haGanadoJugador());
 			if(!haGanadoJugador()) {
 				System.out.println("has perdido colega");
 			}
