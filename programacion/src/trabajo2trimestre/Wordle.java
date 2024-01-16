@@ -22,10 +22,8 @@ public class Wordle {
 			iniciarPartida();
 			jugarPartida();
 			System.out.println("total de partidad 1");
-			if(!haGanadoJugador()) {
-			System.out.println("deseas jugar otra partida s/n");
-			jugarOtraPartida=entrada.next().charAt(0);			
-			}
+			
+
 			
 		}while(jugarOtraPartida =='s');
 		System.out.println("Fin del juego");
@@ -37,7 +35,7 @@ public class Wordle {
 		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
 				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
 		Random ale=new Random();
-		int palalea=ale.nextInt(21);
+		int palalea=ale.nextInt(20);
 		secreta=palabras[palalea];
 		
 		
@@ -107,18 +105,27 @@ public class Wordle {
 		
 		
 		public static void jugarPartida() {
+			String palaIntroducida="";
 			System.out.println("Bienvenido al juego de Wordle");
 			System.out.println("El objetivo es descubrir la palabra oculta de 5\n"
 					+ "letras.");
 			do {
-				while(!haGanadoJugador() && intentosconsumidos<=6) {
+				
+				/*if(!haGanadoJugador(palaIntroducida)) {
+					System.out.println("deseas jugar otra partida s/n");
+					jugarOtraPartida=entrada.next().charAt(0);	
+					}	
+					switch to es decir caso 1 caso 2
+					*/	
+				
+				while(!haGanadoJugador(palaIntroducida) && intentosconsumidos<=6) {
 				System.out.println("introduzca la palabra de 5 letras: ");
-				String palaIntroducida=entrada.nextLine().toLowerCase(); 
+				palaIntroducida=entrada.nextLine().toLowerCase(); 
 				if(Correct(palaIntroducida)) {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador()&& intentosconsumidos<6) {
+					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos<6) {
 						System.out.println("Felicidadesssss ganaste");
 					}else {
 						intentosconsumidos++;
@@ -127,8 +134,13 @@ public class Wordle {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
 				}
+<<<<<<< HEAD
 			}while(!haTerminadoJuego() || !haGanadoJugador());
 			if(!haGanadoJugador()) {
+=======
+			}while(!haTerminadoJuego() && !haGanadoJugador(palaIntroducida));
+			if(!haGanadoJugador(palaIntroducida)) {
+>>>>>>> branch 'master' of https://github.com/leila52/programacion.git
 				System.out.println("has perdido colega");
 			}
 		}
@@ -211,11 +223,11 @@ public class Wordle {
 			}return false;
 		}
 	
-	 public static boolean haGanadoJugador() {
-	        return numPalabraAcertadas== secreta.length();
+	 public static boolean haGanadoJugador(String palaIntroducida) {
+	        return palaIntroducida.equals(secreta);
 	    }
 
 	    public static boolean haTerminadoJuego() {
-	        return intentos >= 6 || haGanadoJugador();
+	        return intentos >= 6 || haGanadoJugador(palaIntroducida);
 	    }
 	}
