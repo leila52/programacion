@@ -6,12 +6,16 @@ import java.util.Scanner;
 public class Wordle {
 	static Scanner entrada=new Scanner(System.in);
 	static String secreta="";
+	static String secreta2="";
 	static int intentos=6;
-	static int intentosconsumidos;
+	static int intentosconsumidos1;
+	static int intentosconsumidos2;
 	static int letrasadivinadas;
 	static int numPalabraAcertadas=0;
-	static int contGanadas=0;
-	static int contPerdidas=0;
+	static int contGanadasjugador1=0;
+	static int contPerdidas1=0;
+	static int contGanadasjugador2=0;
+	static int contPerdidas2=0;
 	static char[] vocal= {'a','e','i','o','u'};
 	public String letra="";
 	static char jugarOtraPartida=' ';
@@ -55,6 +59,15 @@ public class Wordle {
 		Random ale=new Random();
 		int palalea=ale.nextInt(20);
 		secreta=palabras[palalea];
+		
+		
+	}
+	public static void generaPalabra2() {
+		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
+				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
+		Random ale=new Random();
+		int palalea=ale.nextInt(20);
+		secreta2=palabras[palalea];
 		
 		
 	}
@@ -117,7 +130,8 @@ public class Wordle {
 	//partida
 	//iniciar la partida
 		public static void iniciarPartida() {
-			intentosconsumidos=1;
+			intentosconsumidos1=1;
+			intentosconsumidos2=1;
 			letrasadivinadas=0;
 		}
 		
@@ -127,33 +141,53 @@ public class Wordle {
 		 *  y proporcionar retroalimentación sobre las letras adivinadas.*/
 		public static void jugarPartida() {
 			String palaIntroducida="";
+			String palajugador2="";
+			
 			
 			do {
-				while(!haGanadoJugador(palaIntroducida) && intentosconsumidos<=6) {
-				System.out.println("introduzca la palabra de 5 letras: ");
+				while(!haGanadoJugador(palaIntroducida)&& !haGanadoJugador(palajugador2)  && intentosconsumidos1<=6 && intentosconsumidos2<=6) {
+				System.out.println("introduzca la palabra de 5 letras jugador1: ");
 				palaIntroducida=entrada.nextLine().toLowerCase(); 
 				if(Correct(palaIntroducida)) {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos<6) {
+					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos1<6) {
 						System.out.println("Felicidadesssss ganaste");
-						contGanadas++;
+						contGanadasjugador1++;
 					}else {
-						intentosconsumidos++;
-					}
-				}else {
+						intentosconsumidos1++;
+						System.out.println("le toca a jugador dos");
+						System.out.println("introduzca la palabra de 5 letras jugador2: ");
+						palajugador2=entrada.nextLine().toLowerCase(); 
+						if(Correct(palajugador2)) {
+							//funcion comprobar que letras se han acertado
+							String resultado2=compruebaLetrasAcertadas2(palajugador2);
+							System.out.println(resultado2);
+							if(haGanadoJugador(palajugador2)&& intentosconsumidos2<6) {
+								System.out.println("Felicidadesssss ganaste");
+								contGanadasjugador2++;
+							}else {
+								intentosconsumidos2++;
+				}
+				}
+					else {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
 				}
-			}while(!haTerminadoJuego(palaIntroducida) && !haGanadoJugador(palaIntroducida));
+			}
+				}
+			}while(!haTerminadoJuego(palaIntroducida) && !haGanadoJugador(palaIntroducida) && !haTerminadoJuego(palajugador2) && !haGanadoJugador(palajugador2) );
 			
 			if(!haGanadoJugador(palaIntroducida)) {
 				System.out.println("has perdido colega");
-				contPerdidas++;
-				
+				contPerdidas1++;	
 			}
-			System.out.printf("Jugador  "+contGanadas +" puntos vs Máquina "+contPerdidas+ "  puntos");
+			if(!haGanadoJugador(palajugador2)) {
+				System.out.println("has perdido colega");
+				contPerdidas2++;	
+			}
+		
 		}
 		
 		/*compara la palabra introducida por el jugador con la palabra secreta y devuelve una cadena 
@@ -194,77 +228,40 @@ public class Wordle {
 
 			    return resultadoPalabra;
 			}
+		public static String compruebaLetrasAcertadas2(String palajugador2) {
 			
-			/*
-			
-			String[] palabra2=new String[palaIntroducida.length()];
-			String result="";
-			palaIntroducida=palaIntroducida.toLowerCase();
-			for(int i=0;i<palaIntroducida.length();i++) {
-				String letra="";
-				letra+=palaIntroducida.charAt(i);
-				//primer caso
-				if(palaIntroducida.charAt(i)==secreta.charAt(i)&& secreta.contains(letra) && intentosconsumidos<=6) {
-					palabra2[i]=letra.toUpperCase();
-					
-				}//segundo caso
-				if(secreta.contains(letra)&&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
-					palabra2[i]=letra.toLowerCase();
-				}
-				if(!secreta.contains(letra) &&(palaIntroducida.charAt(i)!=secreta.charAt(i))) {
-					palabra2[i]="*";
-				}result+=palabra2[i];
+			String resultadoPalabra = "";
+			    int[] repeticiones = repeticionesPalbraIntroducida(palajugador2);
+
+			    for (int i = 0; i < palajugador2.length(); i++) {
+			    	// si la letra y posicion son correctas se mostrara la letra en mayuscula
+			        if (palajugador2.charAt(i) == secreta2.charAt(i)) {
+			            resultadoPalabra += Character.toUpperCase(palajugador2.charAt(i));
+			            letrasadivinadas++;
+			        } 
+			     // si la letra es correcta pero la posicon no se muestra la letra en minuscula
+			        else if (secreta2.contains("" + palajugador2.charAt(i))) {
+			        	// si no se repite en la palabra introducida
+			            if (!seRepitePalabraSecreta(palajugador2.charAt(i)) && !seRepitePalabraIntroducida(palajugador2, i)) {
+			                resultadoPalabra += palajugador2.charAt(i);
+			            }
+			         // si no se repite en la secreta y si en la introducida
+			          //primera ocurrencia (controlando que no haya ninguna en posicion correcta despues
+			            else if (!haSalidoANTES(palajugador2,palajugador2.charAt(i), i) && !hayAlgunaPosicionCOrrect(palajugador2, palajugador2.charAt(i))) {
+			                resultadoPalabra += palajugador2.charAt(i);
+			            } 
+			            //otra ocurrencia
+			            else {
+			                resultadoPalabra += '*';
+			            }
+			        }//si la letra no es correcta asterisco
+			        else {
+			            resultadoPalabra += '*';
+			        }
+			    }
+
+			    return resultadoPalabra;
 			}
-			return result;
-		}
-		
-		*/
-		/*
-			String resultadoPalabra="";
-			int [] repeticiones =repeticionesPalbraIntroducida(palaIntroducida);
-			
-			for(int i=0;i< palaIntroducida.length();i++) {
-				// si la letra y posicion son correctas se mostrara la letra en mayuscula
-				if(palaIntroducida.charAt(i)==secreta.charAt(i)) {
-					resultadoPalabra = resultadoPalabra+ (char)('A'+palaIntroducida.charAt(i)-'a');
-					letrasadivinadas++;
-				}
-				// si la letra es correcta pero la posicon no se muestra la letra en minuscula
-				if(secreta.contains(""+palaIntroducida.charAt(i))&& palaIntroducida.charAt(i)!=secreta.charAt(i)) {
-					// si no se repite en la palabra introducida
-					if(!seRepitePalabraSecreta(palaIntroducida,  i)) 
-						resultadoPalabra=resultadoPalabra+ palaIntroducida.charAt(i);
-					// si no se repite en la secreta y si en la introducida
-					if(!seRepitePalabraIntroducida(palaIntroducida.charAt(i))&& seRepitePalabraIntroducida(palaIntroducida,i)) {
-						//primera ocurrencia (controlando que no haya ninguna en posicion correcta despues
-						if(!haSalidoANTES(palaIntroducida,palaIntroducida.charAt(i), i) &&  !hayAlgunaPosicionCOrrect(palaIntroducida,palaIntroducida.charAt(i))) {
-							resultadoPalabra=resultadoPalabra + palaIntroducida.charAt(i);
-						}//sigiente ocurrencia
-						else {
-							resultadoPalabra=resultadoPalabra + '*';
-						}
-					}
-					// si se repite la palabra secreta y en la introducida
-					if(seRepitePalabraSecret(palaIntroducida.charAt(i)) && seRepitePalabraIntroducida(palaIntroducida,i) ) {
-						//si se repite menos o las mismas veces q en la palabra secreta
-						if(repeticiones[i]<=repeticionesPalbraIntroducida(palaIntroducida.charAt(i))) {
-							resultadoPalabra=resultadoPalabra + palaIntroducida.charAt(i);
-						}else {
-							resultadoPalabra=resultadoPalabra+'*';
-						}
-					}
-					
-					//si la letra no es correcta asterisco
-					if(!secreta.contains(""+palaIntroducida.charAt(i))) {
-						resultadoPalabra=resultadoPalabra+'*';
-					}
-				}
-				
-				
-				
-				return resultadoPalabra;
-			}*/
-			
 			
 		
 		//calcular cuantas veces se repite cada letra en la palabra introducida
