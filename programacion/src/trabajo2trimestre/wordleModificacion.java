@@ -3,26 +3,24 @@ package trabajo2trimestre;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Wordle {
+public class wordleModificacion {
 	static Scanner entrada=new Scanner(System.in);
-	static String secreta="";
-	static String secreta2="";
+	static String secretacas="";
+	static String secretaingles="";
 	static int intentos=6;
-	static int intentosconsumidos1;
-	static int intentosconsumidos2;
+	static int intentosconsumidos;
 	static int letrasadivinadas;
 	static int numPalabraAcertadas=0;
-	static int contGanadasjugador1=0;
-	static int contPerdidas1=0;
-	static int contGanadasjugador2=0;
-	static int contPerdidas2=0;
 	static char[] vocal= {'a','e','i','o','u'};
 	public String letra="";
 	static char jugarOtraPartida=' ';
+	static int contGanadas=0;
+	static int contPerdidas=0;
 	public static void main(String[] args) {
 		char jugarOtraPartida=' ';
 		do {
-			generaPalabra();
+			generaPalabraCastellano();
+			generaPalabraIngles();
 			System.out.println("Bienvenido al juego de Wordle");
 			System.out.println("El objetivo es descubrir la palabra oculta de 5\n"+ "letras.");
 			System.out.println("quiere jugar una partida");
@@ -41,36 +39,34 @@ public class Wordle {
 					default://caso por defecto
 						System.out.println("opccion no valida vuelva a introducirlo");
 				}
-		}while(!(opcion.equalsIgnoreCase("si") || opcion.equalsIgnoreCase("no")));
-			System.out.println();
-			System.out.println("Quiere jugar otra ves ? S/N");
-			jugarOtraPartida=entrada.nextLine().charAt(0);
+				}while(!(opcion.equalsIgnoreCase("si") || opcion.equalsIgnoreCase("no")));
+					System.out.println("Quiere jugar otra ves ? S/N");
+					jugarOtraPartida=entrada.nextLine().charAt(0);
+				
 		}while(jugarOtraPartida == 'S' || jugarOtraPartida== 's');	
+		
 		if(jugarOtraPartida == 'N' || jugarOtraPartida== 'n') {
 			System.out.println(" hasta luego");
-		}
+	}
 	}
 	
 	
 	//general la palabra secreta
-	public static void generaPalabra() {
+	public static void generaPalabraCastellano() {
 		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
 				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
 		Random ale=new Random();
 		int palalea=ale.nextInt(20);
-		secreta=palabras[palalea];
-		
-		
-	}
-	public static void generaPalabra2() {
-		String [] palabras= {"novio","coche","letra","hueco","casco","tecla","piano",
-				"pollo","tocar","beber","carta","oveja","abeja","matar","libro","torre","final","rezar","pecar","crema"};
+		secretacas=palabras[palalea];
+		}
+	public static void generaPalabraIngles() {
+		String [] palabras= {"house","plant","water","music","phone","bread","money",
+				"table","happy","watch","fruit","green","chair","party","light","apple","beach","earth","smile","river"};
 		Random ale=new Random();
 		int palalea=ale.nextInt(20);
-		secreta2=palabras[palalea];
-		
-		
-	}
+		secretaingles=palabras[palalea];
+		}
+	
 	/*comprobaciones*/
 	public static boolean Correct(String cad) {
 		if(!cont5Letra(cad))
@@ -79,11 +75,23 @@ public class Wordle {
 			return false;
 		if(contienEspacio(cad))
 			return false;
-		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3) )
+		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3 ) )
 			return false;
 		/*en caso q  sea correcta*/
 		return true;
 		
+	}
+	public static boolean CorrectIngles(String cad) {
+		if(!cont5Letra(cad))
+			return false;
+		if(!contsoloLetras(cad))
+			return false;
+		if(contienEspacio(cad))
+			return false;
+		if(!contienevocal(cad)&&(contarVocal(cad)==2 || contarVocal(cad)==3 || contarVocal(cad)==1) )
+			return false;
+		/*en caso q  sea correcta*/
+		return true;
 	}
 	/*Debe tener exactamente 5 letras.*/
 	public static boolean cont5Letra(String cad) {
@@ -130,8 +138,7 @@ public class Wordle {
 	//partida
 	//iniciar la partida
 		public static void iniciarPartida() {
-			intentosconsumidos1=1;
-			intentosconsumidos2=1;
+			intentosconsumidos=1;
 			letrasadivinadas=0;
 		}
 		
@@ -141,53 +148,60 @@ public class Wordle {
 		 *  y proporcionar retroalimentación sobre las letras adivinadas.*/
 		public static void jugarPartida() {
 			String palaIntroducida="";
-			String palajugador2="";
-			
-			
+			String idioma="";
+			String palaIntroducidaIngles="";
+			System.out.println("¿que idioma prefiere usar el ingles o castellano?");
+			idioma=entrada.nextLine().toLowerCase();
+			if(idioma.equals("castellano")) {
 			do {
-				while(!haGanadoJugador(palaIntroducida)&& !haGanadoJugador(palajugador2)  && intentosconsumidos1<=6 && intentosconsumidos2<=6) {
-				System.out.println("introduzca la palabra de 5 letras jugador1: ");
+				while(!haGanadoJugador(palaIntroducida) && intentosconsumidos<=6) {
+				System.out.println("introduzca la palabra de 5 letras: ");
 				palaIntroducida=entrada.nextLine().toLowerCase(); 
 				if(Correct(palaIntroducida)) {
 					//funcion comprobar que letras se han acertado
 					String resultado=compruebaLetrasAcertadas(palaIntroducida);
 					System.out.println(resultado);
-					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos1<6) {
+					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos<6) {
 						System.out.println("Felicidadesssss ganaste");
-						contGanadasjugador1++;
+						contGanadas++;
 					}else {
-						intentosconsumidos1++;
-						System.out.println("le toca a jugador dos");
-						System.out.println("introduzca la palabra de 5 letras jugador2: ");
-						palajugador2=entrada.nextLine().toLowerCase(); 
-						if(Correct(palajugador2)) {
-							//funcion comprobar que letras se han acertado
-							String resultado2=compruebaLetrasAcertadas2(palajugador2);
-							System.out.println(resultado2);
-							if(haGanadoJugador(palajugador2)&& intentosconsumidos2<6) {
-								System.out.println("Felicidadesssss ganaste");
-								contGanadasjugador2++;
-							}else {
-								intentosconsumidos2++;
-				}
-				}
-					else {
+						intentosconsumidos++;
+					}
+				}else {
 					System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
 				}
 				}
-			}
-				}
-			}while(!haTerminadoJuego(palaIntroducida) && !haGanadoJugador(palaIntroducida) && !haTerminadoJuego(palajugador2) && !haGanadoJugador(palajugador2) );
-			
+			}while(!haTerminadoJuego(palaIntroducida) && !haGanadoJugador(palaIntroducida));
 			if(!haGanadoJugador(palaIntroducida)) {
 				System.out.println("has perdido colega");
-				contPerdidas1++;	
 			}
-			if(!haGanadoJugador(palajugador2)) {
-				System.out.println("has perdido colega");
-				contPerdidas2++;	
+		}
+			if(idioma.equals("ingles")) {
+				do {
+					while(!haGanadoJugadorIngles(palaIntroducidaIngles) && intentosconsumidos<=6) {
+					System.out.println("introduzca la palabra de 5 letras: ");
+					palaIntroducidaIngles=entrada.nextLine().toLowerCase(); 
+					if(CorrectIngles(palaIntroducidaIngles)) {
+						//funcion comprobar que letras se han acertado
+						String resultado2=compruebaLetrasAcertadasIngles(palaIntroducidaIngles);
+						System.out.println(resultado2);
+						if(haGanadoJugadorIngles(palaIntroducidaIngles)&& intentosconsumidos<6) {
+							System.out.println("Felicidadesssss ganaste");
+							contGanadas++;
+						}else {
+							intentosconsumidos++;
+						}
+					}else {
+						System.out.println("La palabra introducida no es valida,porfavor siga las normas del juego si no seguiras perdiendo itentos");
+					}
+					}
+				}while(!haTerminadoJuegoIngles(palaIntroducidaIngles) && !haGanadoJugadorIngles(palaIntroducidaIngles));
+				if(!haGanadoJugadorIngles(palaIntroducidaIngles)) {
+					System.out.println("has perdido colega");
+				}
 			}
-		
+			
+			System.out.printf("Jugador  "+contGanadas +" puntos vs Máquina "+contPerdidas+ "  puntos");
 		}
 		
 		/*compara la palabra introducida por el jugador con la palabra secreta y devuelve una cadena 
@@ -195,18 +209,17 @@ public class Wordle {
 		 * diferentes condiciones (letras en la posición correcta, letras correctas en posición incorrecta, 
 		 * letras incorrectas, etc.).*/
 		public static String compruebaLetrasAcertadas(String palaIntroducida) {
-			
 			String resultadoPalabra = "";
 			    int[] repeticiones = repeticionesPalbraIntroducida(palaIntroducida);
 
 			    for (int i = 0; i < palaIntroducida.length(); i++) {
 			    	// si la letra y posicion son correctas se mostrara la letra en mayuscula
-			        if (palaIntroducida.charAt(i) == secreta.charAt(i)) {
+			        if (palaIntroducida.charAt(i) == secretacas.charAt(i)) {
 			            resultadoPalabra += Character.toUpperCase(palaIntroducida.charAt(i));
 			            letrasadivinadas++;
 			        } 
-			     // si la letra es correcta pero la posicon no ,se muestra la letra en minuscula
-			        else if (secreta.contains("" + palaIntroducida.charAt(i))) {
+			     // si la letra es correcta pero la posicon no se muestra la letra en minuscula
+			        else if (secretacas.contains("" + palaIntroducida.charAt(i))) {
 			        	// si no se repite en la palabra introducida
 			            if (!seRepitePalabraSecreta(palaIntroducida.charAt(i)) && !seRepitePalabraIntroducida(palaIntroducida, i)) {
 			                resultadoPalabra += palaIntroducida.charAt(i);
@@ -228,27 +241,27 @@ public class Wordle {
 
 			    return resultadoPalabra;
 			}
-		public static String compruebaLetrasAcertadas2(String palajugador2) {
-			
+		
+		public static String compruebaLetrasAcertadasIngles(String palaIntroducidaIngles) {
 			String resultadoPalabra = "";
-			    int[] repeticiones = repeticionesPalbraIntroducida(palajugador2);
+			    int[] repeticiones = repeticionesPalbraIntroducida(palaIntroducidaIngles);
 
-			    for (int i = 0; i < palajugador2.length(); i++) {
+			    for (int i = 0; i < palaIntroducidaIngles.length(); i++) {
 			    	// si la letra y posicion son correctas se mostrara la letra en mayuscula
-			        if (palajugador2.charAt(i) == secreta2.charAt(i)) {
-			            resultadoPalabra += Character.toUpperCase(palajugador2.charAt(i));
+			        if (palaIntroducidaIngles.charAt(i) == secretaingles.charAt(i)) {
+			            resultadoPalabra += Character.toUpperCase(palaIntroducidaIngles.charAt(i));
 			            letrasadivinadas++;
 			        } 
 			     // si la letra es correcta pero la posicon no se muestra la letra en minuscula
-			        else if (secreta2.contains("" + palajugador2.charAt(i))) {
+			        else if (secretaingles.contains("" + palaIntroducidaIngles.charAt(i))) {
 			        	// si no se repite en la palabra introducida
-			            if (!seRepitePalabraSecreta(palajugador2.charAt(i)) && !seRepitePalabraIntroducida(palajugador2, i)) {
-			                resultadoPalabra += palajugador2.charAt(i);
+			            if (!seRepitePalabraSecretaIngles(palaIntroducidaIngles.charAt(i)) && !seRepitePalabraIntroducidaIngles(palaIntroducidaIngles, i)) {
+			                resultadoPalabra += palaIntroducidaIngles.charAt(i);
 			            }
 			         // si no se repite en la secreta y si en la introducida
 			          //primera ocurrencia (controlando que no haya ninguna en posicion correcta despues
-			            else if (!haSalidoANTES(palajugador2,palajugador2.charAt(i), i) && !hayAlgunaPosicionCOrrect(palajugador2, palajugador2.charAt(i))) {
-			                resultadoPalabra += palajugador2.charAt(i);
+			            else if (!haSalidoANTESIngles(palaIntroducidaIngles, palaIntroducidaIngles.charAt(i), i) && !hayAlgunaPosicionCOrrectIngles(palaIntroducidaIngles, palaIntroducidaIngles.charAt(i))) {
+			                resultadoPalabra += palaIntroducidaIngles.charAt(i);
 			            } 
 			            //otra ocurrencia
 			            else {
@@ -262,8 +275,7 @@ public class Wordle {
 
 			    return resultadoPalabra;
 			}
-			
-		
+		//en casteñano
 		//calcular cuantas veces se repite cada letra en la palabra introducida
 		public static int[] repeticionesPalbraIntroducida(String palaIntroducida) {
 			int[] repeticiones =new int[palaIntroducida.length()];
@@ -278,8 +290,8 @@ public class Wordle {
 		//contar las veces se repite cada letra en la palabra secreta
 		public static int repeticionesPlabraSecreta(char letra) {
 			int repeticiones=0;
-			for(int i=0;i<secreta.length();i++) {
-				if(secreta.charAt(i)==letra) {
+			for(int i=0;i<secretacas.length();i++) {
+				if(secretacas.charAt(i)==letra) {
 					repeticiones++;
 				}
 			}return repeticiones;
@@ -288,8 +300,8 @@ public class Wordle {
 		public static boolean seRepitePalabraSecreta(char letra) {
 			//contador
 			int cont=0;
-			for(int i=0;i<secreta.length();i++) {
-				if(secreta.charAt(i)==letra) {
+			for(int i=0;i<secretacas.length();i++) {
+				if(secretacas.charAt(i)==letra) {
 					cont++;
 				}
 			}
@@ -315,18 +327,87 @@ public class Wordle {
 		}
 		//comprobar si hay alguna letra en la posicion correcta
 		public static boolean hayAlgunaPosicionCOrrect(String palaIntroducida, char letra) {
-			for(int i=0;i<secreta.length();i++) {
-				if(secreta.charAt(i)==letra  &&  secreta.charAt(i)==palaIntroducida.charAt(i)) {
+			for(int i=0;i<secretacas.length();i++) {
+				if(secretacas.charAt(i)==letra  &&  secretacas.charAt(i)==palaIntroducida.charAt(i)) {
 					return true;
 				}
 			}return false;
+			
 		}
+		
+		// en ingles
+		//calcular cuantas veces se repite cada letra en la palabra introducida
+				public static int[] repeticionesPalbraIntroducidaIngles(String palaIntroducidaIngles) {
+					int[] repeticiones =new int[palaIntroducidaIngles.length()];
+					for(int i=0;i<palaIntroducidaIngles.length();i++) {
+						for(int j=0;j<palaIntroducidaIngles.length();j++) {
+							if(palaIntroducidaIngles.charAt(i)==palaIntroducidaIngles.charAt(j)){
+								repeticiones[i]++;
+							}	
+						}
+					}return repeticiones;
+				}
+				//contar las veces se repite cada letra en la palabra secreta
+				public static int repeticionesPlabraSecretaIngles(char letra) {
+					int repeticiones=0;
+					for(int i=0;i<secretaingles.length();i++) {
+						if(secretaingles.charAt(i)==letra) {
+							repeticiones++;
+						}
+					}return repeticiones;
+				}
+				//comprobar si se repite una letra en la palabra secreta
+				public static boolean seRepitePalabraSecretaIngles(char letra) {
+					//contador
+					int cont=0;
+					for(int i=0;i<secretaingles.length();i++) {
+						if(secretacas.charAt(i)==letra) {
+							cont++;
+						}
+					}
+					if(cont>1) {
+						return true;
+					}
+					return false;
+				}
+				//comprobar si se repite una letra en la palabra introducida
+				public static boolean seRepitePalabraIntroducidaIngles(String palaIntroducidaIngles, int posicion) {
+					if(palaIntroducidaIngles.indexOf(palaIntroducidaIngles.charAt(posicion)) == palaIntroducidaIngles.lastIndexOf(palaIntroducidaIngles.charAt(posicion))) {
+						return false;
+					}
+					return true;
+				}
+				//comprobar si ya ha salido una letra determinada
+				public static boolean haSalidoANTESIngles(String palaIntroducidaIngles, char letra, int posicion) {
+					for(int i= posicion -1;i>=0;i--) {
+						if(palaIntroducidaIngles.charAt(i)==letra) {
+							return true;
+						}
+					}return false;
+				}
+				//comprobar si hay alguna letra en la posicion correcta
+				public static boolean hayAlgunaPosicionCOrrectIngles(String palaIntroducidaIngles, char letra) {
+					for(int i=0;i<secretaingles.length();i++) {
+						if(secretaingles.charAt(i)==letra  &&  secretaingles.charAt(i)==palaIntroducidaIngles.charAt(i)) {
+							return true;
+						}
+					}return false;
+					
+				}
+				
 	
 	 public static boolean haGanadoJugador(String palaIntroducida) {
-	        return palaIntroducida.equals(secreta);
+	        return palaIntroducida.equals(secretacas);
+	    }
+	 public static boolean haGanadoJugadorIngles(String palaIntroducidaIngles) {
+	        return palaIntroducidaIngles.equals(secretaingles);
 	    }
 
 	    public static boolean haTerminadoJuego(String palaIntroducida) {
 	        return intentos >= 6 || haGanadoJugador(palaIntroducida);
 	    }
+	    public static boolean haTerminadoJuegoIngles(String palaIntroducidaIngles) {
+	        return intentos >= 6 || haGanadoJugador(palaIntroducidaIngles);
+	    }
 	}
+
