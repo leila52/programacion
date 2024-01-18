@@ -162,7 +162,7 @@ public class Wordle {
 			            resultadoPalabra += Character.toUpperCase(palaIntroducida.charAt(i));
 			            letrasadivinadas++;
 			        } 
-			     // si la letra es correcta pero la posicon no se muestra la letra en minuscula
+			     // si la letra es correcta pero la posicon no ,se muestra la letra en minuscula
 			        else if (secreta.contains("" + palaIntroducida.charAt(i))) {
 			        	// si no se repite en la palabra introducida
 			            if (!seRepitePalabraSecreta(palaIntroducida.charAt(i)) && !seRepitePalabraIntroducida(palaIntroducida, i)) {
