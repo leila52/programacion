@@ -10,6 +10,8 @@ public class Wordle {
 	static int intentosconsumidos;
 	static int letrasadivinadas;
 	static int numPalabraAcertadas=0;
+	static int contGanadas=0;
+	static int contPerdidas=0;
 	static char[] vocal= {'a','e','i','o','u'};
 	public String letra="";
 	static char jugarOtraPartida=' ';
@@ -36,6 +38,7 @@ public class Wordle {
 						System.out.println("opccion no valida vuelva a introducirlo");
 				}
 		}while(!(opcion.equalsIgnoreCase("si") || opcion.equalsIgnoreCase("no")));
+			System.out.println();
 			System.out.println("Quiere jugar otra ves ? S/N");
 			jugarOtraPartida=entrada.nextLine().charAt(0);
 		}while(jugarOtraPartida == 'S' || jugarOtraPartida== 's');	
@@ -124,6 +127,7 @@ public class Wordle {
 		 *  y proporcionar retroalimentación sobre las letras adivinadas.*/
 		public static void jugarPartida() {
 			String palaIntroducida="";
+			
 			do {
 				while(!haGanadoJugador(palaIntroducida) && intentosconsumidos<=6) {
 				System.out.println("introduzca la palabra de 5 letras: ");
@@ -134,6 +138,7 @@ public class Wordle {
 					System.out.println(resultado);
 					if(haGanadoJugador(palaIntroducida)&& intentosconsumidos<6) {
 						System.out.println("Felicidadesssss ganaste");
+						contGanadas++;
 					}else {
 						intentosconsumidos++;
 					}
@@ -142,9 +147,13 @@ public class Wordle {
 				}
 				}
 			}while(!haTerminadoJuego(palaIntroducida) && !haGanadoJugador(palaIntroducida));
+			
 			if(!haGanadoJugador(palaIntroducida)) {
 				System.out.println("has perdido colega");
+				contPerdidas++;
+				
 			}
+			System.out.printf("Jugador  "+contGanadas +" puntos vs Máquina "+contPerdidas+ "  puntos");
 		}
 		
 		/*compara la palabra introducida por el jugador con la palabra secreta y devuelve una cadena 
