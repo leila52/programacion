@@ -1,3 +1,4 @@
+package trabajo2trimestre;
 
 public class wordleExamen {
 	static Scanner entrada=new Scanner(System.in);
