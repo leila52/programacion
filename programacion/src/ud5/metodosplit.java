@@ -9,7 +9,7 @@ public class metodosplit {
 		System.out.println("introduce una frase");
 		String frase=in.nextLine();
 		String [] palabras=frase.split("");
-		int cont=1;
+		int cont=0;
 		for(int i=0;i<palabras.length;i++) {
 			if(palabras[i].equals(" ")) {
 				

@@ -13,6 +13,9 @@ public class ej33 {
 		frase=frase.toLowerCase();
 		int cont;
 		char letra=97;
+		int numletra='z' -'a'+1;
+		int[]contletras=new int[numletra];
+		/*
 		for(int i=97;i<=122;i++) {
 			cont=0;
 			for(int j=0;j<frase.length();j++) {
@@ -23,7 +26,16 @@ public class ej33 {
 			}if(cont!=0) {
 				System.out.println(letra+":"+cont+"veces");
 			}
-		}
+		}*/
+		for(int i=0;i<frase.length();i++){
+			    int pos=frase.charAt(i)-'a';
+			    if(pos>=0&&(pos<=numletra))
+			    		contletras[pos]++;
+			    }
+			    for(int i=0;i<numletra;i++){
+			    if(contletras[i]>0)
+			    System.out.println((char)(i+'a')+" "+contletras[i]);
+			    }
 	}
 }
 		/*forma del profesor*/
