@@ -13,7 +13,7 @@ public class ej33 {
 		frase=frase.toLowerCase();
 		int cont;
 		char letra=97;
-		int numletra='z' -'a'+1;
+		int numletra='z'-'a'+1;
 		int[]contletras=new int[numletra];
 		/*
 		for(int i=97;i<=122;i++) {
