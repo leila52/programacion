@@ -1,41 +1,46 @@
 package unidad6ObjetosBasico;
 
 public class Rectangulo {
-	private int base;
-	private int altura;
+	private double base;
+	private double altura;
 	
 	public Rectangulo() {
 		base=5;
 		altura=2;
 	}
 	//sobrecarga de constructores
-		public Rectangulo(int baseNUeva, int alturaNueva) {
+		public Rectangulo(double baseNUeva, double alturaNueva) {
 			base=baseNUeva;
 			altura=alturaNueva;
 		}
 	
 	
 	
-	public void cambiarBase(int NuevaBase) {
+	public void cambiarBase(double NuevaBase) {
 		//cambiamos el atributo al valor q pasamos por parametro
 		base=NuevaBase;
 	}
-	public void cambiarAltura(int NuevaAltura) {
+	public void cambiarAltura(double NuevaAltura) {
 		altura=NuevaAltura;
 	}
-	public int damebase() {
+	public double damebase() {
 		return base;
 	}
-	public int damealtura() {
+	public double damealtura() {
 		return altura;
 	}
-	
+	public double calcularPerimetro() {
+		return base*2+ altura*2;
+	}
+	public double calcularArea() {
+		return base*altura;
+	}
 	//definimos metodos
 	public void perimetro () {
-		System.out.println("el perimetro es : "+ (base*2+ altura*2));
+		System.out.println("el perimetro es : "+ calcularPerimetro());
 	}
 	public void area() {
-		System.out.println("el are del rectangulo es : "+ (base*altura));
+		System.out.println("el are del rectangulo es : "+ calcularArea());
 	}
 	
 }
