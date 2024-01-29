@@ -1,3 +1,4 @@
+package unidad6ObjetosBasico;
 
 public class Cuenta2 {
 	private String numeroCuenta;
@@ -6,9 +7,15 @@ public class Cuenta2 {
 	public Cuenta2(String numeroCuent, double Sald) {
 		numeroCuenta=numeroCuent;
 		Saldo=Sald;
-	}public void IntroducirCuenta(String numeroCuent) {
+	}
+	//consultar cuanto dinero tiene
+	public double consultarSaldo() {
+		return Saldo;
+	}
+	public void IntroducirCuenta(String numeroCuent) {
 		numeroCuenta=numeroCuent;
-	}public void introduceSaldo(double Sald) {
+	}
+	public void introduceSaldo(double Sald) {
 		Saldo=Sald;
 	}public void abonar (double cantidadAbonar) {
 		Saldo=Saldo+cantidadAbonar;
