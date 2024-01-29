@@ -18,19 +18,21 @@ public class usePersona {
 		double altu=entrada.nextDouble();
 		
 		Persona persona1=new Persona(nom,eda,sex,pes,altu);
+		//se limpia el buffer
+		entrada.nextLine();
 	
 	//segunda persona omitiendo peso y altura
 		System.out.println("ingrese el nombre");
-		nom= entrada.nextLine();
-		//se limpia el buffer
-		nom= entrada.nextLine();
+		String nomr= entrada.nextLine();
+		
 		System.out.println("ingrese la edad");
-		eda=entrada.nextInt();
+		int edas=entrada.nextInt();
 		System.out.println("ingrese el sexo (H/M)");
-		sex=entrada.next().charAt(0);
+		char sexe=entrada.next().charAt(0);
 		
-		Persona persona2=new Persona(nom,eda,sex);
-		
+		Persona persona2=new Persona(nomr,edas,sexe);
+		//se limpia el buffer
+		entrada.nextLine();
 		//tercer caso por defercto usando el metdo setter
 		Persona persona3 = new Persona(nom, eda, sex);
 		persona3.cambiarNombre("Leila");

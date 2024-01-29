@@ -59,7 +59,12 @@ public class Persona {
 	//metodos
 	
 	public char comprobarSexo(char sex) {
-		return(sexo=='H' || sexo=='M');
+		if(sex=='H' || sex=='M') {
+			sexo=sex;
+			return sexo;
+		}else {
+			return 'H';
+		}
 	}
 	public String generadni() {
 		//generar un string de 8 cifraz aleatorios
