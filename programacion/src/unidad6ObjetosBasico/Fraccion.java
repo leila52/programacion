@@ -57,11 +57,22 @@ public class Fraccion {
 		return false;
 	}
 	public void simplificar() {
-		for(int i=0;i< denominador;i++) {
+		while(numerador!=denominador)
+		for(int i=0;i<= denominador;i++) {
 		numerador = numerador/2;
 		denominador=denominador/2;
 		System.out.println(numerador +"/"+ denominador);
+		if(numerador==1 && denominador==0) {
+			System.out.println("es infinito");
 		}
+		if(numerador==0 && denominador==1) {
+			System.out.println("0");
+		}
+		}
+		if(numerador==denominador) {
+			System.out.println(numerador);
+		}
+		
 	}
 	public void mostrar() {
 		System.out.println(numerador+"/"+denominador);
