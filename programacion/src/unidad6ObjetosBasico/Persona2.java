@@ -7,7 +7,7 @@ public class Persona2 {
 	
 	public Persona2(String dni) {
 		DNI=dni; 
-		this.cuentas= new Cuenta2[3];
+		cuentas= new Cuenta2[3];
 		numCuentasasociadas=0;
 	}
 	
@@ -28,13 +28,23 @@ public class Persona2 {
 		}
 		return cadena;
 	}
+	//getter ya q no modifica
 	public boolean EsMorosa() {
 		
-		for(int i=0;i< numCuentasasociadas;i++) {
+		/*for(int i=0;i< numCuentasasociadas;i++) {
 			// comprobar q no sea morosa con un if
+			if(cuentas[i].consultarSaldo()<0) {
+				return true;
+			}
 			
 		}
-		return false;
+		return false;*/
+		//for each
+		for(Cuenta2 c:cuentas) {
+			if(c.consultarSaldo()<0) {
+				return false;
+			}
+		}return true;
 	}
 	public String dameDni() {
 		return DNI;
@@ -46,7 +56,7 @@ public class Persona2 {
 				return c;
 			}
 		}
-		return null
+		return null;
 	}
 
 }
