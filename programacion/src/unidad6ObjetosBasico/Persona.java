@@ -1,5 +1,7 @@
 package unidad6ObjetosBasico;
 
+import java.util.Random;
+
 public class Persona {
 	private String nombre;
 	private int edad;
@@ -20,7 +22,16 @@ public class Persona {
 		peso=pes;
 		altura=altu;	
 	}
-	
+	public Persona(String dni) {
+		nombre="";
+		edad=0;
+		//para generar un dni 
+		DNI=generadni();
+		//comprobar el sexo
+		sexo=comprobarSexo('H');
+		peso=0;
+		altura=0;	
+	}
 	
 	// persona que omite peso y altura
 	public Persona(String nom,int eda,char sex) {
@@ -58,17 +69,22 @@ public class Persona {
 	
 	//metodos
 	
-	public char comprobarSexo(char sex) {
-		if(sex=='H' || sex=='M') {
-			sexo=sex;
-			return sexo;
+	public void comprobarSexo(char sex) {
+		if(sex!='H' && sex!='M') {
+			this.sexo='H';
 		}else {
-			return 'H';
+			this.sexo=sex;
+			
 		}
 	}
 	public String generadni() {
 		//generar un string de 8 cifraz aleatorios
-		return String.valueOf((int) (Math.random()*90000000)+10000000);
+		String letras= "TRWAGMYFPDXBNJZSQVHLCK";
+		Random ale=new Random();
+		int num=ale.nextInt(100000000);
+		int resto=num%23;
+		return num+""+letras.charAt(resto);
+		
 	}
 	
 	//metodo peso ideal 

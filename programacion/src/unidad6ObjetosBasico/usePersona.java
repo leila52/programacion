@@ -16,12 +16,12 @@ public class usePersona {
 		double pes=entrada.nextDouble();
 		System.out.println("ingrese la altura");
 		double altu=entrada.nextDouble();
-		
+		entrada.nextLine();
 		Persona persona1=new Persona(nom,eda,sex,pes,altu);
 		//se limpia el buffer
 		entrada.nextLine();
 	
-	//segunda persona omitiendo peso y altura
+		//segunda persona omitiendo peso y altura
 		System.out.println("ingrese el nombre");
 		String nomr= entrada.nextLine();
 		
