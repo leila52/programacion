@@ -9,9 +9,19 @@ public class usarPassword {
 		System.out.println("introduce la longitud");
 		int longContra=in.nextInt();
 		//array
-		Password[] contraseñas= new Password[longContra];
-		boolean [] esFuerteArray =new boolean[longContra];
-
+		System.out.println("introduce el tamaño de la array");
+		int tama=in.nextInt();
+		Password[] contraseñas= new Password[tama];
+		boolean [] esFuerteArray =new boolean[tama];
+		for(int i=0;i<longContra;i++) {
+			contraseñas[i]=new Password(longContra);
+			esFuerteArray[i] = contraseñas[i].esFuerte();
+			
+		}
+		System.out.println("es fuerte");
+		for(int i=0;i<tama;i++) {
+			System.out.println(contraseñas[i].getConttrasena() + esFuerteArray[i]);
+		}
 	}
 
 }

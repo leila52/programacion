@@ -12,42 +12,39 @@ public class Password {
 	}
 	public Password(int longi){
 		longitud=longi;
-		contrasena="";
+		generarcontrasena(longi);
 	}
 	//constructor con longitud y genera 
 	//una contraseña aleaotria
-	public static char generarcontrasena() {
+	public static String generarcontrasena(int longitud) {
 		Random ale=new Random();
 		// 62 en total 26 mayu 26 min y 10 numeros
-		int caracter=ale.nextInt(62);
-		if(caracter <26) {
-			return (char)(caracter+'A');
+		String caracteres= "ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		String contrasena="";
+		for(int i=0; i<longitud;i++) {
+			int reye=ale.nextInt(caracteres.length());
+			contrasena+=caracteres.charAt(reye);
 		}
-		if(caracter>26 && caracter <52) {
-			return (char)(caracter-26+'a');
-		}
-		else {
-			return (char)(caracter-52+'0');
-		}
+		return contrasena;
 	}
 	//boolean de es fuerte
 	public boolean esFuerte() {
 		int mayu=0;
 		int min=0;
 		int num=0;
-		for(int i=0;i< longitud;i++) {
-			char caracter= generarcontrasena();
-			if(Character.isUpperCase(caracter)) {
+		for(int i=0;i< contrasena.length();i++) {
+			char caracter= contrasena.charAt(i);
+			if(caracter >= 'A' && caracter<='Z') {
 				mayu++;
 			}
-			if(Character.isLowerCase(caracter)) {
+			if(caracter >= 'a' && caracter<='z') {
 				min++;
 			}
-			if(Character.isDigit(caracter)) {
+			if(caracter >='0'&& caracter <='9') {
 				num++;
 			}
 		}
-		return character ;
+		return (mayu >2 && min >2 && num>1) ;
 	}
 	//getter
 	public String getConttrasena() {
@@ -59,7 +56,7 @@ public class Password {
 	//setters
 	public void setLongitud(int longi) {
 		longitud=longi;
-		generarcontrasena();
+		generarcontrasena(longi);
 	}
 	
 }
