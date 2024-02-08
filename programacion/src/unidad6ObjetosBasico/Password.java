@@ -37,9 +37,8 @@ public class Password {
 			if(caracter >= 'A' && caracter<='Z') {
 				mayu++;
 			}
-			if(caracter >= 'a' && caracter<='z') {
-				min++;
-			}
+			if(caracter >= 'a' && caracter<='z')
+				min=min+1;
 			if(caracter >='0'&& caracter <='9') {
 				num++;
 			}
