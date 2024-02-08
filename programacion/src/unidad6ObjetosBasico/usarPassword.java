@@ -18,9 +18,9 @@ public class usarPassword {
 			esFuerteArray[i] = contraseñas[i].esFuerte();
 			
 		}
-		System.out.println("es fuerte");
+		System.out.println("¿estas contraseñas son fuertes?");
 		for(int i=0;i<tama;i++) {
-			System.out.println(contraseñas[i].getConttrasena() + esFuerteArray[i]);
+			System.out.println(contraseñas[i].getConttrasena() + "es fuerte "+esFuerteArray[i]);
 		}
 	}
 

@@ -12,7 +12,7 @@ public class Password {
 	}
 	public Password(int longi){
 		longitud=longi;
-		generarcontrasena(longi);
+		contrasena=generarcontrasena(longi);
 	}
 	//constructor con longitud y genera 
 	//una contraseña aleaotria
@@ -38,7 +38,7 @@ public class Password {
 				mayu++;
 			}
 			if(caracter >= 'a' && caracter<='z')
-				min=min+1;
+				min++;
 			if(caracter >='0'&& caracter <='9') {
 				num++;
 			}
