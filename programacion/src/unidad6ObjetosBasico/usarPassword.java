@@ -11,6 +11,7 @@ public class usarPassword {
 		//array
 		System.out.println("introduce el tamaño de la array");
 		int tama=in.nextInt();
+		//rellenas la array de contraseñas nuevas
 		Password[] contraseñas= new Password[tama];
 		boolean [] esFuerteArray =new boolean[tama];
 		for(int i=0;i<longContra;i++) {
@@ -20,7 +21,7 @@ public class usarPassword {
 		}
 		System.out.println("¿estas contraseñas son fuertes?");
 		for(int i=0;i<tama;i++) {
-			System.out.println(contraseñas[i].getConttrasena() + "es fuerte "+esFuerteArray[i]);
+			System.out.println(contraseñas[i].getConttrasena() + " es fuerte "+esFuerteArray[i]);
 		}
 	}
 
