@@ -18,7 +18,7 @@ public class Persona {
 		//para generar un dni 
 		DNI=generadni();
 		//comprobar el sexo
-		sexo=comprobarSexo(sex);
+		comprobarSexo(sex);
 		peso=pes;
 		altura=altu;	
 	}
@@ -28,7 +28,7 @@ public class Persona {
 		//para generar un dni 
 		DNI=generadni();
 		//comprobar el sexo
-		sexo=comprobarSexo('H');
+		comprobarSexo('H');
 		peso=0;
 		altura=0;	
 	}
@@ -37,7 +37,7 @@ public class Persona {
 	public Persona(String nom,int eda,char sex) {
 		nombre=nom;
 		edad=eda;
-		sexo=comprobarSexo(sex);
+		comprobarSexo(sex);
 	}
 	// persona o constructor por defecto
 	public Persona(String nom,int eda,char sex,double pes,double altu) {
@@ -56,7 +56,7 @@ public class Persona {
 		edad=eda;
 	}
 	public void cambiarSexo(char sex) {
-		sexo=comprobarSexo(sex);
+		comprobarSexo(sex);
 	}
 	public void cambiarPeso(double pes) {
 		peso=pes;
