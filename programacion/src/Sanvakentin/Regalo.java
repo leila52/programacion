@@ -1,6 +1,7 @@
 package Sanvakentin;
 
 public class Regalo {
+	
 	private String nombre;
 	private double precio;
 	private String descripccion;
