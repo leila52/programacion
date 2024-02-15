@@ -1,8 +1,13 @@
 package unidad6ObjetosBasico;
 /**
-* Clase Fraccion
+* Clase Fraccionjavado
 *
-* Contiene informacion de cada fraccio 
+* Contiene informacion de cada fraccion 
+*
+*la clase permite operaciones como suma resta multiplicacion etc
+*
+*el numerador y denominador son enteros
+*
 *
 * @author leila
 * @version 1.0
@@ -27,19 +32,32 @@ public class Fraccionjavado {
 			this.den=den;
 		}
 		/**
-		 * 
+		 * muestra la fraccion
 		 */
 		//getters
 		public void mostrar() {
 			System.out.println(num+"/"+den);
 		}
+		/**
+		 * obtiene el numerador
+		 * @return numerador 
+		 */
+		
 		public int dameNumerador() {
 			 return num;
 		}
-		
+		/**
+		 * obtiene el denominador
+		 * @return denominador 
+		 */
 		public int dameDenominador() {
 			 return den;
 		}
+		/**
+		 * realiza la suma de una fraccion con otra 
+		 * @param f2  la fraccion para sumar
+		 * @return el resultado de la suma  como una nueva Fraccion
+		 */
 		public Fraccion suma(Fraccion f2) {
 			int numRsdo=num*f2.dameDenominador()+
 					den*f2.dameNumerador();

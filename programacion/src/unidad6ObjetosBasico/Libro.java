@@ -40,4 +40,8 @@ public class Libro {
 		this.calificacion = calificacion;
 	}
 	
+	public String[] dameAtributos() {
+		return new String [] {titulo, autor, String.valueOf(numPag), String.valueOf(calificacion)};
+	}
+	
 }
