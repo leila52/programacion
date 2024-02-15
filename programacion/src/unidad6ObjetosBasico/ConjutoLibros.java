@@ -9,9 +9,9 @@ public class ConjutoLibros {
 			this.conjunto= conjunto;
 			this.cont=0;
 		}
-		
-		
-
+		public ConjutoLibros() {
+			
+		}
 		public int getCont() {
 			return cont;
 		}
@@ -31,13 +31,19 @@ public class ConjutoLibros {
 		public int getTam() {
 			return tam;
 		}
-		public void añadirlibros(Libro libro) {
-			if(cont<10) {
-				conjunto[cont]=libro;
+		public boolean anadirlibros(Libro libro) {
+			for(int i=0;i<cont;i++) {
+			if(conjunto[i].equals(null)) {
+				if(i<10) {
+				conjunto[i]=libro;
 				cont++;
+				}
+				return true;
 			}
+			}
+			return false;
 		}
-		public void eliminarlibro(String repuesta) {
+		public void eliminarlibroTitulo(String repuesta) {
 			for(int i=0; i<conjunto.length;i++) {
 				if(repuesta.equals(conjunto[i].dametitulo()) ) {
 					if(i<cont) {
