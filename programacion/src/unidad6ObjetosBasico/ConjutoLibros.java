@@ -70,7 +70,17 @@ public class ConjutoLibros {
 		public void mostrarMayorCalificacion() {
 			int maxCalif=-1;
 			for(int i=0; i<cont ;i++) {
-				maxCalif = Math.max(maxCalif, conjunto[i].dameAtributos()[3]);
+				maxCalif = Math.max(maxCalif,conjunto[i].damecalificacion());
+				System.out.println("este libro tiene la mayor calificacion de "+conjunto[i].damecalificacion()+
+						"y es este libro "+ conjunto[i].dameAtributos());
+			}
+		}
+		public void mostrarMenorCalificacion() {
+			int maxCalif=-1;
+			for(int i=0; i<cont ;i++) {
+				maxCalif = Math.min( maxCalif,conjunto[i].damecalificacion());
+				System.out.println("este libro tiene la menor calificacion de "+conjunto[i].damecalificacion()+
+						"y es este libro "+ conjunto[i].dameAtributos());
 			}
 		}
 }

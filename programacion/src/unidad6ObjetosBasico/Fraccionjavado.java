@@ -58,13 +58,7 @@ public class Fraccionjavado {
 		 * @param f2  la fraccion para sumar
 		 * @return el resultado de la suma  como una nueva Fraccion
 		 */
-		public Fraccion suma(Fraccion f2) {
-			int numRsdo=num*f2.dameDenominador()+
-					den*f2.dameNumerador();
-			int denRsdo=den*f2.dameDenominador();
-			Fraccionjavado fraccionResultado=new Fraccionjavado(numRsdo,denRsdo);
-			return fraccionResultado;
-		}
+		
 		//getters
 		// resta, multiplicacion y division
 		// boolean esIgualA (Fraccion)
