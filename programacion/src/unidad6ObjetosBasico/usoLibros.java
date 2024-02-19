@@ -16,10 +16,65 @@ public class usoLibros {
 		
 		conjunto1.mostrarMayorCalificacion();
 		conjunto1.mostrarMenorCalificacion();
+		conjunto1.eliminarlibroAutor("bennet");
 		
 		
 		System.out.println("estos son todos los libros: "+"\n.");
 		System.out.println(conjunto1.toString());
+		
+		
+		
+		System.out.println();
+		ConjuntoLibros2 conj1 = new ConjuntoLibros2();
+		
+		Libro libroA = new Libro ("Los juegos del hambre", "Sussy", 300, 9);
+		Libro libroB = new Libro ("Orgullo y prejuicio", "Jane Austin", 400, 4);
+		Libro libroC = new Libro ("La Celestina", "Fer", 250, 6);
+		Libro libroD = new Libro ("La Celestina", "per", 250, 6);
+		
+		conj1.agregarLibros(libroA);
+		conj1.agregarLibros(libroB);
+		
+		
+		int op = 0;
+		do {
+			menu();
+			op = in.nextInt();
+			in.nextLine();
+			switch(op) {
+			case 1:
+				if(conj1.agregarLibros(libroC)) {
+					System.out.println("Se ha agregado correctamente.");
+				}else {
+					System.out.println("ERROR: el conjunto ya está lleno.");
+				}
+				break;
+			case 2:
+				System.out.println("Introduce el nombre o título del libro: ");
+				String nombre = in.nextLine();
+				if(conj1.eliminarLibroPorAutor(nombre)) {
+					System.out.println("Se ha podido eliminar correctamente por el nombre del autor.");
+				}else if(conj1.eliminarLibroPorTitulo(nombre)){
+					System.out.println("Se ha podido eliminar correctamente por el nombre del titulo.");
+				}else {
+					System.out.println("ERROR: no se ha podido eliminar.");
+				}
+				break;
+			case 3:
+				conj1.mejorPuntuacion();
+				conj1.menorPuntuacion();
+				break;
+				
+			case 4: 
+				conj1.mostrarConjunto();
+				break;
+			case 6:
+				conj1.agregarLibros(libroD);
+				break;
+			}
+			}while(op != 5);
+		
+		
 		
 		// TODO Auto-generated method stub
 		/*ConjutoLibros conjunto1 = new  ConjutoLibros();
@@ -63,11 +118,10 @@ public class usoLibros {
 	public static void menu() {
 		System.out.println("elige una opccion:");
 		System.out.println("1 añadir libro");
-		System.out.println("2 eliminar libro por autor");
-		System.out.println("3 eliminar libro por titulo");
-		System.out.println("4 mostrar mayor calificacion: ");
-		System.out.println("5 mostrar menor calificacion");
-		System.out.println("6 salir");
+		System.out.println("2 eliminar libro por autor o titulo");
+		System.out.println("3 mostrar mayor calificacion y mostrar menor calificacion ");
+		System.out.println("4 mostrar conjunto ");
+		System.out.println("5. salir");
 	}
 	public static void añadirlibro(ConjutoLibros conjunto1) {
 		System.out.println("dame el titulo del lirbo");
