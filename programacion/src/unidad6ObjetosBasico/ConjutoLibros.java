@@ -1,17 +1,13 @@
 package unidad6ObjetosBasico;
 
 public class ConjutoLibros {
-		int tam = 10;
-		int cont;
+		private final int TAM = 10;
+		private int cont;
 		private Libro [] conjunto;
 		
-		public ConjutoLibros(int tam) {
-			this.conjunto  = new Libro [tam];
-			this.tam = tam;
-			this.cont=0;
-		}
 		public ConjutoLibros() {
-			
+			this.conjunto  = new Libro [10];
+			this.cont=0;
 		}
 		public int getCont() {
 			return cont;
@@ -29,17 +25,15 @@ public class ConjutoLibros {
 			this.conjunto = conjunto;
 		}
 
-		public int getTam() {
-			return tam;
-		}
 		public boolean anadirlibros(Libro libro) {
-			if(cont<tam) {
-			for(int i=0;i<tam;i++) {
+			if(cont<TAM) {
+			for(int i=0;i<TAM;i++) {
 				if(conjunto[i]== null) {
 					conjunto[i]=libro;
 					cont++;
+					return true;
 				}
-				return true;
+				
 			}
 			}
 			return false;
@@ -66,21 +60,59 @@ public class ConjutoLibros {
 		}
 		return eliminado;
 		}
-		
-		public void mostrarMayorCalificacion() {
-			int maxCalif=-1;
-			for(int i=0; i<cont ;i++) {
-				maxCalif = Math.max(maxCalif,conjunto[i].damecalificacion());
-				System.out.println("este libro tiene la mayor calificacion de "+conjunto[i].damecalificacion()+
-						"y es este libro "+ conjunto[i].dameAtributos());
+		private int dameprimeraPosicion() {
+			for(int i=0;i < TAM;i++) {
+				if(conjunto[i] != null) {
+					return i;
+				}
 			}
+			return -1;
+		}
+		public void mostrarMayorCalificacion() {
+			int primeraposicion=dameprimeraPosicion();
+			int posMaxCalificacion=primeraposicion;
+			int maxCalif=0;
+			if(primeraposicion != -1) { //no esta vacio{
+				maxCalif = conjunto[primeraposicion].damecalificacion();
+				for(int i= primeraposicion+1;i <TAM;i++) {
+					if(conjunto[i]!= null) {
+						if(conjunto[i].damecalificacion()>maxCalif) {
+							maxCalif=conjunto[i].damecalificacion();
+							posMaxCalificacion=i;
+						}
+					}
+				}
+				
+			System.out.println("este libro tiene la mayor calificacion de "+conjunto[posMaxCalificacion].damecalificacion()+
+				"y es este libro "+ conjunto[posMaxCalificacion].toString());
+		}
 		}
 		public void mostrarMenorCalificacion() {
-			int maxCalif=-1;
-			for(int i=0; i<cont ;i++) {
-				maxCalif = Math.min( maxCalif,conjunto[i].damecalificacion());
-				System.out.println("este libro tiene la menor calificacion de "+conjunto[i].damecalificacion()+
-						"y es este libro "+ conjunto[i].dameAtributos());
+			int primeraposicion=dameprimeraPosicion();
+			int posMinCalificacion=primeraposicion;
+			int minCalif=0;
+			if(primeraposicion != -1) { //no esta vacio{
+				minCalif = conjunto[primeraposicion].damecalificacion();
+				for(int i= primeraposicion+1;i <TAM;i++) {
+					if(conjunto[i]!= null) {
+						if(conjunto[i].damecalificacion()<minCalif) {
+							minCalif=conjunto[i].damecalificacion();
+							posMinCalificacion=i;
+						}
+					}
+				}
+				System.out.println("este libro tiene la menor calificacion de "+conjunto[posMinCalificacion].damecalificacion()+
+						"y es este libro "+ conjunto[posMinCalificacion].toString());
 			}
+				
+		}
+		public String toString() {
+			String cadena="";
+			for(int i=0; i< TAM ; i++) {
+				if(conjunto[i] != null) {
+				cadena+=conjunto[i].toString()+"\n";
+			}
+			}
+			return cadena;
 		}
 }

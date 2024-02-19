@@ -39,9 +39,11 @@ public class Libro {
 	public void setCalificacion(int calificacion) {
 		this.calificacion = calificacion;
 	}
-	
-	public String[] dameAtributos() {
-		return new String [] {titulo, autor, String.valueOf(numPag), String.valueOf(calificacion)};
+
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", autor=" + autor + ", numPag=" + numPag + ", calificacion=" + calificacion
+				+ "]";
 	}
+	
 	
 }

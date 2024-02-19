@@ -5,8 +5,24 @@ import java.util.Scanner;
 public class usoLibros {
 	static Scanner in = new Scanner (System.in);
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ConjutoLibros conjunto1 = new  ConjutoLibros();
+		
+		Libro libro = new Libro("quijote","cervantes",456,8);
+		conjunto1.anadirlibros(libro);
+		Libro libro1 = new Libro("cuento perfecto","bennet",4896,9);
+		conjunto1.anadirlibros(libro1);
+		Libro libro2 = new Libro("divergente","cusco",896,7);
+		conjunto1.anadirlibros(libro2);
+		
+		conjunto1.mostrarMayorCalificacion();
+		conjunto1.mostrarMenorCalificacion();
+		
+		
+		System.out.println("estos son todos los libros: "+"\n.");
+		System.out.println(conjunto1.toString());
+		
+		// TODO Auto-generated method stub
+		/*ConjutoLibros conjunto1 = new  ConjutoLibros();
 		int opcion;
 		//menú
 		do {
@@ -42,7 +58,7 @@ public class usoLibros {
 			}
 		}while(opcion !=7);
 		
-		
+		*/
 	}
 	public static void menu() {
 		System.out.println("elige una opccion:");
