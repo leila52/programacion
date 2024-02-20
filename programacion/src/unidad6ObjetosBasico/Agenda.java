@@ -32,31 +32,31 @@ public class Agenda {
 		for(int i=0; i< TAM ; i++) {
 			if(contactos[i] != null) {
 			cadena+=contactos[i].toString()+"\n";
-			System.out.println(cadena);
+			
 			}
-		}	
+		}
+		System.out.println(cadena);
 	}
 	public void buscaContacto( String nombre) {
 		for(int i=0;i < TAM;i++) {
-			if(contactos[i].equals(null)) {
-				System.out.println("no existe");
+			if(contactos[i].getNombre().equals(nombre)) {
+				System.out.println("el numero de "+nombre+ " es : "+contactos[i].getNumero());
 			}else {
-				if(contactos[i].getNombre().equals(nombre)) {
-					System.out.println(contactos[i].getNumero());
-				}
+				System.out.println("no existe");
 			}
 		}
 	}
 	
 	public void eliminarContacto(Contacto c) {
 		for(int i=0; i<cont;i++) {
-			if(contactos[i] != null && contactos[i].getNombre().equals(c) && contactos[i].getNumero().equals(c)) {
+			if(contactos[i] != null && contactos[i].getNombre().equals(c.getNombre())
+					&& contactos[i].getNumero().equals(c.getNumero())) {
 				contactos[i] = null;
 				cont--;
 				System.out.println("se ha eniminado correctamente");
 			}
-	}
-	System.out.println("no se ha podido eliminar ya q no esta en la agenda");
+		}
+	
 	}
 	
 	public void agendallena() {

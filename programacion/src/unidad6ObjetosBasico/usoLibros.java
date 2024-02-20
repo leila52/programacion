@@ -68,9 +68,12 @@ public class usoLibros {
 			case 4: 
 				conj1.mostrarConjunto();
 				break;
-			case 6:
-				conj1.agregarLibros(libroD);
+			case 5:
+				System.out.println("vuelve pronto");
 				break;
+				default://caso por defecto
+					System.out.println("opccion no valida");
+				
 			}
 			}while(op != 5);
 		
@@ -123,37 +126,5 @@ public class usoLibros {
 		System.out.println("4 mostrar conjunto ");
 		System.out.println("5. salir");
 	}
-	public static void añadirlibro(ConjutoLibros conjunto1) {
-		System.out.println("dame el titulo del lirbo");
-		String titulo =in.nextLine();
-		System.out.println("dame el autor del libro");
-		String autor = in.nextLine();
-		System.out.println("introduce el numero de paginas que tiene");
-		int numPag = in.nextInt();
-		System.out.println("introduce la calificacion:");
-		int calificacion = in.nextInt();
-		Libro book = new Libro(titulo,autor, numPag, calificacion);
-		if(conjunto1.anadirlibros(book)== true) {
-			System.out.println("se ha añadido correctamente");
-		}else {
-			System.out.println(" no se a podido añadir");
-		}
-		
-	}
-	public  static void eliminarporautor(String autor,ConjutoLibros conjunto1) {
-		if(conjunto1.eliminarlibroAutor(autor)==true) {
-			System.out.println("se a eliminado correctamente");
-		}else {
-			System.out.println("no se ha podido eliminar");
-		}
-	}
-	public  static void eliminarportitulo(String titulo,ConjutoLibros conjunto1) {
-		if(conjunto1.eliminarlibroAutor(titulo)==true) {
-			System.out.println("se a eliminado correctamente");
-		}else {
-			System.out.println("no se ha podido eliminar");
-		}
-	}
-	
 	
 }

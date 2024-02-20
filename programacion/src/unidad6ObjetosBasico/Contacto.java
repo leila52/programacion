@@ -6,7 +6,6 @@ public class Contacto {
 	private String numero;
 	
 	public Contacto(String nombre, String numero) {
-		super();
 		this.nombre = nombre;
 		this.numero = numero;
 	}
@@ -28,8 +27,10 @@ public class Contacto {
 	}
 
 	public String toString() {
-		return "Contacto [nombre=" + nombre + ", numero=" + numero + "]";
+		return "Contacto : nombre=" + nombre + ", numero=" + numero + " ";
 	}
+
+	
 	
 	
 	

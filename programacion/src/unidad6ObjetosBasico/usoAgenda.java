@@ -14,13 +14,56 @@ public class usoAgenda {
 		Contacto cont41= new Contacto("Pedro","78953264");
 		agenda.anadirContacto(cont41);
 		agenda.anadirContacto(cont2);
-		agenda.huecoslibres();
-		agenda.listarContactos();
-		agenda.buscaContacto("Pedro");
-		agenda.anadirContacto(cont3);
-		agenda.listarContactos();
-		agenda.eliminarContacto(cont3);
-		agenda.listarContactos();
+		int op = 0;
+		do {
+			menu();
+			op = in.nextInt();
+			in.nextLine();
+			switch(op) {
+			case 1:
+				agenda.anadirContacto(cont3);
+				agenda.anadirContacto(cont1);
+				break;
+			case 2:
+				System.out.println("Introduce el nombre  ");
+				String nombre = in.nextLine();
+				System.out.println("Introduce el numero");
+				String numero = in.nextLine();
+				Contacto cont= new Contacto(nombre,numero);
+				agenda.eliminarContacto(cont);
+				break;
+			case 3:
+				System.out.println("Introduce el nombre  ");
+				nombre = in.nextLine();
+				agenda.buscaContacto(nombre);
+				
+				break;
+			case 4:
+				agenda.huecoslibres();
+				break;
+			case 5:
+				agenda.listarContactos();
+				break;
+			case 6:
+				agenda.agendallena();
+				break;
+			case 7:
+				System.out.println("vuelve pronto");
+				break;
+				default://caso por defecto
+					System.out.println("opccion no valida");
+		}
+	}while (op !=7);
+	}
+	public static void menu() {
+		System.out.println("elige una opccion:");
+		System.out.println("1 añadir contacto");
+		System.out.println("2 eliminar contacto por nombre");
+		System.out.println("3 buscar contacto ");
+		System.out.println("4 cuantos huecos libres quedan ");
+		System.out.println("5 listar contacto ");
+		System.out.println("6.esta la agenda llena");
+		System.out.println("7. salir");
 	}
 
 }
