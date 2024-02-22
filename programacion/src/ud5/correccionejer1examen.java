@@ -16,7 +16,7 @@ public class correccionejer1examen {
 			System.out.println("no esta bn introducida vuelva a introducirla");
 			fecha=in.nextLine();
 		}
-		System.out.println("la nueva fecha"+cambiarformato(fecha));
+		System.out.println("la nueva fecha: "+cambiarformato(fecha));
 		
 
 	}
@@ -31,19 +31,12 @@ public class correccionejer1examen {
 	}
 	public static String cambiarformato(String fecha) {
 		String [] meses= {"enero","febrero","marzo","abril",
-				"mayo","junio","julio","agosto","septiembre","octubre","noviuembre","diciembre"};
+				"mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"};
 		String fechanueva="";
-		String mes="";
-		if(fecha.charAt(3)==0) {
-			for(int i=0;i<=9;i++) {
-				if(i==fecha.charAt(4)) {
-					int mes1=i;
-					mes=meses[mes1];
-				}
-			}
-		}
-		fechanueva+=fecha.charAt(0)+fecha.charAt(1)+"de"+ mes+ "de"+fecha.charAt(6)+fecha.charAt(7)+
-				fecha.charAt(8)+fecha.charAt(9);
+		int mes;
+		mes=(fecha.charAt(3)- '0')* 10 +(fecha.charAt(4)- '0');
+		String mesnombre = meses[mes-1];
+		fechanueva=fecha.substring(0,2)+" de "+mesnombre+" del " + fecha.substring(6);
 		return fechanueva;
 	}
 	
