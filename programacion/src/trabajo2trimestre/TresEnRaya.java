@@ -19,8 +19,11 @@ public class TresEnRaya {
     }
 
     public void mueveJugador1(int pos) {
+    	//calcular la fila dividiendolo en 3 que valdra a la posicion en un tablero 3x3
         int fila = (pos - 1) / 3;
+        // calcula la columna que valdra calculandolo con el resto
         int columna = (pos - 1) % 3;
+        //si la celda esta vacia se rellena con 1 q seria  la ficha
         if (tablero[fila][columna] == 0) {
             tablero[fila][columna] = 1;
         }
@@ -29,6 +32,7 @@ public class TresEnRaya {
     public void mueveJugador2(int pos) {
         int fila = (pos - 1) / 3;
         int columna = (pos - 1) % 3;
+        //si la celda esta vacia se rellena con el 2 que hace q sea la ficha
         if (tablero[fila][columna] == 0) {
             tablero[fila][columna] = 2;
         }
@@ -58,7 +62,9 @@ public class TresEnRaya {
         mueveJugador2(pos);
     }
 
-    public boolean quedanMovimientos() {
+    public boolean quedancasillas() {
+    	// for(int i = 0; i < tablero.length; i++) {
+        	//for (int j = 0; j < tablero[i].length; j++) {
         for (int[] fila : tablero) {
             for (int casilla : fila) {
                 if (casilla == 0) {

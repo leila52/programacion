@@ -44,7 +44,7 @@ public class usoTresEnRaya {
         int jugadorActual = 1;
         int posicion;
 
-        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             System.out.println("Turno del jugador " + jugadorActual);
             System.out.print("Introduzca la posición (1-9): ");
             posicion = scanner.nextInt();
@@ -80,7 +80,7 @@ public class usoTresEnRaya {
         int jugadorActual = new Random().nextInt(2) + 1; // Decide aleatoriamente quién empieza
         int posicion;
 
-        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             if (jugadorActual == 1) {
                 System.out.print("Introduzca la posición (1-9): ");
                 posicion = scanner.nextInt();
@@ -114,10 +114,10 @@ public class usoTresEnRaya {
         juego.iniciarTablero();
         imprimirTablero(juego);
 
-        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             realizarMovimiento(juego, 1);
             imprimirTablero(juego);
-            if (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+            if (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
                 realizarMovimiento(juego, 2);
                 imprimirTablero(juego);
             }
