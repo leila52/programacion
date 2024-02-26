@@ -62,7 +62,7 @@ public class TresEnRaya {
         mueveJugador2(pos);
     }
 
-    public boolean quedancasillas() {
+    public boolean quedanMovimientos() {
     	// for(int i = 0; i < tablero.length; i++) {
         	//for (int j = 0; j < tablero[i].length; j++) {
         for (int[] fila : tablero) {

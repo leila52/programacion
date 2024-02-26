@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class usoTresEnRaya {
-	static  Scanner scanner = new Scanner(System.in);
+	static  Scanner entrada = new Scanner(System.in);
 	public static void main(String[] args) {
 		TresEnRaya juego = new TresEnRaya();
         int opcion;
@@ -15,8 +15,8 @@ public class usoTresEnRaya {
             System.out.println("2. Jugar contra la máquina");
             System.out.println("3. Máquina contra máquina");
             System.out.println("4. Salir");
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea pendiente
+            opcion = entrada.nextInt();
+           entrada.nextLine(); // Consumir la nueva línea pendiente
 
             switch (opcion) {
                 case 1:
@@ -44,11 +44,11 @@ public class usoTresEnRaya {
         int jugadorActual = 1;
         int posicion;
 
-        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             System.out.println("Turno del jugador " + jugadorActual);
             System.out.print("Introduzca la posición (1-9): ");
-            posicion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea pendiente
+            posicion = entrada.nextInt();
+            entrada.nextLine(); // Consumir la nueva línea pendiente
 
             if (juego.movimientoValido(posicion)) {
                 if (jugadorActual == 1) {
@@ -61,72 +61,74 @@ public class usoTresEnRaya {
 
                 juego.dibujaTablero();
             } else {
-                System.out.println("La posición introducida no es válida. Inténtelo de nuevo.");
+                System.out.println(" posicion no valida ya q ya hay una ficha vuelve a introducirlo");
             }
         }
 
         if (juego.ganaJugador1()) {
-            System.out.println("¡El jugador 1 ha ganado!");
+            System.out.println("oleeee gano el jugador 1");
         } else if (juego.ganaJugador2()) {
-            System.out.println("¡El jugador 2 ha ganado!");
+            System.out.println("oleeee gano el jugador 2");
         } else {
-            System.out.println("¡Empate!");
+            System.out.println("vayaaaaa empate");
         }
     }
 
     public static void jugarContraMaquina(TresEnRaya juego) {
         juego.iniciarTablero();
         juego.dibujaTablero();
-        int jugadorActual = new Random().nextInt(2) + 1; // Decide aleatoriamente quién empieza
+        //decide aleatoriamente quién empieza
+        int jugadorActual = new Random().nextInt(2) + 1; 
         int posicion;
 
-        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             if (jugadorActual == 1) {
                 System.out.print("Introduzca la posición (1-9): ");
-                posicion = scanner.nextInt();
-                scanner.nextLine(); // Consumir la nueva línea pendiente
+                posicion = entrada.nextInt();
+                entrada.nextLine(); // Consumir la nueva línea pendiente
 
                 if (juego.movimientoValido(posicion)) {
                     juego.mueveJugador1(posicion);
                     juego.dibujaTablero();
                     jugadorActual = 2;
                 } else {
-                    System.out.println("La posición introducida no es válida. Inténtelo de nuevo.");
+                    System.out.println("La posición ya esta llena ,mete otro valor ");
                 }
             } else {
                 juego.mueveOrdenador2();
-                System.out.println("Turno de la máquina (Jugador 2):");
+                System.out.println("Turno de la máquina: ");
                 juego.dibujaTablero();
                 jugadorActual = 1;
             }
         }
+        //resultado
 
         if (juego.ganaJugador1()) {
-            System.out.println("¡Ha ganado!");
+            System.out.println("oleeee a ganado");
         } else if (juego.ganaJugador2()) {
-            System.out.println("¡Ha ganado la máquina!");
+            System.out.println("gano la maquina, lo siento humano");
         } else {
-            System.out.println("¡Empate!");
+            System.out.println("empate, eres igual de inteligente q la maquina");
         }
     }
 
     public static void jugarMaquinaVsMaquina(TresEnRaya juego) {
         juego.iniciarTablero();
-        imprimirTablero(juego);
+        DibujarTablero(juego);
 
-        while (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
-            realizarMovimiento(juego, 1);
-            imprimirTablero(juego);
-            if (juego.quedancasillas() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
-                realizarMovimiento(juego, 2);
-                imprimirTablero(juego);
+        while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+            Movimiento(juego, 1);
+            DibujarTablero(juego);
+            if (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+                Movimiento(juego, 2);
+                DibujarTablero(juego);
             }
         }
 
-        determinarResultado(juego);
+       Resultado(juego);
     }
-
-    public static void realizarMovimiento(TresEnRaya juego, int jugador) {
+    // realizar movimiento
+    public static void Movimiento(TresEnRaya juego, int jugador) {
         System.out.println("Turno de la máquina " + jugador + ":");
         if (jugador == 1) {
             juego.mueveOrdenador1();
@@ -135,12 +137,12 @@ public class usoTresEnRaya {
         }
     }
 
-    public static void imprimirTablero(TresEnRaya juego) {
+    public static void DibujarTablero(TresEnRaya juego) {
         juego.dibujaTablero();
         System.out.println();
     }
 
-    public static void determinarResultado(TresEnRaya juego) {
+    public static void Resultado(TresEnRaya juego) {
         if (juego.ganaJugador1()) {
             System.out.println("¡La máquina 1 ha ganado!");
         } else if (juego.ganaJugador2()) {
