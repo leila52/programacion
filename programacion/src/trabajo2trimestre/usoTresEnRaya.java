@@ -16,7 +16,6 @@ public class usoTresEnRaya {
             System.out.println("3. Máquina contra máquina");
             System.out.println("4. Salir");
             opcion = entrada.nextInt();
-           entrada.nextLine(); // Consumir la nueva línea pendiente
 
             switch (opcion) {
                 case 1:

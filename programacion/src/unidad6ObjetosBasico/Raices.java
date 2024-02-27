@@ -1,4 +1,4 @@
-package unidad6ObjetosBasico;
+ package unidad6ObjetosBasico;
 
 public class Raices {
 	private double a ;
