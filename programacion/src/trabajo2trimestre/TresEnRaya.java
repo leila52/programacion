@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class TresEnRaya {
 	private int[][] tablero;
-
+	//construcctor
     public TresEnRaya() {
         tablero = new int[3][3];
         iniciarTablero();
     }
-
+    // inicial ej juego para q todo este a cero
     public void iniciarTablero() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -30,14 +30,16 @@ public class TresEnRaya {
     }
 
     public void mueveJugador2(int pos) {
+    	//calcular la fila dividiendolo en 3 que valdra a la posicion en un tablero 3x3
         int fila = (pos - 1) / 3;
+        // calcula la columna que valdra calculandolo con el resto
         int columna = (pos - 1) % 3;
         //si la celda esta vacia se rellena con el 2 que hace q sea la ficha
         if (tablero[fila][columna] == 0) {
             tablero[fila][columna] = 2;
         }
     }
-
+    // comprobar el movimiento si no hay dentro una ficha valdra 0
     public boolean movimientoValido(int pos) {
         int fila = (pos - 1) / 3;
         int columna = (pos - 1) % 3;

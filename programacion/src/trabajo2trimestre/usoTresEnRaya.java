@@ -42,13 +42,11 @@ public class usoTresEnRaya {
         juego.dibujaTablero();
         int jugadorActual = 1;
         int posicion;
-
         while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
             System.out.println("Turno del jugador " + jugadorActual);
             System.out.print("Introduzca la posición (1-9): ");
             posicion = entrada.nextInt();
-            entrada.nextLine(); // Consumir la nueva línea pendiente
-
+            entrada.nextLine(); 
             if (juego.movimientoValido(posicion)) {
                 if (jugadorActual == 1) {
                     juego.mueveJugador1(posicion);
@@ -63,7 +61,6 @@ public class usoTresEnRaya {
                 System.out.println(" posicion no valida ya q ya hay una ficha vuelve a introducirlo");
             }
         }
-
         if (juego.ganaJugador1()) {
             System.out.println("oleeee gano el jugador 1");
         } else if (juego.ganaJugador2()) {
@@ -84,8 +81,6 @@ public class usoTresEnRaya {
             if (jugadorActual == 1) {
                 System.out.print("Introduzca la posición (1-9): ");
                 posicion = entrada.nextInt();
-                entrada.nextLine(); // Consumir la nueva línea pendiente
-
                 if (juego.movimientoValido(posicion)) {
                     juego.mueveJugador1(posicion);
                     juego.dibujaTablero();
