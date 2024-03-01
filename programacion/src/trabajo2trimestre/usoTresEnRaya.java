@@ -10,11 +10,7 @@ public class usoTresEnRaya {
         int opcion;
 
         do {
-            System.out.println("Elija una opción:");
-            System.out.println("1. Jugar 2 jugadores");
-            System.out.println("2. Jugar contra la máquina");
-            System.out.println("3. Máquina contra máquina");
-            System.out.println("4. Salir");
+            menu();
             opcion = entrada.nextInt();
 
             switch (opcion) {
@@ -36,22 +32,31 @@ public class usoTresEnRaya {
         } while (opcion != 4);
 
 	}
-
+	public static void menu() {
+		System.out.println("Elija una opcion:");
+        System.out.println("1. jugador1 vs jugador2");
+        System.out.println("2. Jugar vs la máquina");
+        System.out.println("3. Máquina vs máquina");
+        System.out.println("4. Salir");
+	}
     public static void jugarDosJugadores(TresEnRaya juego) {
         juego.iniciarTablero();
         juego.dibujaTablero();
+        // se inicia con 1
         int jugadorActual = 1;
         int posicion;
         while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
-            System.out.println("Turno del jugador " + jugadorActual);
-            System.out.print("Introduzca la posición (1-9): ");
+            System.out.println("turno del jugador " + jugadorActual);
+            System.out.print("introduzca la posición del 1 al 9: ");
             posicion = entrada.nextInt();
-            entrada.nextLine(); 
+            
             if (juego.movimientoValido(posicion)) {
                 if (jugadorActual == 1) {
                     juego.mueveJugador1(posicion);
+                    // cambiamos al jugador 2
                     jugadorActual = 2;
                 } else {
+                	//cambiamos de jugador
                     juego.mueveJugador2(posicion);
                     jugadorActual = 1;
                 }
@@ -61,6 +66,7 @@ public class usoTresEnRaya {
                 System.out.println(" posicion no valida ya q ya hay una ficha vuelve a introducirlo");
             }
         }
+        //estadisticas de gannas o perder
         if (juego.ganaJugador1()) {
             System.out.println("oleeee gano el jugador 1");
         } else if (juego.ganaJugador2()) {
@@ -78,8 +84,9 @@ public class usoTresEnRaya {
         int posicion;
 
         while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
-            if (jugadorActual == 1) {
-                System.out.print("Introduzca la posición (1-9): ");
+            //si es 1 mueve jugador1 
+        	if (jugadorActual == 1) {
+                System.out.print("Introduzca la posición del 1 a 9: ");
                 posicion = entrada.nextInt();
                 if (juego.movimientoValido(posicion)) {
                     juego.mueveJugador1(posicion);
@@ -88,14 +95,18 @@ public class usoTresEnRaya {
                 } else {
                     System.out.println("La posición ya esta llena ,mete otro valor ");
                 }
-            } else {
+            } 
+        	//si es 2 empieza ordenador
+        	else {
+        		//no se comprueba ya q en si el metodo lo comprueba
                 juego.mueveOrdenador2();
-                System.out.println("Turno de la máquina: ");
+                System.out.println("Turno del ordenador: ");
                 juego.dibujaTablero();
+                //cambiamos el jugador actual
                 jugadorActual = 1;
             }
         }
-        //resultado
+        //estadisticas
 
         if (juego.ganaJugador1()) {
             System.out.println("oleeee a ganado");
@@ -123,14 +134,15 @@ public class usoTresEnRaya {
     }
     // realizar movimiento
     public static void Movimiento(TresEnRaya juego, int jugador) {
-        System.out.println("Turno de la máquina " + jugador + ":");
+        System.out.println("turno de la maquina " + jugador + ":");
+       // se ve a q jugador le toca jugar si es 1 le tocara al ordenador 1 
         if (jugador == 1) {
             juego.mueveOrdenador1();
         } else {
             juego.mueveOrdenador2();
         }
     }
-
+    //dibuja el tablero con la posicion del movimiento de cada jugador
     public static void DibujarTablero(TresEnRaya juego) {
         juego.dibujaTablero();
         System.out.println();
@@ -138,11 +150,11 @@ public class usoTresEnRaya {
 
     public static void Resultado(TresEnRaya juego) {
         if (juego.ganaJugador1()) {
-            System.out.println("¡La máquina 1 ha ganado!");
+            System.out.println("la maquina 1 ha ganado!");
         } else if (juego.ganaJugador2()) {
-            System.out.println("¡La máquina 2 ha ganado!");
+            System.out.println("la maquina 2 ha ganado!");
         } else {
-            System.out.println("¡Empate!");
+            System.out.println("vayaaaa empate");
         }
     }
 }

@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class TresEnRaya {
 	private int[][] tablero;
+	
+	
+	
 	//construcctor
     public TresEnRaya() {
         tablero = new int[3][3];
@@ -39,7 +42,8 @@ public class TresEnRaya {
             tablero[fila][columna] = 2;
         }
     }
-    // comprobar el movimiento si no hay dentro una ficha valdra 0
+    // comprobar el movimiento si no hay dentro una ficha 
+    //es xk vale 0 entonces se da como valido
     public boolean movimientoValido(int pos) {
         int fila = (pos - 1) / 3;
         int columna = (pos - 1) % 3;
@@ -49,6 +53,7 @@ public class TresEnRaya {
     public void mueveOrdenador1() {
         Random rand = new Random();
         int pos;
+        // se obtiene la posicion hasta q sea valida
         do {
             pos = rand.nextInt(9) + 1;
         } while (!movimientoValido(pos));
@@ -58,6 +63,7 @@ public class TresEnRaya {
     public void mueveOrdenador2() {
         Random rand = new Random();
         int pos;
+        // se obtiene la posicion hasta q sea valida
         do {
             pos = rand.nextInt(9) + 1;
         } while (!movimientoValido(pos));
