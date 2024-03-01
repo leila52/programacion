@@ -80,19 +80,21 @@ public class TresEnRaya {
     public boolean ganaJugador1() {
         // Comprobación de filas y columnas
         for (int i = 0; i < 3; i++) {
+        	// Fila i completa para jugador 1
             if (tablero[i][0] == 1 && tablero[i][1] == 1 && tablero[i][2] == 1) {
-                return true; // Fila i completa para jugador 1
+                return true; 
             }
+         // Columna i completa para jugador 1
             if (tablero[0][i] == 1 && tablero[1][i] == 1 && tablero[2][i] == 1) {
-                return true; // Columna i completa para jugador 1
+                return true; 
             }
         }
-        // Comprobación de diagonales
+        //  de diagonal
         if (tablero[0][0] == 1 && tablero[1][1] == 1 && tablero[2][2] == 1) {
-            return true; // Diagonal principal completa para jugador 1
+            return true; 
         }
         if (tablero[0][2] == 1 && tablero[1][1] == 1 && tablero[2][0] == 1) {
-            return true; // Diagonal secundaria completa para jugador 1
+            return true; 
         }
         return false;
     }
@@ -100,19 +102,21 @@ public class TresEnRaya {
     public boolean ganaJugador2() {
         // Comprobación de filas y columnas
         for (int i = 0; i < 3; i++) {
+        	// Fila i completa para jugador 2
             if (tablero[i][0] == 2 && tablero[i][1] == 2 && tablero[i][2] == 2) {
-                return true; // Fila i completa para jugador 2
+                return true; 
             }
+         // columna i completa para jugador 2
             if (tablero[0][i] == 2 && tablero[1][i] == 2 && tablero[2][i] == 2) {
-                return true; // Columna i completa para jugador 2
+                return true; 
             }
         }
-        // Comprobación de diagonales
+        // de diagonales
         if (tablero[0][0] == 2 && tablero[1][1] == 2 && tablero[2][2] == 2) {
-            return true; // Diagonal principal completa para jugador 2
+            return true; 
         }
         if (tablero[0][2] == 2 && tablero[1][1] == 2 && tablero[2][0] == 2) {
-            return true; // Diagonal secundaria completa para jugador 2
+            return true; 
         }
         return false;
     }

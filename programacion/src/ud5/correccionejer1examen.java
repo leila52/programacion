@@ -25,7 +25,7 @@ public class correccionejer1examen {
 			return true;
 		if(fecha.length()==10)
 			return true;
-		if(fecha.charAt(3)<=1&& fecha.charAt(4)<=12)
+		if(fecha.charAt(3)<=1&& fecha.charAt(4)<=9)
 			return true;
 		return false;
 	}
