@@ -10,9 +10,6 @@ public class Empleado {
 		this.nombre = nombre;
 		this.sueldo=sueldo;
 	}
-
-	
-
 	public String getDni() {
 		return dni;
 	}
@@ -29,12 +26,6 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 
-	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" + nombre + "]";
-	}
-
-
-
 	public double getSueldo() {
 		return sueldo;
 	}
@@ -43,6 +34,11 @@ public class Empleado {
 
 	public void setSueldo(double sueldo) {
 		this.sueldo = sueldo;
+	}
+	
+	public String toString() {
+		return "Empleado [dni=" + dni + ", nombre=" +
+	nombre + ", sueldo=" + sueldo + "]";
 	}
 	
 	
