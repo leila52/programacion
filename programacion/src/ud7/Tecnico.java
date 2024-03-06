@@ -1,4 +1,4 @@
-package ud7POOavanzado;
+package ud7;
 
 public class Tecnico extends Empleado {
 	private String tecnologia;

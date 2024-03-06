@@ -1,45 +1,31 @@
 package ud7POOavanzado;
 
-public class Empleado {
+public class Empleado extends Persona{
+private int año_incorporacion,num_despacho;
 	
-	private String dni,nombre;
-	private double sueldo;
-	
-	public Empleado(String dni, String nombre,double sueldo) {
-		this.dni = dni;
-		this.nombre = nombre;
-		this.sueldo=sueldo;
-	}
-	public String getDni() {
-		return dni;
+	//constructor
+	public Empleado(int año_incorporacion,int num_despacho,String nombre,String apellido,String dni,String estado_civil) {
+		super(nombre,apellido,dni,estado_civil);
+		this.año_incorporacion=año_incorporacion;
+		this.num_despacho=num_despacho;
+		
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
+	public int getAño_incorporacion() {
+		return año_incorporacion;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public void setAño_incorporacion(int año_incorporacion) {
+		this.año_incorporacion = año_incorporacion;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public int getNum_despacho() {
+		return num_despacho;
 	}
 
-	public double getSueldo() {
-		return sueldo;
-	}
-
-
-
-	public void setSueldo(double sueldo) {
-		this.sueldo = sueldo;
+	public void setNum_despacho(int num_departamento) {
+		this.num_despacho = num_departamento;
 	}
 	
-	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" +
-	nombre + ", sueldo=" + sueldo + "]";
-	}
-	
-	
+
 }

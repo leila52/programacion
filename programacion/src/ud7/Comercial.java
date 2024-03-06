@@ -1,4 +1,4 @@
-package ud7POOavanzado;
+package ud7;
 
 public class Comercial extends Empleado {
 	private double comision;

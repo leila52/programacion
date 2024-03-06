@@ -4,7 +4,7 @@ public class Electrodomestic {
 	private double precioBase,peso;
 	private String color;
 	private char consumoEnergetico;
-	private final String [] COLORESDISPONIBLES= {"blanco","negro"};
+	private final String [] COLORESDISPONIBLES= {"blanco","negro","rojo","azul","gris"};
 	private final double PRECIOPORCONSUMO[]= {100,80,60,50,30,10};
 	private final double PRECIOPORPESO[]= {10,50,80,100};
 	
@@ -19,6 +19,8 @@ public class Electrodomestic {
 		
 	}
 	public Electrodomestic(double precioBase,double peso) {
+		this.color="blanco";
+		this.consumoEnergetico='F';
 		this.precioBase=precioBase;
 		this.peso=peso;
 	}
