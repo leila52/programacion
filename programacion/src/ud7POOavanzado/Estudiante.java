@@ -17,5 +17,5 @@ public class Estudiante extends Persona {
 		this.curso=curso;
 	}
 	
-	public 
+ 
 }
