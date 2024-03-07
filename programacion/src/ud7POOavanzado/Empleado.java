@@ -26,6 +26,11 @@ private int año_incorporacion,num_despacho;
 	public void setNum_despacho(int num_departamento) {
 		this.num_despacho = num_departamento;
 	}
+
+	public String toString() {
+		
+		return super.toString()+" año_incorporacion= " + año_incorporacion + ", num_despacho=" + num_despacho + " ";
+	}
 	
 
 }

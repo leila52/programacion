@@ -18,6 +18,12 @@ public class Profesor extends Empleado{
 	public void setNum_departameto(int num_departameto) {
 		this.num_departameto = num_departameto;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+" num_departameto=" + num_departameto + "";
+	}
+	
 }
 	
 	

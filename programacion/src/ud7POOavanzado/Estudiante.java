@@ -17,5 +17,9 @@ public class Estudiante extends Persona {
 		this.curso=curso;
 	}
 	
+	public String toString() {
+		return super.toString()+ "curso=" + curso + "";
+	}
+	
  
 }

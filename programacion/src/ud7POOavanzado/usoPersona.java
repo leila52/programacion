@@ -8,21 +8,68 @@ public class usoPersona {
 		
 		Persona [] persona=new Persona[10];
 		int cantidad=0;
+		int op;
+		do {
+			mostrarmenu1();
+			op=in.nextInt();
+			switch(op) {
+			case 1:
+				do {
+				mostrarmenu();
+				op=in.nextInt();
+				switch(op) {
+				case 1:
+					crearprofesor(persona,cantidad);
+					cantidad++;
+					break;
+				case 2:
+					crearEstudiante(persona,cantidad);
+					cantidad++;
+					break;
+				case 3:
+					crearPersonal(persona,cantidad);
+					cantidad++;
+					break;
+				case 4:
+					System.out.println("vuelve pronto");
+					break;
+					default:
+						System.out.println("opccion no valida");
+				}
+				}while(op <=4 );
+				break;
+			case 2:
+				mostrar(persona,cantidad);
+				in.nextLine();
+				break;
+			case 3:
+				System.out.println("vuelve pronto");
+				break;
+				default:
+					System.out.println("opccion no valida");
+			}
+		}while (op<=3);
 		
 		
+	}
+	public static void mostrarmenu1() {
+		System.out.println("menu:");
+		System.out.println("1.crear persona");
+		System.out.println("2.mostrar todo");
+		System.out.println("3.salir");
 	}
 	public static void mostrarmenu() {
 		System.out.println("menu:");
 		System.out.println("1.crear profesor");
 		System.out.println("2.crear alumno");
 		System.out.println("3.crear personal de servicio");
-		System.out.println("4.mostrar todo");
-		System.out.println("5.salir");
+		System.out.println("4.salir");
 	}
 	public static void crearEstudiante(Persona [] persona,int cantidad) {
-		if(cantidad <10) {
+		if(cantidad <persona.length) {
 			System.out.println("introduce el nombre");
 			String nombre=in.nextLine();
+			in.nextLine();
 			System.out.println("introduce apellido");
 			String apellido=in.nextLine();
 			System.out.println("introduce dni");
@@ -38,10 +85,11 @@ public class usoPersona {
 		}
 	}
 	public static void crearprofesor(Persona [] persona,int cantidad) {
-		if(cantidad <10) {
-			System.out.print("Nombre: ");
+		if(cantidad <persona.length) {
+			System.out.print("introduce el nombre");
             String nombre = in.nextLine();
-            System.out.print("Apellidos: ");
+            in.nextLine();
+            System.out.print("introduce apellido");
             String apellidos = in.nextLine();
             System.out.print("DNI: ");
             String dni = in.nextLine();
@@ -54,19 +102,21 @@ public class usoPersona {
             in.nextLine();  
 
             System.out.print("Departamento: ");
-            String departamento = in.nextLine();
+            int departamento = in.nextInt();
 
-            persona[cantidad] = new Profesor(nombre, apellidos, dni, estadoCivil, añoIncorporacion, numeroDespacho, departamento);
-        } else {
+            persona[cantidad] = new Profesor(añoIncorporacion, numeroDespacho,nombre, apellidos, dni, estadoCivil, departamento);
+           
+		} else {
             System.out.println("No se pueden crear más personas, límite alcanzado.");
         }
 	}
 	
 	public static void crearPersonal(Persona [] persona , int cantidad) {
-		 if (cantidad < 10) {
-	            System.out.print("Nombre: ");
+		 if (cantidad <persona.length) {
+	            System.out.print("introduce el nombre");
 	            String nombre = in.nextLine();
-	            System.out.print("Apellidos: ");
+	            in.nextLine();
+	            System.out.print("introduce apellido");
 	            String apellidos = in.nextLine();
 	            System.out.print("DNI: ");
 	            String dni = in.nextLine();
@@ -77,19 +127,20 @@ public class usoPersona {
 	            System.out.print("Número de Despacho: ");
 	            int numeroDespacho = in.nextInt();
 	            in.nextLine();
-
 	            System.out.print("Sección: ");
 	            String seccion = in.nextLine();
 
-	            persona[cantidad] = new PersolaServicio(nombre, apellidos, dni, estadoCivil, añoIncorporacion, numeroDespacho, seccion);
-	        } else {
+	            persona[cantidad] = new PersolaServicio(añoIncorporacion, numeroDespacho,nombre, apellidos, dni, estadoCivil, seccion);
+	           
+		 } else {
 	            System.out.println("No se pueden crear más personas, límite alcanzado.");
 	        }
 	}
 	public static void mostrar(Persona [] persona , int cantidad) {
 		System.out.println("Personas creadas:");
-        for (int i = 0; i < cantidad; i++) {
-            System.out.println(persona[i]);
+        for (int i = 0; i <=cantidad; i++) {
+            System.out.println(persona[i].toString());
         }
 	}
+	/**/
 }

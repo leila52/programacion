@@ -18,4 +18,9 @@ public class PersolaServicio extends Empleado {
 		this.seccion = seccion;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+ " con seccion= " + seccion + "";
+	}
+
 }
