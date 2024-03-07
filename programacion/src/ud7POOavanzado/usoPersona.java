@@ -5,15 +5,17 @@ import java.util.Scanner;
 public class usoPersona { 
 		static Scanner in=new Scanner(System.in);
 	public static void main(String[] args) {
-		
+		// Si declaras persona y cantidad como globales no hace falta que los pases por parámetro en las funciones para añadir los tipos de persona
 		Persona [] persona=new Persona[10];
 		int cantidad=0;
 		int op;
 		do {
+			// Al nombrar a las funciones para los menús indica para qué son pq si no es confuso leer mostrarmenu1() y mostrarmenu()
 			mostrarmenu1();
 			op=in.nextInt();
 			switch(op) {
 			case 1:
+				// Todo el caso 1 lo pondría en una función llamada addPersona()
 				mostrarmenu();
 				op=in.nextInt();
 				
@@ -66,6 +68,7 @@ public class usoPersona {
 	}
 	public static void crearEstudiante(Persona [] persona,int cantidad) {
 		if(cantidad <persona.length) {
+			// Los datos de la persona los podrías pedir solo una vez, en vez de repetir el código 3 veces
 			System.out.println("introduce el nombre");
 			String nombre=in.nextLine();
 			in.nextLine();
