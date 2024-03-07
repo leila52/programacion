@@ -14,9 +14,9 @@ public class usoPersona {
 			op=in.nextInt();
 			switch(op) {
 			case 1:
-				do {
 				mostrarmenu();
 				op=in.nextInt();
+				
 				switch(op) {
 				case 1:
 					crearprofesor(persona,cantidad);
@@ -36,7 +36,6 @@ public class usoPersona {
 					default:
 						System.out.println("opccion no valida");
 				}
-				}while(op <=4 );
 				break;
 			case 2:
 				mostrar(persona,cantidad);
