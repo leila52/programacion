@@ -1,4 +1,4 @@
-package ud7POOavanzado;
+package universidad;
 
 public class Persona {
 	private String nombre,apellido,dni,estado_civil;

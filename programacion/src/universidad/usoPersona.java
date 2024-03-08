@@ -1,4 +1,4 @@
-package ud7POOavanzado;
+package universidad;
 
 import java.util.Scanner;
 

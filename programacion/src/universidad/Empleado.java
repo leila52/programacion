@@ -1,4 +1,4 @@
-package ud7POOavanzado;
+package universidad;
 
 public class Empleado extends Persona{
 private int año_incorporacion,num_despacho;
