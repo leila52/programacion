@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class usoPersona { 
 		static Scanner in=new Scanner(System.in);
+		static Persona [] persona=new Persona[10];
+		static int cantidad=0;
 	public static void main(String[] args) {
-		// Si declaras persona y cantidad como globales no hace falta que los pases por parámetro en las funciones para añadir los tipos de persona
-		Persona [] persona=new Persona[10];
-		int cantidad=0;
+	
 		int op;
 		do {
 			// Al nombrar a las funciones para los menús indica para qué son pq si no es confuso leer mostrarmenu1() y mostrarmenu()
@@ -21,15 +21,15 @@ public class usoPersona {
 				
 				switch(op) {
 				case 1:
-					crearprofesor(persona,cantidad);
+					crearprofesor();
 					cantidad++;
 					break;
 				case 2:
-					crearEstudiante(persona,cantidad);
+					crearEstudiante();
 					cantidad++;
 					break;
 				case 3:
-					crearPersonal(persona,cantidad);
+					crearPersonal();
 					cantidad++;
 					break;
 				case 4:
@@ -40,7 +40,7 @@ public class usoPersona {
 				}
 				break;
 			case 2:
-				mostrar(persona,cantidad);
+				mostrar();
 				in.nextLine();
 				break;
 			case 3:
@@ -66,7 +66,7 @@ public class usoPersona {
 		System.out.println("3.crear personal de servicio");
 		System.out.println("4.salir");
 	}
-	public static void crearEstudiante(Persona [] persona,int cantidad) {
+	public static void crearEstudiante() {
 		if(cantidad <persona.length) {
 			// Los datos de la persona los podrías pedir solo una vez, en vez de repetir el código 3 veces
 			System.out.println("introduce el nombre");
@@ -86,7 +86,7 @@ public class usoPersona {
 			System.out.println("no se pueden crear mas personas");
 		}
 	}
-	public static void crearprofesor(Persona [] persona,int cantidad) {
+	public static void crearprofesor() {
 		if(cantidad <persona.length) {
 			System.out.print("introduce el nombre");
             String nombre = in.nextLine();
@@ -113,7 +113,7 @@ public class usoPersona {
         }
 	}
 	
-	public static void crearPersonal(Persona [] persona , int cantidad) {
+	public static void crearPersonal() {
 		 if (cantidad <persona.length) {
 	            System.out.print("introduce el nombre");
 	            String nombre = in.nextLine();
@@ -138,7 +138,7 @@ public class usoPersona {
 	            System.out.println("No se pueden crear más personas, límite alcanzado.");
 	        }
 	}
-	public static void mostrar(Persona [] persona , int cantidad) {
+	public static void mostrar() {
 		System.out.println("Personas creadas:");
         for (int i = 0; i <=cantidad; i++) {
             System.out.println(persona[i].toString());
