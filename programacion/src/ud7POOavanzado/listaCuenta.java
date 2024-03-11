@@ -38,10 +38,10 @@ public class listaCuenta {
 			case 3:
 				in.nextLine();
 				System.out.println("introduce el nombre que byuscas");
-				nombre=in.nextLine();
+				String nombr=in.nextLine();
 				for(int i=0;i<cuenta.size();i++) {
-					if(cuenta.get(i).dameTitular().equals(nombre)) {
-						System.out.println(cuenta.get(i));
+					if(cuenta.get(i).dameTitular().equals(nombr)) {
+						System.out.println(cuenta.get(i).toString());
 					}
 				}
 				break;
