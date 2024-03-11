@@ -36,12 +36,13 @@ public class listaCuenta {
 				System.out.println("se ha eliminado el numero: "+eliminar);
 				break;
 			case 3:
-				in.nextLine();
-				System.out.println("introduce el nombre que byuscas");
+				
+				System.out.println("introduce el nombre que buscas");
 				String nombr=in.nextLine();
+				in.nextLine();
 				for(int i=0;i<cuenta.size();i++) {
 					if(cuenta.get(i).dameTitular().equals(nombr)) {
-						System.out.println(cuenta.get(i).toString());
+						System.out.println(cuenta.get(i).dameCuenta());
 					}
 				}
 				break;
@@ -56,8 +57,8 @@ public class listaCuenta {
 	}
 	public static void menu() {
 		System.out.println("1.añadir nueva cuenta");
-		System.out.println("2eliminar cuenta");
-		System.out.println("3.listar cuentas por titula");
+		System.out.println("2.eliminar cuenta");
+		System.out.println("3.listar cuentas por titular");
 		System.out.println("4.salir");
 	}
 

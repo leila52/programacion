@@ -34,6 +34,10 @@ public class Cuenta {
 			return false;
 	}
 	public String dameCuenta(){
-		return titular+" contiene esta cantidad:"+cantidad;
+		return "esta persona: "+titular + " contiene esta saldo :"+cantidad;
+	}
+	
+	public String listado() {
+		return "Cuenta [titular=" + titular + ", cantidad=" + cantidad + "]";
 	}
 }
