@@ -144,5 +144,4 @@ public class usoPersona {
             System.out.println(persona[i].toString());
         }
 	}
-	/**/
 }

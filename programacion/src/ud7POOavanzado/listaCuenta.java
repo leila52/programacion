@@ -7,13 +7,11 @@ import unidad6ObjetosBasico.Cuenta;
 
 public class listaCuenta {
 	static Scanner in=new Scanner(System.in);
-	static ArrayList<Cuenta> cuenta= new ArrayList<Cuenta>();
-	static int cantida;
+	
 	public static void main(String[] args) {
-		
+		ArrayList<Cuenta> cuenta= new ArrayList<Cuenta>();
 		int op;
 		do {
-			// Al nombrar a las funciones para los menús indica para qué son pq si no es confuso leer mostrarmenu1() y mostrarmenu()
 			menu();
 			op=in.nextInt();
 			switch(op) {
@@ -22,7 +20,7 @@ public class listaCuenta {
 				String nombre=in.nextLine();
 				in.nextLine();
 				System.out.println("dame la cantidad de dinero");
-				int cantidad=in.nextInt();
+				double cantidad=in.nextDouble();
 				Cuenta cuent1=new Cuenta(nombre,cantidad);
 				cuenta.add(cuent1);
 				System.out.println("se ha añadido correctamente");
@@ -31,17 +29,21 @@ public class listaCuenta {
 			case 2:
 				System.out.println("q posicion quieres eliminar");
 				int eliminar=in.nextInt();
-				cuenta.remove(eliminar);
+				if(cuenta.size()>eliminar) {
+					cuenta.remove(eliminar);
+					System.out.println("se ha eliminado el numero: "+eliminar);
+				}
 				
-				System.out.println("se ha eliminado el numero: "+eliminar);
 				break;
 			case 3:
-				in.nextLine();
-				System.out.println("introduce el nombre que byuscas");
+				System.out.println("introduce el nombre que buscas");
 				String nombr=in.nextLine();
+				in.nextLine();
 				for(int i=0;i<cuenta.size();i++) {
 					if(cuenta.get(i).dameTitular().equals(nombr)) {
-						System.out.println(cuenta.get(i).toString());
+						System.out.println(cuenta.get(i).dameCuenta());
+					}else {
+						System.out.println("no hay");
 					}
 				}
 				break;
