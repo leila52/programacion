@@ -1,6 +1,7 @@
 package Trabajo3evaluacion;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Baraja {
 	private ArrayList<Carta> listaCartas=new ArrayList<Carta>();
@@ -28,6 +29,10 @@ public class Baraja {
 		
 	}
 	public void cortar(int pos) {
+		Random ale=new Random(40+1);
+		ArrayList<Carta>listacarta2baraja=new ArrayList<Carta>();
+		listacarta2baraja.addAll(pos, listaCartas);
+		listacarta2baraja.addAll(0, listacarta2baraja)
 		
 	}
 	public Carta robar() {
