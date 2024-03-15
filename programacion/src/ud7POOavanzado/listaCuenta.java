@@ -44,6 +44,7 @@ public class listaCuenta {
 						System.out.println(cuenta.get(i).dameCuenta());
 					}else {
 						System.out.println("no hay");
+
 					}
 				}
 				break;
@@ -58,8 +59,8 @@ public class listaCuenta {
 	}
 	public static void menu() {
 		System.out.println("1.añadir nueva cuenta");
-		System.out.println("2eliminar cuenta");
-		System.out.println("3.listar cuentas por titula");
+		System.out.println("2.eliminar cuenta");
+		System.out.println("3.listar cuentas por titular");
 		System.out.println("4.salir");
 	}
 
