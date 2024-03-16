@@ -21,21 +21,35 @@ public class Baraja {
 	}
 	public Baraja (int tipoBaraja,boolean barajar) {
 		//llamar a tipo baraja
+		this(tipoBaraja);
 		if(barajar==true) {
 			barajar();
 		}
 	}
 	public void barajar() {
+		Random ale=new Random(40+1);
+		for(int i=0;i<listaCartas.size();i++) {
+			int pos=ale.nextInt(listaCartas.size());
+			cortar(pos);
+		}
 		
 	}
 	public void cortar(int pos) {
-		Random ale=new Random(40+1);
 		ArrayList<Carta>listacarta2baraja=new ArrayList<Carta>();
-		listacarta2baraja.addAll(pos, listaCartas);
-		listacarta2baraja.addAll(0, listacarta2baraja)
-		
+		//añade desde la posicion hasta el final al princincipio de la segunda baraja
+		for(int i=pos;i<listaCartas.size();i++) {
+			listacarta2baraja.add(listaCartas.get(i));
+		}
+		//añaden las cartas desde el principio hasta la posicion final 
+		for(int i=0;i<pos;i++) {
+			listacarta2baraja.add(listaCartas.get(i));
+		}
+		listaCartas=listacarta2baraja;
 	}
 	public Carta robar() {
+		if(listaCartas.isEmpty()) {
+			return null;
+		}
 		return listaCartas.remove(0);
 	}
 	public void insertarCartaFinal(int id_carta) {
