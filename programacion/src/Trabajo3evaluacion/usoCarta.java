@@ -17,13 +17,18 @@ public class usoCarta {
 		System.out.println("tu carta es : ");
 		
 		System.out.println("¡Bienvenido al juego de 7 y media!");
+		Carta cartaJugador = baraja.robar();
+	    Carta cartaOrdenador = baraja.robar();
 
-        boolean continuar = true;
-        while (puntosJugador < 7.5 && puntosordenador < 7.5 && continuar) {
-            Carta cartaJugador = baraja.robar();
-            Carta cartaOrdenador = baraja.robar();
-
-        }
+	    // Verifica si la carta del jugador es nula antes de usarla
+	    if (cartaJugador != null) {
+	        puntosJugador += cartaJugador.getValor7yMedia();
+	        System.out.println("Carta del jugador: " + cartaJugador.getNombrecarta());
+	        System.out.println("Puntos del jugador: " + puntosJugador);
+	    } else {
+	        System.out.println("No quedan más cartas en la baraja para el jugador.");
+	    }
+       
 
         	//estadisticas
         if (puntosJugador > 7.5 && puntosordenador > 7.5) {

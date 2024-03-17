@@ -14,6 +14,7 @@ public class Carta {
 		//nos da los 4 palos q hay dividiendolo
 		this.palo=(id-1)/10;
 		
+		
 	}
 	public int getNumero() {
 		return numero;
