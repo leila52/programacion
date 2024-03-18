@@ -41,6 +41,39 @@ public class Baraja {
 		
 	}
 	public void barajar() {
+		
+		Random rand = new Random();
+	    int n = listaCartas.size();
+	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>(n);
+
+	    while (!listaCartas.isEmpty()) {
+	        int randIndex = rand.nextInt(listaCartas.size());
+	        nuevaBaraja.add(listaCartas.remove(randIndex));
+	    }
+
+	    listaCartas = nuevaBaraja;
+		/*funciona
+		 * Random rand = new Random();
+		if (listaCartas.size() <= 1) {
+	        return; 
+	    }
+	    int corte = rand.nextInt(listaCartas.size() - 1) + 1;
+	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>();
+
+	    for (int i = corte; i < listaCartas.size(); i++) {
+	        nuevaBaraja.add(listaCartas.get(i));
+	    }
+	    for (int i = 0; i < corte; i++) {
+	        nuevaBaraja.add(listaCartas.get(i));
+	    }
+
+	    listaCartas = nuevaBaraja;
+	    
+	    */
+	
+	
+	
+	
 		/*Random ale=new Random(40);
 		 int n = listaCartas.size();
 	        for (int i = n - 1; i > 0; i--) {
@@ -51,13 +84,18 @@ public class Baraja {
 	            listaCartas.set(j, temp);
 	        }
 	        */
-		for(int i=0;i<listaCartas.size();i++) {
+	
+	
+		/*for(int i=0;i<listaCartas.size();i++) {
 			Random ale=new Random(4);
 			int pos=ale.nextInt(listaCartas.size());
 			cortar(pos);
 			i++;
 			
-		}
+		}*/
+	
+	
+	
 		/*ArrayList<Carta>listacarta=new ArrayList<Carta>();
 		for(int i=0;i<listaCartas.size();i++) {
 			Random ale=new Random(40);
@@ -67,6 +105,29 @@ public class Baraja {
 		}
 		listaCartas=listacarta;*/
 		
+	    
+	    /*funciona pero es raro
+	     * 
+	     * Random rand = new Random();
+        int n = listaCartas.size();
+        ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>(n);
+        
+        // Creamos una lista de índices aleatorios
+        ArrayList<Integer> indices = new ArrayList<Integer>();
+        for (int i = 0; i < n; i++) {
+            indices.add(i);
+        }
+        
+        // Barajamos los índices
+        for (int i = 0; i < n; i++) {
+            int randIndex = rand.nextInt(indices.size());
+            int index = indices.remove(randIndex);
+            nuevaBaraja.add(listaCartas.get(index));
+        }
+        
+        listaCartas = nuevaBaraja;
+        
+        */
 	}
 	public void cortar(int pos) {
 		ArrayList<Carta>listacarta2baraja=new ArrayList<Carta>();
