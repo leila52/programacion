@@ -22,22 +22,34 @@ public class Baraja {
 	public Baraja (int tipoBaraja,boolean barajar) {
 		for(int i=1;i<=40;i++) {
 			listaCartas.add(new Carta(i));
+			if(barajar==true) 
+				barajar();
 		}
 		//llamar a tipo baraja
 		if(tipoBaraja ==2){
 			listaCartas.addAll(listaCartas);
-			if(barajar==true) 
-				barajar();
+			
 		}
 		
 		
 	}
 	public void barajar() {
-		Random ale=new Random(40);
+		
 		for(int i=0;i<listaCartas.size();i++) {
+			Random ale=new Random(40);
 			int pos=ale.nextInt(listaCartas.size());
 			cortar(pos);
+			i++;
+			
 		}
+		/*ArrayList<Carta>listacarta=new ArrayList<Carta>();
+		for(int i=0;i<listaCartas.size();i++) {
+			Random ale=new Random(40);
+			int pos=ale.nextInt();
+			listacarta.add(i,new Carta(pos));
+			
+		}
+		listaCartas=listacarta;*/
 		
 	}
 	public void cortar(int pos) {

@@ -11,10 +11,7 @@ public class usoCarta {
 		Baraja baraja=new Baraja(1,true);
 		double puntosJugador=0;
 		double puntosordenador=0;
-		
-		System.out.println("bienvenidos al juego del 7 y medio");
-		System.out.println("la baraja a sido barajada");
-		System.out.println("tu carta es : ");
+
 		
 		System.out.println("¡Bienvenido al juego de 7 y media!");
 		Carta cartaJugador = baraja.robar();
