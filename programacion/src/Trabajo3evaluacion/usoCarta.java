@@ -14,9 +14,6 @@ public class usoCarta {
 
 		
 		System.out.println("¡Bienvenido al juego de 7 y media!");
-		System.out.println("elige el tipo de bajrajaque quieres elegir");
-		int opcion=entrada.nextInt();
-		Baraja baraja2=new Baraja(opcion,true);
 		Carta cartaJugador = baraja.robar();
 	    Carta cartaOrdenador = baraja.robar();
 
@@ -27,11 +24,6 @@ public class usoCarta {
 	        System.out.println("Puntos del jugador: " + puntosJugador);
 	    } else {
 	        System.out.println("No quedan más cartas en la baraja para el jugador.");
-	    }
-	    if (cartaOrdenador != null) {
-	        puntosordenador += cartaOrdenador.getValor7yMedia();
-	        System.out.println("Carta del ordenador: " + cartaJugador.getNombrecarta());
-	        System.out.println("Puntos del ordenador: " + puntosJugador);
 	    }
        
 
