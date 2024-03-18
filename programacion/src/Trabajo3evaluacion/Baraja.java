@@ -20,14 +20,20 @@ public class Baraja {
 		}
 	}
 	public Baraja (int tipoBaraja,boolean barajar) {
-		//llamar a tipo baraja
-		this(tipoBaraja);
-		if(barajar==true) {
-			barajar();
+		for(int i=1;i<=40;i++) {
+			listaCartas.add(new Carta(i));
 		}
+		//llamar a tipo baraja
+		if(tipoBaraja ==2){
+			listaCartas.addAll(listaCartas);
+			if(barajar==true) 
+				barajar();
+		}
+		
+		
 	}
 	public void barajar() {
-		Random ale=new Random(40+1);
+		Random ale=new Random(40);
 		for(int i=0;i<listaCartas.size();i++) {
 			int pos=ale.nextInt(listaCartas.size());
 			cortar(pos);
