@@ -20,13 +20,20 @@ public class Baraja {
 		}
 	}
 	public Baraja (int tipoBaraja,boolean barajar) {
+		if(tipoBaraja ==1){
 		for(int i=1;i<=40;i++) {
 			listaCartas.add(new Carta(i));
 			if(barajar==true) 
 				barajar();
 		}
+		}
 		//llamar a tipo baraja
 		if(tipoBaraja ==2){
+			for(int i=1;i<=40;i++) {
+				listaCartas.add(new Carta(i));
+				if(barajar==true) 
+					barajar();
+			}
 			listaCartas.addAll(listaCartas);
 			
 		}
@@ -34,9 +41,18 @@ public class Baraja {
 		
 	}
 	public void barajar() {
-		
+		/*Random ale=new Random(40);
+		 int n = listaCartas.size();
+	        for (int i = n - 1; i > 0; i--) {
+	        	 ale=new Random(40);
+	            int j = ale.nextInt(i + 1);
+	            Carta temp = listaCartas.get(i);
+	            listaCartas.set(i, listaCartas.get(j));
+	            listaCartas.set(j, temp);
+	        }
+	        */
 		for(int i=0;i<listaCartas.size();i++) {
-			Random ale=new Random(40);
+			Random ale=new Random(4);
 			int pos=ale.nextInt(listaCartas.size());
 			cortar(pos);
 			i++;

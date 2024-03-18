@@ -12,21 +12,24 @@ public class usoCarta {
 		double puntosJugador=0;
 		double puntosordenador=0;
 
-		
+		baraja.barajar();
 		System.out.println("¡Bienvenido al juego de 7 y media!");
 		Carta cartaJugador = baraja.robar();
 	    Carta cartaOrdenador = baraja.robar();
 
 	    // Verifica si la carta del jugador es nula antes de usarla
-	    if (cartaJugador != null) {
-	        puntosJugador += cartaJugador.getValor7yMedia();
-	        System.out.println("Carta del jugador: " + cartaJugador.getNombrecarta());
-	        System.out.println("Puntos del jugador: " + puntosJugador);
-	    } else {
-	        System.out.println("No quedan más cartas en la baraja para el jugador.");
-	    }
+	   
+        puntosJugador += cartaJugador.getValor7yMedia();
+        System.out.println("Carta del jugador: " + cartaJugador.getNombrecarta());
+        System.out.println("Puntos del jugador: " + puntosJugador);
+        baraja.barajar();
+        cartaJugador = baraja.robar();
+        puntosJugador += cartaJugador.getValor7yMedia();
+        System.out.println("Carta del jugador: " + cartaJugador.getNombrecarta());
+        System.out.println("Puntos del jugador: " + puntosJugador);
+        
        
-
+	    /*
         	//estadisticas
         if (puntosJugador > 7.5 && puntosordenador > 7.5) {
             System.out.println("Ambos jugadores se han pasado de 7.5. ¡Es un empate!");
@@ -42,7 +45,7 @@ public class usoCarta {
             System.out.println("¡Es un empate!");
         }
 		
-
+	*/
 	}
 
 }
