@@ -41,11 +41,8 @@ public class Baraja {
 		
 	}
 	public void barajar() {
-		
 		Random rand = new Random();
-	    int n = listaCartas.size();
-	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>(n);
-
+	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>();
 	    while (!listaCartas.isEmpty()) {
 	        int randIndex = rand.nextInt(listaCartas.size());
 	        nuevaBaraja.add(listaCartas.remove(randIndex));
@@ -70,20 +67,6 @@ public class Baraja {
 	    listaCartas = nuevaBaraja;
 	    
 	    */
-	
-	
-	
-	
-		/*Random ale=new Random(40);
-		 int n = listaCartas.size();
-	        for (int i = n - 1; i > 0; i--) {
-	        	 ale=new Random(40);
-	            int j = ale.nextInt(i + 1);
-	            Carta temp = listaCartas.get(i);
-	            listaCartas.set(i, listaCartas.get(j));
-	            listaCartas.set(j, temp);
-	        }
-	        */
 	
 	
 		/*for(int i=0;i<listaCartas.size();i++) {
