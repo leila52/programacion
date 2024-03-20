@@ -44,8 +44,8 @@ public class Baraja {
 		Random rand = new Random();
 	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>();
 	    while (!listaCartas.isEmpty()) {
-	        int randIndex = rand.nextInt(listaCartas.size());
-	        nuevaBaraja.add(listaCartas.remove(randIndex));
+	        int randposicion = rand.nextInt(listaCartas.size());
+	        nuevaBaraja.add(listaCartas.remove(randposicion));
 	    }
 
 	    listaCartas = nuevaBaraja;
