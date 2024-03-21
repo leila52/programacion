@@ -2,13 +2,33 @@ package ud7POOavanzado;
 
 public class Perro extends Animal{
 	
-	private boolean muerde;
+	private String raza,microchip;
 	
-	public Perro(String nombre,String especie) {
-		super(nombre,especie);
-		muerde=false;
+	public Perro(String nombre,String fechaNacimiento,double peso,String raza,String microchip) {
+		super(nombre,fechaNacimiento,"",peso);
+		if(raza.equals("PastorAleman")||raza.equals("Husky")||raza.equals("FoxTerrier")) {
+			this.raza=raza;
+		}else
+			this.raza="no tiene raza";
+		
+		this.microchip=microchip;
+				
+		
 	}
-	public void DameFichaAnimal() {
-		System.out.println("Perro"+getNombre()+"-"+getEspecie()+"-"+muerde);
+	public String getRaza() {
+		return raza;
 	}
+
+	public String getMicrochip() {
+		return microchip;
+	}
+	public String damedatosAnimal() {
+		String datos;
+		datos ="Perro: "+getNombre()+" su fecha :"+getFechaNacimiento()+" comentario"
+		+getComentario()+" con un peso:"+getPeso()+" con una raza "+getRaza()+" microchip:"+getMicrochip();
+		
+		return datos;
+	}
+
+	
 }
