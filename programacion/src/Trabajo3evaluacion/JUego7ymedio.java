@@ -37,7 +37,7 @@ public class JUego7ymedio {
     }
 
     public static void jugarOrdenador(Baraja baraja) {
-        while (puntosordenador <= 7 && puntosordenador <= puntosJugador) {
+        while (puntosordenador <= 7.5 && puntosordenador <= puntosJugador) {
             Carta cartaOrdenador = baraja.robar();
             System.out.println("ordenador ha robado la carta: " + cartaOrdenador.getNombrecarta());
             puntosordenador += cartaOrdenador.getValor7yMedia();
