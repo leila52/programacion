@@ -22,7 +22,11 @@ public class JUego7ymedio {
 
                 if (puntosJugador > 7.5) {
                     System.out.println("te has pasado de 7.5, es turno del ordenador!");
-                    jugarOrdenador(baraja);
+                    Carta cartaOrdenador = baraja.robar();
+                    System.out.println("ordenador ha robado la carta: " + cartaOrdenador.getNombrecarta());
+                    puntosordenador += cartaOrdenador.getValor7yMedia();
+                    System.out.println("puntos del ordenador: " + puntosordenador);
+                    estadisticas();
                     continuarJuego = false;
                 }
             } else if (resp.equals("n")) {
@@ -36,7 +40,7 @@ public class JUego7ymedio {
     }
 
     public static void jugarOrdenador(Baraja baraja) {
-        while (puntosordenador <= 7 && puntosordenador <= puntosJugador) {
+        while (puntosordenador < 7.5 && puntosordenador < puntosJugador) {
             Carta cartaOrdenador = baraja.robar();
             System.out.println("ordenador ha robado la carta: " + cartaOrdenador.getNombrecarta());
             puntosordenador += cartaOrdenador.getValor7yMedia();
