@@ -3,29 +3,23 @@ package Trabajo3evaluacion;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Baraja {
-	private ArrayList<Carta> listaCartas=new ArrayList<Carta>();
+public class Baraja2 {
+private ArrayList<Carta> listaCartas=new ArrayList<Carta>();
 	
-	public Baraja() {
+	public Baraja2() {
 		for(int i=1;i<=40;i++) {
 			listaCartas.add(new Carta(i));
 		}
 	}
 	//tipo de baraja
 	
-	public Baraja(int tipoBaraja) {
-		if(tipoBaraja==1) {
-			for(int i=1;i<=40;i++) {
-				listaCartas.add(new Carta(i));
-			}
-		}
+	public Baraja2(int tipoBaraja) {
 		//para q haya 80 se suma las 40 con otras 40
 		if(tipoBaraja ==2){
 			listaCartas.addAll(listaCartas);
-		
 		}
 	}
-	public Baraja (int tipoBaraja,boolean barajar) {
+	public Baraja2 (int tipoBaraja,boolean barajar) {
 		if(tipoBaraja ==1){
 		for(int i=1;i<=40;i++) {
 			listaCartas.add(new Carta(i));
@@ -56,11 +50,11 @@ public class Baraja {
 
 	    listaCartas = nuevaBaraja;
 		/*funciona
-		 * Random ale = new Random();
+		 * Random rand = new Random();
 		if (listaCartas.size() <= 1) {
 	        return; 
 	    }
-	    int corte = ale.nextInt(listaCartas.size() - 1) + 1;
+	    int corte = rand.nextInt(listaCartas.size() - 1) + 1;
 	    ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>();
 
 	    for (int i = corte; i < listaCartas.size(); i++) {
@@ -73,6 +67,50 @@ public class Baraja {
 	    listaCartas = nuevaBaraja;
 	    
 	    */
+	
+	
+		/*for(int i=0;i<listaCartas.size();i++) {
+			Random ale=new Random(4);
+			int pos=ale.nextInt(listaCartas.size());
+			cortar(pos);
+			i++;
+			
+		}*/
+	
+	
+	
+		/*ArrayList<Carta>listacarta=new ArrayList<Carta>();
+		for(int i=0;i<listaCartas.size();i++) {
+			Random ale=new Random(40);
+			int pos=ale.nextInt();
+			listacarta.add(i,new Carta(pos));
+			
+		}
+		listaCartas=listacarta;*/
+		
+	    
+	    /*funciona pero es raro
+	     * 
+	     * Random rand = new Random();
+        int n = listaCartas.size();
+        ArrayList<Carta> nuevaBaraja = new ArrayList<Carta>(n);
+        
+        // Creamos una lista de índices aleatorios
+        ArrayList<Integer> indices = new ArrayList<Integer>();
+        for (int i = 0; i < n; i++) {
+            indices.add(i);
+        }
+        
+        // Barajamos los índices
+        for (int i = 0; i < n; i++) {
+            int randIndex = rand.nextInt(indices.size());
+            int index = indices.remove(randIndex);
+            nuevaBaraja.add(listaCartas.get(index));
+        }
+        
+        listaCartas = nuevaBaraja;
+        
+        */
 	}
 	public void cortar(int pos) {
 		ArrayList<Carta>listacarta2baraja=new ArrayList<Carta>();
@@ -114,6 +152,4 @@ public class Baraja {
 	public boolean estaVacia() {
 		return listaCartas.isEmpty();
 	}
-	
-	
 }
