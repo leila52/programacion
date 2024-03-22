@@ -37,7 +37,7 @@ public class JUego7ymedio {
     }
 
     public static void jugarOrdenador(Baraja baraja) {
-        while (puntosordenador <= 7.5 && puntosordenador <= puntosJugador) {
+        while (puntosordenador <= 7 && puntosordenador <= puntosJugador) {
             Carta cartaOrdenador = baraja.robar();
             System.out.println("ordenador ha robado la carta: " + cartaOrdenador.getNombrecarta());
             puntosordenador += cartaOrdenador.getValor7yMedia();
@@ -48,7 +48,7 @@ public class JUego7ymedio {
 
 	public static void estadisticas() {
 		if (puntosJugador > 7.5 && puntosordenador > 7.5) {
-            System.out.println("ambos se han pasado de 7.5 empate!");
+            System.out.println("ambos se han pasado de 7.5 empate , gana la banca(ia)");
         } else if (puntosJugador > 7.5) {
             System.out.println("El jugador se ha pasado de 7.5. El ordenador gana la proxima sera");
         } else if (puntosordenador > 7.5) {
@@ -57,9 +57,7 @@ public class JUego7ymedio {
             System.out.println("¡El jugador gana ole ole ole");
         } else if (puntosordenador > puntosJugador) {
             System.out.println("el ordenador gana lo siento jugador la proxima sera");
-        } else {
-            System.out.println("es un empate!");
-        }
+        } 
 	}
 
         
