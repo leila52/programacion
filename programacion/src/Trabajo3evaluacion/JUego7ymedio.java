@@ -10,9 +10,8 @@ public class JUego7ymedio {
 		Baraja baraja=new Baraja(1,true);
 		
 		boolean continuarJuego=true;
-
+		System.out.println("bienvenido al juego de 7 y media:");
 		while(continuarJuego==true) {
-			System.out.println("bienvenido al juego de 7 y media:");
 			System.out.println("quieres una carta? s/n");
 			String resp=entrada.nextLine().toLowerCase();
 			if (resp.equals("s")) {
