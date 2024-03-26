@@ -30,11 +30,11 @@ public class Gato extends Animal{
 	}
 	public String DameDatosAnimal() {
 		String datos;
-        datos = "Gato: Nombre " + getNombre() + " con raza: " + getRaza() + "\n" +
-                "Fecha de Nacimiento: " + getFechaNacimiento() + "\n" +
-                "Peso: " + getPeso() + "\n" +
-                "Microchip: " + getMicrochip() + "\n" +
-                "Comentarios: " + getComentarios();
+        datos = "Gato: su nombre es :  " + getNombre() + " de  raza: " + getRaza() + "\n" +
+                " su fecha de nacimiento: " + getFechaNacimiento() + "\n" +
+                " con un peso: " + getPeso() + "\n" +
+                " su microchip: " + getMicrochip() + "\n" +
+                " y su comentarios: " + getComentarios();
         return datos;
 	}
 

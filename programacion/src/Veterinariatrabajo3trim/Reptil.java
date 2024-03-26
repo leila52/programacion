@@ -6,7 +6,11 @@ public class Reptil extends Animal{
 	
 	public Reptil(String nombre, String fechaNacimiento, String comentarios, double peso, String especie, boolean venenoso) {
         super(nombre, fechaNacimiento, comentarios, peso);
-        this.especie = especie;
+        if(especie.equals("Tortuga")|| especie.equals("Iguana")||especie.equals("DragonDeComodo")) {
+        	this.especie = especie;
+        }else {
+        	this.especie ="Lagarto";
+        }
         this.venenoso = venenoso;
     }
 
@@ -27,11 +31,19 @@ public class Reptil extends Animal{
 	}
 	public String DameDatosAnimal() {
         String datos;
-        datos = "Reptil: Nombre " + getNombre() + " de especie: " + getEspecie() + "\n" +
-                "Fecha de Nacimiento: " + getFechaNacimiento() + "\n" +
-                "Peso: " + getPeso() + "\n" +
-                "¿Venenoso?: " + (venenoso ? "Sí" : "No") + "\n" +
-                "Comentarios: " + getComentarios();
+        if(isVenenoso()==true) {
+        datos =  "Reptil : su nombre " + getNombre() + " de especie: " + getEspecie() + "\n" +
+	                "su fecha de nacimiento: " + getFechaNacimiento() + "\n" +
+	                "con peso: " + getPeso() + "\n" +
+	                "es muy venenoso " + "\n" +
+	                "su comentarios: " + getComentarios();
+        }else {
+        	 datos =  " Reptil : su nombre " + getNombre() + " de especie: " + getEspecie() + "\n" +
+ 	                " su fecha de nacimiento: " + getFechaNacimiento() + "\n" +
+ 	                " con peso: " + getPeso() + "\n" +
+ 	                "  no es venenoso " + "\n" +
+ 	                " su comentarios: " + getComentarios();
+        }
         return datos;
 	}
 

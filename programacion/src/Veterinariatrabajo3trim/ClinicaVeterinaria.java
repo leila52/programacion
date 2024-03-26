@@ -9,7 +9,14 @@ public class ClinicaVeterinaria {
 	public ClinicaVeterinaria() {
         listaAnimal = new ArrayList<>();
     }
-	
+	public ArrayList<Animal> getListaAnimal() {
+		return listaAnimal;
+	}
+
+
+	public void setListaAnimal(ArrayList<Animal> listaAnimal) {
+		this.listaAnimal = listaAnimal;
+	}
 	
 	public void insertarAnimal(Animal animal) {
 		listaAnimal.add(animal);
@@ -18,9 +25,10 @@ public class ClinicaVeterinaria {
 	//buscar
 	public Animal buscarAnimal(String nombre) {
 		for(int i=0;i<listaAnimal.size();i++) {
-			Animal animal=listaAnimal.get(i);
-			if(animal.getNombre().equals(nombre)){
-				return animal;
+			
+			if(listaAnimal.get(i).getNombre().equals(nombre)){
+				Animal a=listaAnimal.get(i);
+				return a;
 			}
 		}
 		return null;
@@ -28,9 +36,9 @@ public class ClinicaVeterinaria {
 	
 	public boolean modificarComentarioAnimal(String nombre,String nuevcoment) {
 		for(int i=0;i<listaAnimal.size();i++) {
-			Animal animal=listaAnimal.get(i);
-			if(animal.getNombre().equals(nombre)) {
-				animal.setComentarios(nuevcoment);
+			
+			if(listaAnimal.get(i).getNombre().equals(nombre)) {
+				listaAnimal.get(i).setComentarios(nuevcoment);
 				return true;
 			}
 		}return false;
@@ -44,5 +52,8 @@ public class ClinicaVeterinaria {
 		return fichadetodo;
 		
 	}
+
+
+	
 
 }

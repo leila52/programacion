@@ -21,10 +21,10 @@ public class Perro extends Animal{
 
 		public  String DameDatosAnimal() {
 			String datos;
-			datos="Perro:Nombre "+getNombre()+"con raza: " + getRaza() + "\n" +
-	                "Fecha de Nacimiento: " + getFechaNacimiento() + "\n" +
-	                "Peso: " + getPeso() + "Microchip: " + getMicrochip()  +
-	                "Comentarios: " + getComentarios();
+			datos="Perro: con nombre: "+getNombre()+" con raza: " + getRaza() + "\n" +
+	                " su fecha de nacimiento: " + getFechaNacimiento() + "\n" +
+	                " su peso: " + getPeso() + " con microchip: " + getMicrochip()  +
+	                " su comentarios: " + getComentarios();
 		return datos;
 			
 		
