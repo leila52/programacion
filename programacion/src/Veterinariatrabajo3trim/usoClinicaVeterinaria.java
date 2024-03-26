@@ -35,7 +35,7 @@ public class usoClinicaVeterinaria {
 				break;
 			case 4:
 				System.out.println("la ficha de animales de la clinica: ");
-				System.out.println(clinica);
+				System.out.println(clinica.toString());
 				break;	
 			case 5:
 				System.out.println("saliendo bye bye");
