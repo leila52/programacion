@@ -3,6 +3,8 @@ package universidad;
 public class Empleado extends Persona{
 private int año_incorporacion,num_despacho,id;
 //el atrbuto pertenece a la clase no al objeto
+//para ciertas acciones cada vez q utilizas un objeto lo vas a tener q incrementar
+//variable global a todos los objetos
 private static int idsiguiente=1;
 	
 	//constructor
@@ -35,6 +37,14 @@ private static int idsiguiente=1;
 	public String toString() {
 		
 		return super.toString()+" año_incorporacion= " + año_incorporacion + ", num_despacho=" + num_despacho + " ";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 

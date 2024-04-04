@@ -46,20 +46,55 @@ public class usoTresenrayaModificacion {
         // se inicia con 1
         int jugadorActual = 1;
         int posicion;
+        int ficha=0;
+        int ficha2=0;
+        entrada.nextLine();
+        
+    	System.out.println("eliga que ficha quiere 1 para X y 2 para O");
+    	String fichaoficial = entrada.nextLine();
+    	if(fichaoficial.equals("x")||fichaoficial.equals("o")) {
+    		if(fichaoficial.equals("x")) {
+            	ficha=1;
+            	ficha2=2;
+            }
+            if(fichaoficial.equals("o")) {
+            	ficha2=1;
+            	ficha=2;
+            }
+    	}else {
+    		System.out.println("vuelvea intoducirlo pero esta vez bn");
+    		fichaoficial = entrada.nextLine();
+    		if(fichaoficial.equals("x")) {
+            	ficha=1;
+            	ficha2=2;
+            }
+            if(fichaoficial.equals("o")) {
+            	ficha2=1;
+            	ficha=2;
+            }
+    	}
+        
+        
         while (juego.quedanMovimientos() && !juego.ganaJugador1() && !juego.ganaJugador2()) {
+        	
             System.out.println("turno del jugador " + jugadorActual);
+            
             System.out.print("introduzca la posición del 1 al 9: ");
             posicion = entrada.nextInt();
             
             if (juego.movimientoValido(posicion)) {
-                if (jugadorActual == 1) {
+                if (jugadorActual == ficha) {
                     juego.mueveJugador1(posicion);
                     // cambiamos al jugador 2
-                    jugadorActual = 2;
+                    jugadorActual = ficha2;
                 } else {
                 	//cambiamos de jugador
+                	
                     juego.mueveJugador2(posicion);
-                    jugadorActual = 1;
+                    jugadorActual=ficha;
+                    
+                    
+                    
                 }
 
                 juego.dibujaTablero();
