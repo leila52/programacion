@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 public class miventana2 implements ActionListener{
 	private JFrame ventana;
 	private JPanel panel;
+	private JLabel campotextosaluda ;
+	private JLabel etiquetanombre;
+	private JTextField Camponombre;
 	
 	public miventana2() {
 		/*inicialmente
@@ -34,14 +37,17 @@ public class miventana2 implements ActionListener{
 	
 	}
 	private void agregaComponentesAlPanel() {
-		JLabel etiquetanombre= new JLabel("nombre");
+		etiquetanombre= new JLabel("nombre");
 		panel.add(etiquetanombre);
-		JTextField Camponombre = new JTextField(10);
+		 Camponombre = new JTextField(10);
 		panel.add(Camponombre);
 		//asociamos el boton en concreto con la respuesta dicho evento
 		JButton boton =new JButton("saluda");
 		boton.addActionListener(this);
 		panel.add(boton);
+		
+		campotextosaluda=new JLabel("hola jejej");
+		panel.add(campotextosaluda);
 		
 			
 	}
@@ -49,7 +55,9 @@ public class miventana2 implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//RESPUESTA al evento del click de raton
 		//hara las acciones una vez pulsada el boton
-		System.out.println("has pulsado el boton");
+		
+		String saludo= "hola "+Camponombre.getText();
+		campotextosaluda.setText(saludo);
 		
 	}
 
