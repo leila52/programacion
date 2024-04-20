@@ -12,11 +12,9 @@ import javax.swing.JTextField;
 public class Calculadora implements ActionListener {
 	private JFrame ventana;
 	private JPanel panel;
-	private JLabel campotextosaluda ;
-	private JLabel num1;
-	private JLabel num2;
-	private JLabel resultado;
+	private JLabel num1,num2, resultado;
 	private JTextField camponum1,camponum2,camporesultado;
+	private JButton suma, resta, multiplicacion, division;
 	
 	public Calculadora() {
 		/*inicialmente
@@ -38,28 +36,69 @@ public class Calculadora implements ActionListener {
 	
 	}
 	private void agregaComponentesAlPanel() {
-		num1= new JLabel("TBoperador1");
+		num1= new JLabel("operador1");
 		panel.add(num1);
-		 camponum1 = new JTextField(10);
+		camponum1 = new JTextField(10);
 		panel.add(camponum1);
-		//asociamos el boton en concreto con la respuesta dicho evento
-		JButton boton =new JButton("sumar");
-		boton.addActionListener(this);
-		panel.add(boton);
 		
-		campotextosaluda=new JLabel("hola jejej");
-		panel.add(campotextosaluda);
+		num2=new JLabel("operador2");
+		panel.add(num2);
+		camponum2=new JTextField(10);
+		panel.add(camponum2);
+		
+		//resultado
+		resultado= new JLabel("resultado=");
+		panel.add(resultado);
+		camporesultado=new JTextField(10);
+		//asi no se puede editar
+		camporesultado.setEditable(false);
+		panel.add(camporesultado);
+		
+		//asociamos el boton en concreto con la respuesta dicho evento
+		suma=new JButton("+");
+		suma.addActionListener(this);
+		panel.add(suma);
+		resta=new JButton("-");
+		resta.addActionListener(this);
+		panel.add(resta);
+		multiplicacion=new JButton("x");
+		multiplicacion.addActionListener(this);
+		panel.add(multiplicacion);
+		division=new JButton("/");
+		division.addActionListener(this);
+		panel.add(division);
+		
 		
 			
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//RESPUESTA al evento del click de raton
-		//hara las acciones una vez pulsada el boton
+		//cogeremos los operadores y el resultado q sera 0
+		double op1 = Double.parseDouble(camponum1.getText());
+		double op2 = Double.parseDouble(camponum2.getText());double result=0;
 		
-		String saludo= "hola "+camponum1.getText();
-		campotextosaluda.setText(saludo);
-		
+		if(e.getSource()==suma) {
+			
+			result=op1+op2;
+		}else if(e.getSource()==resta){
+			
+			result=op1-op2;
+		}
+		else if(e.getSource()==multiplicacion){
+			
+			result=op1*op2;
+		}
+		else if(e.getSource()==division){
+			
+			if(op2 !=0) {
+				result=op1/op2;
+			}else {
+				camporesultado.setText("error no puede ser el operador 2 igual a 0");
+				
+			}
+		}
+		//set el resultado 
+		camporesultado.setText(String.valueOf(result));
 	}
 
 }
