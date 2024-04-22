@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ud4.booleano;
+
 public class Calculadora implements ActionListener {
 	private JFrame ventana;
 	private JPanel panel;
@@ -23,7 +25,7 @@ public class Calculadora implements ActionListener {
 		 * 3-no esta especificado el funcionamiento de la x*/ 
 		ventana= new JFrame("Calculadora");
 		//establecemos la localizacion y tamaño de la ventana
-		ventana.setBounds(100, 100, 300, 300);
+		ventana.setBounds(100, 100, 400, 300);
 		//ESTABLECEMOS EL FUNCIONAMIENTO AL CERRAR LA VENTANA
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -75,13 +77,13 @@ public class Calculadora implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		//cogeremos los operadores y el resultado q sera 0
 		double op1 = Double.parseDouble(camponum1.getText());
-		double op2 = Double.parseDouble(camponum2.getText());double result=0;
+		double op2 = Double.parseDouble(camponum2.getText());
+		double result=0;
+		boolean divisionporcero=false;
 		
 		if(e.getSource()==suma) {
-			
 			result=op1+op2;
 		}else if(e.getSource()==resta){
-			
 			result=op1-op2;
 		}
 		else if(e.getSource()==multiplicacion){
@@ -93,12 +95,15 @@ public class Calculadora implements ActionListener {
 			if(op2 !=0) {
 				result=op1/op2;
 			}else {
-				camporesultado.setText("error no puede ser el operador 2 igual a 0");
-				
+				divisionporcero=true;
 			}
 		}
 		//set el resultado 
-		camporesultado.setText(String.valueOf(result));
+		if(divisionporcero== false) 
+			camporesultado.setText(result+"");
+		else {
+			camporesultado.setText("error operador2 !=0");
+		}
 	}
 
 }
