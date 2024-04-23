@@ -10,67 +10,82 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Adivino implements ActionListener {
-	private JFrame ventana;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Adivino extends JFrame implements ActionListener{
+	//atributos
 	private JPanel panel;
-	private JLabel num1,resultado;
-	private JTextField camponum1,camporesultado;
-	public Adivino() {
-		/*inicialmente
-		 * 1-la ventana no es visible(Lo ultimo)
-		 * 2-tiene tamaño 0
-		 * 3-no esta especificado el funcionamiento de la x*/ 
-		ventana= new JFrame("Adivino");
-		//establecemos la localizacion y tamaño de la ventana
-		ventana.setBounds(100, 100, 400, 300);
-		//ESTABLECEMOS EL FUNCIONAMIENTO AL CERRAR LA VENTANA
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//creamos una lamina  la añadimos a laventana
-		panel= new JPanel();
-		ventana.add(panel);
-		agregaComponentesAlPanel();
-		//hacemos visinle la ventana
-		ventana.setVisible(true);
+	private JLabel lNumero;
+	private JButton bMayor, bMenor, bAcierto;
+	private int numero,maximo,minimo;
+
 	
+	//constructor
+	public Adivino() {
+		super("Ventana Adivinar");
+		minimo=1;
+		maximo=100;
+		setBounds(100,200,300,300);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		dameUnNumeroAleatorio();
+		construirPanel();
+		setVisible(true);
 	}
-	private void agregaComponentesAlPanel() {
-		Random ale=new Random();
-		int numadivinar=ale.nextInt(5);
-		num1= new JLabel("es mayor que 50 ");
-		panel.add(num1);
-		camponum1 = new JTextField();
-		panel.add(camponum1);
+	public void construirPanel() {
+		panel = new JPanel();
 		
-		resultado= new JLabel("resultado=");
-		panel.add(resultado);
-		camporesultado=new JTextField(10);
-		//asi no se puede editar
-		camporesultado.setEditable(false);
-		panel.add(camporesultado);
-		JButton pregunta =new JButton("enviar");
-		pregunta.addActionListener(this);
+		lNumero=new JLabel("El numero que pensaste es el "+numero);
+		panel.add(lNumero);
 		
+		bMayor=new JButton("MAYOR");
+		bMayor.addActionListener(this);
+		panel.add(bMayor);
 		
+		bMenor=new JButton("MENOR");
+		bMenor.addActionListener(this);
+		panel.add(bMenor);
+		
+		bAcierto=new JButton("ACIERTO");
+		bAcierto.addActionListener(this);
+		panel.add(bAcierto);
+		
+		add(panel);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String respuesta = camponum1.getText();
-		int intentos =6;
-		int result=0;
-		if(respuesta.equals("si")) {
-			intentos--;
-			num1= new JLabel("es mayor que 75");
-			panel.add(num1);
-			camponum1 = new JTextField();
-			panel.add(camponum1);
-			respuesta = camponum1.getText();
-			if(respuesta.equals("si")) {
-				result=79;
-			}
+		
+		if (e.getActionCommand().equals("MAYOR")) {
+			minimo=numero+1;
+			dameUnNumeroAleatorio();
+			lNumero.setText("El numero que buscas es el "+numero);
+			
 		}
-		camporesultado.setText(result+"");
+		
+		if(e.getActionCommand().equals("MENOR")) {
+			maximo=numero-1;
+			dameUnNumeroAleatorio();
+			lNumero.setText("El numero que buscas es el "+numero);
+			
+		}
+		if((e.getActionCommand().equals("ACIERTO"))) {
+			lNumero.setText("Has acertado!!!");
+		}
 		
 	}
+	
+	private void dameUnNumeroAleatorio() {
+		Random random=new Random();
+		numero=random.nextInt(maximo+1-minimo)+minimo;
+		System.out.println("Max:"+maximo+" Min:"+minimo+" Numero:"+numero);
+	}
+
 
 }
+
