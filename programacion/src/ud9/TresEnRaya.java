@@ -65,30 +65,46 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	estadisticas();
     }
     private void estadisticas() {
-    	String[]simbolos= {"x","o"};
-    	for(String simbolo : simbolos) {
-    		for(int i=0;i<3;i++) {
-    			if(botones[i].getText().equals(simbolo) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo) ||
-    					botones[i +1].getText().equals(simbolo) && botones[i +4].getText().equals(simbolo) && 
-    					botones[i+7].getText().equals(simbolo)|| botones[i+2].getText().equals(simbolo) && botones[i + 5].getText().equals(simbolo) && botones[i + 8].getText().equals(simbolo)){
-					estadisticas.setText("el jugador del simbolo "+simbolo +"ha ganado");
-					juegoterminado = true;
-                 	return;
-    			}
-    		}
-    		//otro caso
-    		if (botones[0].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[8].getText().equals(simbolo) ||
-                    botones[2].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[6].getText().equals(simbolo)) {
-                    estadisticas.setText("¡" + simbolo + " ha ganado!");
-                    juegoterminado = true;
-                    return;
-                }
-            }
-            if (esEmpate()) {
-                estadisticas.setText("¡Empate!");
-                juegoterminado = true;
-            }
+    	    String[] simbolos = {"X", "O"};
+    	    for (String simbolo : simbolos) {
+    	        for (int i = 0; i < 3; i++) {
+    	            //  filas
+    	            if (botones[i].getText().equals(simbolo) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo)) {
+    	                estadisticas.setText("El jugador " + simbolo + " ha ganado");
+    	                juegoterminado = true;
+    	                descativarbotones();
+    	                return;
+    	            }
+    	            // columnas
+    	            if (botones[i * 3].getText().equals(simbolo) && botones[i * 3 + 1].getText().equals(simbolo) && botones[i * 3 + 2].getText().equals(simbolo)) {
+    	                estadisticas.setText("El jugador " + simbolo + " ha ganado");
+    	                juegoterminado = true;
+    	                descativarbotones();
+    	                return;
+    	            }
+    	        
+    	        // diagonales
+    	        if (botones[0].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[8].getText().equals(simbolo) ||
+    	            botones[2].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[6].getText().equals(simbolo)) {
+    	            estadisticas.setText("El jugador " + simbolo + " ha ganado");
+    	            juegoterminado = true;
+    	            descativarbotones();
+    	            return;
+    	        }
+    	        }
+    	    }
+    	    if (esEmpate()) {
+    	        estadisticas.setText("¡Empate!");
+    	        juegoterminado = true;
+    	        descativarbotones();
+    	    }
     	}
+    private void descativarbotones() {
+    	for(int i=0;i<botones.length;i++) {
+    		botones[i].setEnabled(false);
+    	}
+    }
+
     private boolean esEmpate() {
     	for(int i=0;i<9;i++) {
     		if(botones[i].getText().isEmpty()) {
