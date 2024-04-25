@@ -1,4 +1,4 @@
-package ud9_gui;
+package ud9;
 
 public class UsoVentanaQueCambia {
 

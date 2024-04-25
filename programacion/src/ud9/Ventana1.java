@@ -1,4 +1,4 @@
-package ud9_gui;
+package ud9;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
