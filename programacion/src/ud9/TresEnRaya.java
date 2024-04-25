@@ -68,12 +68,12 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	String[]simbolos= {"x","o"};
     	for(String simbolo : simbolos) {
     		for(int i=0;i<3;i++) {
-    			if(botones[i].getText().equals(simbolos) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo) ||
-    					botones[i * 3].getText().equals(simbolo) && botones[i * 3 + 1].getText().equals(simbolo) && 
-    					botones[i * 3 + 2].getText().equals(simbolo)){
-    				estadisticas.setText("el jugador del simbolo "+simbolo +"ha ganado");
-    				 juegoterminado = true;
-                     return;
+    			if(botones[i].getText().equals(simbolo) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo) ||
+    					botones[i +1].getText().equals(simbolo) && botones[i +4].getText().equals(simbolo) && 
+    					botones[i+7].getText().equals(simbolo)|| botones[i+2].getText().equals(simbolo) && botones[i + 5].getText().equals(simbolo) && botones[i + 8].getText().equals(simbolo)){
+					estadisticas.setText("el jugador del simbolo "+simbolo +"ha ganado");
+					juegoterminado = true;
+                 	return;
     			}
     		}
     		//otro caso
