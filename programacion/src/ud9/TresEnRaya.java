@@ -1,5 +1,6 @@
 package ud9;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,30 +10,91 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TresEnRaya implements ActionListener   {
-	private JFrame ventana;
+import ud4.booleano;
+
+public class TresEnRaya extends JFrame implements ActionListener   {
+	
     private JPanel panel;
     private JLabel estadisticas;
-    private JButton pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9;
+    private JButton [] botones;
+    private boolean esturnox,juegoterminado;
 
     public TresEnRaya() {
-    	ventana = new JFrame("Pulgadas");
-        ventana.setBounds(100, 100, 400, 200);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel = new JPanel();
-        ventana.add(panel);
+    	super("TRES EN RAYA");
+        setBounds(100, 100, 200, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        construirpanel();
+        setVisible(true);
+        esturnox=true;
+        juegoterminado=false;
         
-        //boton 
-        pos1 = new JButton("cambiar a cm ");
-        pos1.addActionListener(this);
-        panel.add(pos1);
+        
 
         
-        ventana.setVisible(true);
+    }
+    public void construirpanel(){
+    	panel=new JPanel();
+    	add(panel);
+    	botones=new JButton[9];
+    	for(int i=0;i<9;i++) {
+    		botones[i]=new JButton("");
+    		botones[i].setPreferredSize(new Dimension(60,60));
+    		botones[i].addActionListener(this);
+    		panel.add(botones[i]);
+    	}
+    	estadisticas=new JLabel("se esta juegando");
+    	panel.add(estadisticas);
+    	add(panel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	int numerobotonespulsados=0;
+    	for(int i=0;i<9;i++) {
+    		if(e.getSource()==botones[i]) {
+    			numerobotonespulsados=i;
+    		}
+    	}
+    	if(esturnox) {
+    		botones[numerobotonespulsados].setText("X");
+    		esturnox=false;
+    	}else {
+    		botones[numerobotonespulsados].setText("0");
+    		esturnox=true;
+		}
+    	estadisticas();
+    }
+    private void estadisticas() {
+    	String[]simbolos= {"x","o"};
+    	for(String simbolo : simbolos) {
+    		for(int i=0;i<3;i++) {
+    			if(botones[i].getText().equals(simbolos) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo) ||
+    					botones[i * 3].getText().equals(simbolo) && botones[i * 3 + 1].getText().equals(simbolo) && 
+    					botones[i * 3 + 2].getText().equals(simbolo)){
+    				estadisticas.setText("el jugador del simbolo "+simbolo +"ha ganado");
+    				 juegoterminado = true;
+                     return;
+    			}
+    		}
+    		//otro caso
+    		if (botones[0].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[8].getText().equals(simbolo) ||
+                    botones[2].getText().equals(simbolo) && botones[4].getText().equals(simbolo) && botones[6].getText().equals(simbolo)) {
+                    estadisticas.setText("¡" + simbolo + " ha ganado!");
+                    juegoterminado = true;
+                    return;
+                }
+            }
+            if (esEmpate()) {
+                estadisticas.setText("¡Empate!");
+                juegoterminado = true;
+            }
+    	}
+    private boolean esEmpate() {
+    	for(int i=0;i<9;i++) {
+    		if(botones[i].getText().isEmpty()) {
+    			return false;
+    		}
+    	}return true;
     	
     }
 }
