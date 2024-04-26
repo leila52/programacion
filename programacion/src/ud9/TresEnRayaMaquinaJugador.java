@@ -48,6 +48,7 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
 
         if (esTurnoJugador) {
             botonPulsado.setText("X");
+            
         } else {
             moverMaquina();
         }
