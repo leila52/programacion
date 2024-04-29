@@ -13,10 +13,11 @@ import javax.swing.JTextField;
 import ud4.booleano;
 
 public class TresEnRaya extends JFrame implements ActionListener   {
-	
+	//añadir botones para volver a la pagina principal y6 reiniciar la partida
     private JPanel panel;
     private JLabel estadisticas;
     private JButton [] botones;
+    private JButton reiniciar;
     private boolean esturnox,juegoterminado;
 
     public TresEnRaya() {
@@ -42,38 +43,56 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	}
     	estadisticas=new JLabel("se esta juegando");
     	panel.add(estadisticas);
+    	reiniciar=new JButton("reiniciar");
+    	reiniciar.addActionListener(this);
+    	panel.add(reiniciar);
     	add(panel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	int numerobotonespulsados=0;
-    	for(int i=0;i<9;i++) {
-    		if(e.getSource()==botones[i]) {
-    			numerobotonespulsados=i;
+	    	if(e.getSource()==reiniciar) {
+	    		activarbotones();
+	    		estadisticas.setText("Se está jugando");
+	            juegoterminado = false;
+	            return;
+	        }
+    	
+    		int numerobotonespulsados=0;
+        	//obtener la casilla pulsada
+        	for(int i=0;i<9;i++) {
+        		if(e.getSource()==botones[i]) {
+        			numerobotonespulsados=i;
+        		}
+        	}
+        	//turno jugador uo es x
+        	if(esturnox) {
+        		botones[numerobotonespulsados].setText("X");
+        		botones[numerobotonespulsados].setEnabled(false);
+        		esturnox=false;
+        	}
+        	//turno del jugaor dos se poe 0
+        	else {
+        		botones[numerobotonespulsados].setText("O");
+        		botones[numerobotonespulsados].setEnabled(false);
+        		esturnox=true;
     		}
+        	estadisticas();
+        	
     	}
-    	if(esturnox) {
-    		botones[numerobotonespulsados].setText("X");
-    		esturnox=false;
-    	}else {
-    		botones[numerobotonespulsados].setText("O");
-    		esturnox=true;
-		}
-    	estadisticas();
-    }
+    
     private void estadisticas() {
     	    String[] simbolos = {"X", "O"};
     	    for (String simbolo : simbolos) {
     	        for (int i = 0; i < 3; i++) {
-    	            //  filas
+    	            //  columnas
     	            if (botones[i].getText().equals(simbolo) && botones[i + 3].getText().equals(simbolo) && botones[i + 6].getText().equals(simbolo)) {
     	                estadisticas.setText("El jugador " + simbolo + " ha ganado");
     	                juegoterminado = true;
     	                descativarbotones();
     	                return;
     	            }
-    	            // columnas
+    	            // filas
     	            if (botones[i * 3].getText().equals(simbolo) && botones[i * 3 + 1].getText().equals(simbolo) && botones[i * 3 + 2].getText().equals(simbolo)) {
     	                estadisticas.setText("El jugador " + simbolo + " ha ganado");
     	                juegoterminado = true;
@@ -98,6 +117,12 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	        }
     	    }
     	}
+    private void activarbotones() {
+    	for(int i=0;i<botones.length;i++) {
+    		botones[i].setText("");
+    		botones[i].setEnabled(true);
+    	}
+    }
     private void descativarbotones() {
     	for(int i=0;i<botones.length;i++) {
     		botones[i].setEnabled(false);
