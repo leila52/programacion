@@ -58,7 +58,6 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
     }
 
     private void moverMaquina() {
-        
         int posicion;
         do {
         	Random ale = new Random();
