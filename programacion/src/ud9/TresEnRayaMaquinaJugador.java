@@ -58,10 +58,11 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
     }
 
     private void moverMaquina() {
-        Random rand = new Random();
+        
         int posicion;
         do {
-            posicion = rand.nextInt(9);
+        	Random ale = new Random();
+            posicion = ale.nextInt(9);
         } while (!botones[posicion].getText().isEmpty());
 
         botones[posicion].setText("O");
@@ -77,9 +78,7 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
         } else if (esEmpate()) {
             estadisticas.setText("¡Empate!");
             juegoTerminado = true;
-        } else {
-            estadisticas.setText(esTurnoJugador ? "Turno del jugador" : "Turno de la máquina");
-        }
+        } 
     }
 
     private boolean haGanado(String jugador) {

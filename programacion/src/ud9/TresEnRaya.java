@@ -29,8 +29,6 @@ public class TresEnRaya extends JFrame implements ActionListener   {
         juegoterminado=false;
         
         
-
-        
     }
     public void construirpanel(){
     	panel=new JPanel();
