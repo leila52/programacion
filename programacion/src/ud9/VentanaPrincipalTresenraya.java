@@ -4,28 +4,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaPrincipalTresenraya extends JFrame{
-	public VentanaPrincipalTresenraya() {
-		super("TRES EN RAYA");
+    public VentanaPrincipalTresenraya() {
+        super("TRES EN RAYA");
         setBounds(100, 100, 200, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton btnJugadorVsJugador = new JButton("Jugador vs Jugador");
         JButton btnJugadorVsMaquina = new JButton("Jugador vs Máquina");
 
+        VentanaPrincipalTresenraya ventanaPrincipal = this; // Referencia a la ventana principal
+
         btnJugadorVsJugador.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirVentanaJugadorVsJugador();
+                abrirVentanaJugadorVsJugador(ventanaPrincipal);
             }
         });
         btnJugadorVsMaquina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirVentanaJugadorVsMaquina();
+                abrirVentanaJugadorVsMaquina(ventanaPrincipal);
             }
         });
-
-       
 
         JPanel panel = new JPanel();
         panel.add(btnJugadorVsJugador);
@@ -35,14 +35,14 @@ public class VentanaPrincipalTresenraya extends JFrame{
         setVisible(true);
     }
 
-    private void abrirVentanaJugadorVsJugador() {
-        TresEnRaya ventanaJuego = new TresEnRaya();
+    private void abrirVentanaJugadorVsJugador(VentanaPrincipalTresenraya ventanaPrincipal) {
+        TresEnRaya ventanaJuego = new TresEnRaya(ventanaPrincipal);
         this.setVisible(false);
     }
 
 
-    private void abrirVentanaJugadorVsMaquina() {
-    	TresEnRayaMaquinaJugador m =new TresEnRayaMaquinaJugador();
+    private void abrirVentanaJugadorVsMaquina(VentanaPrincipalTresenraya ventanaPrincipal) {
+        TresEnRayaMaquinaJugador m = new TresEnRayaMaquinaJugador(ventanaPrincipal);
         this.setVisible(false);
     }
 }

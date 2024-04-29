@@ -17,11 +17,13 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     private JPanel panel;
     private JLabel estadisticas;
     private JButton [] botones;
-    private JButton reiniciar;
+    private JButton reiniciar, botonvolver;
     private boolean esturnox,juegoterminado;
+    private VentanaPrincipalTresenraya ventanaPrincipal;
 
-    public TresEnRaya() {
+    public TresEnRaya(VentanaPrincipalTresenraya ventanaPrincipal) {
     	super("TRES EN RAYA");
+    	this.ventanaPrincipal=ventanaPrincipal;
         setBounds(100, 100, 200, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         construirpanel();
@@ -46,6 +48,9 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	reiniciar=new JButton("reiniciar");
     	reiniciar.addActionListener(this);
     	panel.add(reiniciar);
+    	botonvolver= new JButton("volver a la página principal");
+    	botonvolver.addActionListener(this);
+    	panel.add(botonvolver);
     	add(panel);
     }
 
@@ -56,6 +61,9 @@ public class TresEnRaya extends JFrame implements ActionListener   {
 	    		estadisticas.setText("Se está jugando");
 	            juegoterminado = false;
 	            return;
+	        }
+	    	if (e.getSource() == botonvolver) {
+	            volverAPaginaPrincipal();
 	        }
     	
     		int numerobotonespulsados=0;
@@ -80,7 +88,11 @@ public class TresEnRaya extends JFrame implements ActionListener   {
         	estadisticas();
         	
     	}
-    
+    private void volverAPaginaPrincipal() {
+    	// ocultar la ventana actual y mostrar la ventana principal
+    	 this.setVisible(false);
+         ventanaPrincipal.setVisible(true);
+    }
     private void estadisticas() {
     	    String[] simbolos = {"X", "O"};
     	    for (String simbolo : simbolos) {

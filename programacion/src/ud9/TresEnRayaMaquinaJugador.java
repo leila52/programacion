@@ -8,10 +8,13 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
 	private JPanel panel;
     private JLabel estadisticas;
     private JButton[] botones;
+    private JButton reiniciar,botonvolver;
     private boolean esTurnoJugador, juegoTerminado;
+    private VentanaPrincipalTresenraya ventanaPrincipal;
     
-    public TresEnRayaMaquinaJugador () {
+    public TresEnRayaMaquinaJugador (VentanaPrincipalTresenraya ventanaPrincipal) {
     	super("TRES EN RAYA");
+    	this.ventanaPrincipal = ventanaPrincipal;
         setBounds(100, 100, 200, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         construirPanel();
@@ -32,12 +35,25 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
         }
         estadisticas = new JLabel("Se está jugando");
         panel.add(estadisticas);
+        reiniciar=new JButton("reiniciar");
+    	reiniciar.addActionListener(this);
+    	panel.add(reiniciar);
+    	botonvolver= new JButton("volver a la página principal");
+    	botonvolver.addActionListener(this);
+    	panel.add(botonvolver);
         add(panel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (juegoTerminado) {
+    	if(e.getSource()==reiniciar) {
+    		reiniciar();
+            return;
+        }
+    	if (e.getSource() == botonvolver) {
+            volverAPaginaPrincipal();
+        }
+    	if (juegoTerminado) {
             return;
         }
 
@@ -56,7 +72,11 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
         esTurnoJugador = !esTurnoJugador;
         actualizarEstadisticas();
     }
-
+    private void volverAPaginaPrincipal() {
+    	// ocultar la ventana actual y mostrar la ventana principal
+    	 this.setVisible(false);
+         ventanaPrincipal.setVisible(true);
+    }
     private void moverMaquina() {
         int posicion;
         do {
@@ -71,12 +91,15 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
         if (haGanado("X")) {
             estadisticas.setText("¡Has ganado!");
             juegoTerminado = true;
+            desactivarBotones();
         } else if (haGanado("O")) {
             estadisticas.setText("¡Has perdido!");
             juegoTerminado = true;
+            desactivarBotones();
         } else if (esEmpate()) {
             estadisticas.setText("¡Empate!");
             juegoTerminado = true;
+            desactivarBotones();
         } 
     }
 
@@ -98,7 +121,20 @@ public class TresEnRayaMaquinaJugador extends JFrame implements ActionListener{
         }
         return false;
     }
-
+    private void reiniciar() {
+    	for(int i=0;i<botones.length;i++) {
+    		botones[i].setText("");
+    		botones[i].setEnabled(true);
+    	}
+    	estadisticas.setText("Se está jugando");
+        juegoTerminado = false;
+        esTurnoJugador = true;
+    }
+    private void desactivarBotones() {
+        for (int i=0;i<botones.length;i++) {
+            botones[i].setEnabled(false);
+        }
+    }
     private boolean esEmpate() {
         for (JButton boton : botones) {
             if (boton.getText().isEmpty()) {
