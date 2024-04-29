@@ -59,7 +59,7 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     		botones[numerobotonespulsados].setText("X");
     		esturnox=false;
     	}else {
-    		botones[numerobotonespulsados].setText("0");
+    		botones[numerobotonespulsados].setText("O");
     		esturnox=true;
 		}
     	estadisticas();
@@ -91,12 +91,13 @@ public class TresEnRaya extends JFrame implements ActionListener   {
     	            descativarbotones();
     	            return;
     	        }
-    	        }
-    	    }
+    	      
     	    if (esEmpate()) {
     	        estadisticas.setText("¡Empate!");
     	        juegoterminado = true;
     	        descativarbotones();
+    	    }
+    	        }
     	    }
     	}
     private void descativarbotones() {
