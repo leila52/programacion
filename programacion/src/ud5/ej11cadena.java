@@ -23,13 +23,15 @@ public class ej11cadena {
 	}
 	public static boolean esmail(String cad) {
 		String[] parte=cad.split("@");
+		//parte[0]=laila
+		//parte[1]=gmail
 		int cont=0;
 		for(int i=0;i>cad.length();i++) {
 			if(cad.charAt(i)=='@') {
 				cont++;
 			}
 		}//o puede contener dos puntos seguidos '.' después de la arroba.
-		if(cad.contains("..")==true) {
+		if(parte[1].contains("..")==true) {
 			return false;
 		}
 		if((cont!=1)&&(cad.contains(".")==true)&&(cad.contains(" ")==false)) {
